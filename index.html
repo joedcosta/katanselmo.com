@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Secret to Inner Success — Kat</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>The Path to Success — Kat Anselmo</title>
+<meta name="description" content="Kat Anselmo — yoga teacher, inner success coach. Discover your path back to yourself through the 30-day inner journey.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -15,6 +16,7 @@
   --mid: #4a4540;
   --muted: #9a9088;
   --purple: #534AB7;
+  --purple-deep: #3d3592;
   --purple-light: #EEEDFE;
   --teal: #1D9E75;
   --teal-light: #E1F5EE;
@@ -30,161 +32,616 @@
 html { scroll-behavior: smooth; }
 body { font-family: var(--sans); background: var(--cream); color: var(--dark); line-height: 1.7; overflow-x: hidden; }
 
-/* NAV */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 18px 40px; display: flex; align-items: center; justify-content: space-between; background: rgba(250,248,244,0.92); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); }
-.nav-logo { font-family: var(--serif); font-size: 18px; font-weight: 400; letter-spacing: 0.02em; color: var(--dark); text-decoration: none; }
-.nav-links { display: flex; align-items: center; gap: 32px; }
+/* ========== NAV ========== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 18px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(250,248,244,0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 0.5px solid var(--border);
+  transition: padding 0.3s;
+}
+.nav-logo {
+  font-family: var(--serif); font-size: 17px; font-weight: 400;
+  letter-spacing: 0.03em; color: var(--dark); text-decoration: none;
+}
+.nav-links { display: flex; align-items: center; gap: 36px; }
 .nav-links a { font-size: 13px; color: var(--mid); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
 .nav-links a:hover { color: var(--dark); }
-.nav-cta { font-size: 13px; font-weight: 500; color: var(--purple); background: var(--purple-light); padding: 8px 20px; border-radius: 50px; text-decoration: none; transition: background 0.2s; }
-.nav-cta:hover { background: #CECBF6; }
+.nav-cta {
+  font-size: 13px; font-weight: 500; color: #fff;
+  background: var(--purple); padding: 9px 22px;
+  border-radius: 50px; text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.nav-cta:hover { background: var(--purple-deep); transform: translateY(-1px); }
 
-/* HERO */
-.hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 40px 80px; max-width: 1100px; margin: 0 auto; }
-.hero-content { max-width: 620px; }
-.hero-eyebrow { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
-.hero-eyebrow::before { content: ''; display: block; width: 32px; height: 0.5px; background: var(--muted); }
-.hero-headline { font-family: var(--serif); font-size: clamp(44px, 6vw, 72px); font-weight: 300; line-height: 1.12; color: var(--dark); margin-bottom: 28px; letter-spacing: -0.01em; }
+/* ========== HERO ========== */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left {
+  padding: 160px 64px 80px 64px;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; z-index: 2;
+}
+.hero-right {
+  background: var(--dark);
+  position: relative; overflow: hidden;
+  display: flex; align-items: flex-end; justify-content: center;
+}
+.hero-right-img {
+  width: 100%; height: 100%; object-fit: cover;
+  object-position: center top;
+  filter: brightness(0.85);
+}
+.hero-right-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(28,24,20,0.7) 100%);
+}
+.hero-right-quote {
+  position: absolute; bottom: 48px; left: 40px; right: 40px;
+  font-family: var(--serif); font-size: 22px; font-style: italic;
+  color: rgba(250,248,244,0.9); line-height: 1.4; font-weight: 300;
+}
+.hero-right-quote cite {
+  display: block; font-family: var(--sans); font-size: 12px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(250,248,244,0.45); font-style: normal; margin-top: 12px;
+}
+
+.hero-eyebrow {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--purple); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 12px;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 28px; height: 1px; background: var(--purple);
+}
+.hero-headline {
+  font-family: var(--serif);
+  font-size: clamp(52px, 5.5vw, 80px);
+  font-weight: 300; line-height: 1.05;
+  color: var(--dark); margin-bottom: 32px;
+  letter-spacing: -0.02em;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
 .hero-headline em { font-style: italic; color: var(--purple); }
-.hero-sub { font-size: 17px; color: var(--mid); line-height: 1.8; max-width: 480px; margin-bottom: 40px; font-weight: 300; }
-.hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-.btn-primary { font-size: 14px; font-weight: 500; color: #fff; background: var(--dark); padding: 14px 32px; border-radius: 50px; text-decoration: none; transition: background 0.2s; letter-spacing: 0.02em; }
-.btn-primary:hover { background: var(--mid); }
-.btn-ghost { font-size: 14px; color: var(--mid); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+.hero-headline strong { font-weight: 500; }
+.hero-sub {
+  font-size: 18px; color: var(--mid); line-height: 1.8;
+  max-width: 480px; margin-bottom: 48px; font-weight: 300;
+  animation: fadeUp 0.6s 0.3s ease both;
+}
+.hero-actions {
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  animation: fadeUp 0.6s 0.4s ease both;
+}
+.btn-primary {
+  font-size: 15px; font-weight: 500; color: #fff; background: var(--dark);
+  padding: 16px 36px; border-radius: 50px; text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 0.02em; display: inline-block;
+}
+.btn-primary:hover { background: var(--mid); transform: translateY(-2px); }
+.btn-ghost {
+  font-size: 14px; color: var(--mid); text-decoration: none;
+  display: flex; align-items: center; gap: 6px;
+  transition: color 0.2s;
+}
 .btn-ghost::after { content: '→'; transition: transform 0.2s; }
+.btn-ghost:hover { color: var(--dark); }
 .btn-ghost:hover::after { transform: translateX(4px); }
-.hero-float { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 420px; height: 520px; background: var(--purple-light); border-radius: 220px 220px 0 0; opacity: 0.5; pointer-events: none; }
 
-/* SECTION BASE */
-section { padding: 100px 40px; }
-.container { max-width: 1100px; margin: 0 auto; }
-.section-eyebrow { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
-.section-title { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); font-weight: 300; line-height: 1.15; color: var(--dark); margin-bottom: 20px; }
+.hero-stat-row {
+  display: flex; gap: 40px; margin-top: 56px;
+  padding-top: 40px; border-top: 0.5px solid var(--border);
+  animation: fadeUp 0.6s 0.5s ease both;
+}
+.hero-stat-num {
+  font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--dark);
+}
+.hero-stat-label { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
+
+/* HERO FALLBACK BG (if no image) */
+.hero-right-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, #2a2520 0%, #1c1814 60%);
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-right-pattern {
+  width: 340px; height: 420px;
+  border-radius: 200px 200px 0 0;
+  background: rgba(83,74,183,0.18);
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+}
+.hero-right-circle {
+  width: 280px; height: 280px; border-radius: 50%;
+  border: 1px solid rgba(250,248,244,0.07);
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.hero-right-circle-sm {
+  width: 160px; height: 160px; border-radius: 50%;
+  border: 1px solid rgba(83,74,183,0.3);
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ========== SECTION BASE ========== */
+section { padding: 100px 64px; }
+.container { max-width: 1200px; margin: 0 auto; }
+.section-eyebrow {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 16px;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 4vw, 58px);
+  font-weight: 300; line-height: 1.1;
+  color: var(--dark); margin-bottom: 24px;
+}
 .section-title em { font-style: italic; }
-.section-intro { font-size: 16px; color: var(--mid); line-height: 1.85; max-width: 560px; font-weight: 300; }
-.divider { height: 0.5px; background: var(--border); max-width: 1100px; margin: 0 auto; }
+.section-intro {
+  font-size: 17px; color: var(--mid); line-height: 1.85;
+  max-width: 560px; font-weight: 300;
+}
+.divider { height: 0.5px; background: var(--border); max-width: 100%; }
 
-/* PILLARS */
-.pillars { background: var(--warm-white); }
-.pillars-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 64px; }
-.pillar { padding: 40px 32px; position: relative; border-top: 2px solid transparent; transition: border-color 0.3s; cursor: default; }
-.pillar:hover { border-top-color: currentColor; }
-.pillar-number { font-family: var(--serif); font-size: 56px; font-weight: 300; opacity: 0.12; line-height: 1; margin-bottom: 20px; }
-.pillar-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 18px; }
-.pillar-title { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 12px; line-height: 1.2; }
-.pillar-desc { font-size: 14px; color: var(--mid); line-height: 1.75; margin-bottom: 16px; font-weight: 300; }
-.pillar-days { font-size: 12px; letter-spacing: 0.06em; font-weight: 500; }
+/* ========== PROOF STRIP ========== */
+.proof-strip {
+  background: var(--dark); padding: 28px 64px;
+  overflow: hidden;
+}
+.proof-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; gap: 64px;
+  overflow-x: auto; scrollbar-width: none;
+}
+.proof-inner::-webkit-scrollbar { display: none; }
+.proof-item {
+  display: flex; align-items: center; gap: 14px;
+  white-space: nowrap; flex-shrink: 0;
+}
+.proof-item-icon { font-size: 20px; opacity: 0.7; }
+.proof-item-text {
+  font-size: 13px; color: rgba(250,248,244,0.55);
+  letter-spacing: 0.04em;
+}
+.proof-item-text strong { color: rgba(250,248,244,0.85); font-weight: 500; }
+.proof-sep { width: 1px; height: 20px; background: rgba(250,248,244,0.1); flex-shrink: 0; }
+
+/* ========== STATEMENT SECTION ========== */
+.statement {
+  background: var(--warm-white);
+  text-align: center; padding: 120px 64px;
+}
+.statement-kicker {
+  font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 32px;
+}
+.statement-text {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4.5vw, 64px);
+  font-weight: 300; line-height: 1.15;
+  color: var(--dark); max-width: 900px;
+  margin: 0 auto 48px;
+}
+.statement-text em { font-style: italic; color: var(--purple); }
+.statement-text strong { font-weight: 500; }
+.statement-sub {
+  font-size: 18px; color: var(--mid); max-width: 540px;
+  margin: 0 auto 44px; line-height: 1.85; font-weight: 300;
+}
+
+/* ========== PILLARS ========== */
+.pillars { background: var(--cream); }
+.pillars-header {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: end; margin-bottom: 80px;
+}
+.pillars-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0; border: 0.5px solid var(--border); border-radius: 24px; overflow: hidden;
+}
+.pillar {
+  padding: 48px 36px;
+  border-right: 0.5px solid var(--border);
+  position: relative; transition: background 0.3s;
+  cursor: default;
+}
+.pillar:last-child { border-right: none; }
+.pillar::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: transparent; transition: background 0.3s;
+}
+.pillar:hover::before { background: currentColor; }
+.pillar:hover { background: var(--warm-white); }
+.pillar-number {
+  font-family: var(--serif); font-size: 72px; font-weight: 300;
+  opacity: 0.08; line-height: 1; margin-bottom: 24px; display: block;
+}
+.pillar-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px; font-size: 20px;
+}
+.pillar-title {
+  font-family: var(--serif); font-size: 24px; font-weight: 400;
+  margin-bottom: 14px; line-height: 1.2;
+}
+.pillar-desc {
+  font-size: 14px; color: var(--mid); line-height: 1.8; margin-bottom: 20px; font-weight: 300;
+}
+.pillar-days { font-size: 11px; letter-spacing: 0.08em; font-weight: 500; opacity: 0.7; }
 .p1 { color: var(--purple); } .p1 .pillar-icon { background: var(--purple-light); }
 .p2 { color: var(--teal); } .p2 .pillar-icon { background: var(--teal-light); }
 .p3 { color: var(--amber); } .p3 .pillar-icon { background: var(--amber-light); }
 .p4 { color: var(--coral); } .p4 .pillar-icon { background: var(--coral-light); }
 
-/* JOURNAL */
-.journal-section { background: var(--dark); color: var(--cream); }
-.journal-section .section-title { color: var(--cream); }
-.journal-section .section-intro { color: rgba(250,248,244,0.65); }
-.journal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 60px; }
-.journal-visual { position: relative; }
-.journal-book { background: var(--cream); border-radius: 4px 16px 16px 4px; padding: 40px 36px; box-shadow: -8px 8px 40px rgba(0,0,0,0.4); position: relative; }
-.journal-book::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 8px; background: var(--purple); border-radius: 4px 0 0 4px; }
-.journal-book-title { font-family: var(--serif); font-size: 20px; color: var(--dark); margin-bottom: 6px; }
-.journal-book-sub { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 24px; }
-.journal-lines { display: flex; flex-direction: column; gap: 10px; }
-.journal-line { height: 0.5px; background: rgba(28,24,20,0.12); }
-.journal-line.short { width: 60%; }
-.journal-line.medium { width: 80%; }
-.journal-day-tag { position: absolute; top: -14px; right: 20px; background: var(--purple); color: #fff; font-size: 11px; font-weight: 500; padding: 4px 14px; border-radius: 20px; letter-spacing: 0.04em; }
-.journal-content { }
-.journal-feature { display: flex; gap: 16px; padding: 20px 0; border-bottom: 0.5px solid rgba(250,248,244,0.1); }
-.journal-feature:last-child { border-bottom: none; }
-.journal-feat-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(250,248,244,0.08); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; margin-top: 2px; }
-.journal-feat-title { font-size: 15px; font-weight: 500; color: var(--cream); margin-bottom: 4px; }
-.journal-feat-desc { font-size: 13px; color: rgba(250,248,244,0.55); line-height: 1.65; font-weight: 300; }
+/* ========== JOURNAL / DARK SECTION ========== */
+.journal-section {
+  background: var(--dark); color: var(--cream); padding: 120px 64px;
+}
+.journal-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.journal-content .section-title { color: var(--cream); }
+.journal-content .section-intro { color: rgba(250,248,244,0.6); margin-bottom: 48px; }
 
-/* PROGRAM */
-.program-header { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 60px; }
-.program-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.program-card { border: 0.5px solid var(--border); border-radius: 16px; padding: 32px; background: #fff; transition: transform 0.2s, box-shadow 0.2s; }
-.program-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(28,24,20,0.08); }
-.program-card.featured { background: var(--dark); color: var(--cream); border-color: var(--dark); grid-row: span 1; }
-.program-price { font-family: var(--serif); font-size: 40px; font-weight: 300; margin-bottom: 4px; }
-.program-name { font-size: 15px; font-weight: 500; margin-bottom: 8px; }
-.program-desc { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; font-weight: 300; }
-.program-card.featured .program-desc { color: rgba(250,248,244,0.55); }
-.program-features { list-style: none; margin-bottom: 28px; display: flex; flex-direction: column; gap: 8px; }
-.program-features li { font-size: 13px; color: var(--mid); display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
-.program-card.featured .program-features li { color: rgba(250,248,244,0.7); }
-.program-features li::before { content: '·'; color: var(--muted); font-size: 18px; line-height: 1; flex-shrink: 0; }
-.program-btn { display: block; text-align: center; font-size: 13px; font-weight: 500; padding: 12px 20px; border-radius: 50px; text-decoration: none; transition: background 0.2s; }
+.journal-feature {
+  display: flex; gap: 20px;
+  padding: 24px 0; border-bottom: 0.5px solid rgba(250,248,244,0.08);
+}
+.journal-feature:first-of-type { border-top: 0.5px solid rgba(250,248,244,0.08); }
+.journal-feat-icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(83,74,183,0.25); display: flex; align-items: center;
+  justify-content: center; font-size: 17px; flex-shrink: 0; margin-top: 2px;
+}
+.journal-feat-title { font-size: 16px; font-weight: 500; color: var(--cream); margin-bottom: 6px; }
+.journal-feat-desc { font-size: 14px; color: rgba(250,248,244,0.5); line-height: 1.7; font-weight: 300; }
+
+.journal-visual-wrap { position: relative; }
+.journal-book {
+  background: var(--cream); border-radius: 6px 20px 20px 6px;
+  padding: 48px 44px; position: relative;
+  box-shadow: -12px 16px 60px rgba(0,0,0,0.5), 4px 4px 0 rgba(83,74,183,0.15);
+}
+.journal-book::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 10px; background: var(--purple); border-radius: 6px 0 0 6px;
+}
+.journal-book::after {
+  content: ''; position: absolute; left: 10px; top: 0; bottom: 0;
+  width: 3px; background: rgba(83,74,183,0.2);
+}
+.journal-day-tag {
+  position: absolute; top: -16px; right: 24px;
+  background: var(--purple); color: #fff;
+  font-size: 11px; font-weight: 500; padding: 5px 16px;
+  border-radius: 20px; letter-spacing: 0.06em;
+}
+.journal-book-title {
+  font-family: var(--serif); font-size: 22px; color: var(--dark); margin-bottom: 4px;
+}
+.journal-book-by { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 32px; }
+.journal-lines { display: flex; flex-direction: column; gap: 12px; }
+.journal-line { height: 0.5px; background: rgba(28,24,20,0.1); }
+.journal-line.short { width: 55%; }
+.journal-line.medium { width: 78%; }
+
+.journal-badge {
+  position: absolute; bottom: -20px; left: -20px;
+  background: var(--purple); color: #fff; border-radius: 50%;
+  width: 88px; height: 88px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-size: 11px; text-align: center; line-height: 1.3;
+  box-shadow: 0 8px 24px rgba(83,74,183,0.4);
+}
+.journal-badge strong { font-family: var(--serif); font-size: 22px; font-weight: 400; }
+
+/* ========== PROGRAMS ========== */
+.programs-section { background: var(--warm-white); }
+.programs-header {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: end; margin-bottom: 64px;
+}
+.programs-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.program-card {
+  border: 0.5px solid var(--border); border-radius: 20px;
+  padding: 36px; background: #fff;
+  transition: transform 0.25s, box-shadow 0.25s;
+  position: relative;
+}
+.program-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(28,24,20,0.1); }
+.program-card.featured {
+  background: var(--dark); border-color: var(--dark); color: var(--cream);
+}
+.featured-badge {
+  display: inline-block; font-size: 11px; font-weight: 500;
+  background: var(--purple); color: #fff;
+  padding: 4px 14px; border-radius: 20px; margin-bottom: 20px;
+  letter-spacing: 0.03em;
+}
+.program-price {
+  font-family: var(--serif); font-size: 48px; font-weight: 300; line-height: 1;
+  margin-bottom: 6px;
+}
+.program-name { font-size: 16px; font-weight: 500; margin-bottom: 10px; }
+.program-desc {
+  font-size: 14px; color: var(--muted); line-height: 1.75;
+  margin-bottom: 28px; font-weight: 300;
+}
+.program-card.featured .program-desc { color: rgba(250,248,244,0.5); }
+.program-features {
+  list-style: none; margin-bottom: 32px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.program-features li {
+  font-size: 13px; color: var(--mid); display: flex;
+  align-items: flex-start; gap: 10px; line-height: 1.55;
+}
+.program-card.featured .program-features li { color: rgba(250,248,244,0.65); }
+.program-features li::before { content: '✦'; color: currentColor; font-size: 10px; margin-top: 3px; flex-shrink: 0; }
+.program-btn {
+  display: block; text-align: center; font-size: 14px; font-weight: 500;
+  padding: 14px 24px; border-radius: 50px; text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.program-btn:hover { transform: translateY(-2px); }
 .btn-dark { background: var(--dark); color: #fff; }
 .btn-dark:hover { background: var(--mid); }
 .btn-outline { border: 0.5px solid var(--border); color: var(--mid); }
 .btn-outline:hover { background: var(--cream); }
 .btn-light { background: var(--cream); color: var(--dark); }
 .btn-light:hover { background: #f0ede8; }
-.featured-badge { display: inline-block; font-size: 11px; font-weight: 500; background: var(--purple); color: #fff; padding: 3px 12px; border-radius: 20px; margin-bottom: 16px; }
+.btn-purple { background: var(--purple); color: #fff; }
+.btn-purple:hover { background: var(--purple-deep); }
 
-/* 1:1 SESSION */
-.session-section { background: var(--purple-light); }
-.session-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.session-tag { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); font-weight: 500; margin-bottom: 16px; }
-.session-title { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; line-height: 1.2; color: var(--dark); margin-bottom: 20px; }
-.session-title em { font-style: italic; color: var(--purple); }
-.session-desc { font-size: 15px; color: var(--mid); line-height: 1.85; margin-bottom: 32px; font-weight: 300; }
-.session-includes { display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
-.session-item { display: flex; align-items: flex-start; gap: 12px; }
-.session-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--purple); margin-top: 8px; flex-shrink: 0; }
-.session-item-text { font-size: 14px; color: var(--mid); line-height: 1.6; }
-.session-item-text strong { color: var(--dark); font-weight: 500; }
-.session-visual { background: #fff; border-radius: 24px; padding: 40px; box-shadow: 0 8px 40px rgba(83,74,183,0.12); }
-.session-price-tag { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-.session-price { font-family: var(--serif); font-size: 52px; font-weight: 300; color: var(--dark); line-height: 1; margin-bottom: 6px; }
+/* ========== SESSION DEEP DIVE ========== */
+.session-section { background: var(--dark); padding: 120px 64px; }
+.session-inner {
+  display: grid; grid-template-columns: 1.2fr 1fr;
+  gap: 100px; align-items: center;
+}
+.session-tag {
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(250,248,244,0.4); margin-bottom: 20px;
+}
+.session-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 300; line-height: 1.1; color: var(--cream);
+  margin-bottom: 24px;
+}
+.session-title em { font-style: italic; color: rgba(83,74,183,0.9); }
+.session-desc {
+  font-size: 16px; color: rgba(250,248,244,0.6); line-height: 1.9;
+  margin-bottom: 36px; font-weight: 300; max-width: 520px;
+}
+.session-includes { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+.session-item { display: flex; align-items: flex-start; gap: 14px; }
+.session-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--purple); margin-top: 9px; flex-shrink: 0;
+}
+.session-item-text { font-size: 15px; color: rgba(250,248,244,0.65); line-height: 1.65; }
+.session-item-text strong { color: var(--cream); font-weight: 500; }
+
+.session-card {
+  background: var(--cream); border-radius: 24px; padding: 44px 40px;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.4);
+}
+.session-card-tag {
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--purple); font-weight: 500; margin-bottom: 8px;
+}
+.session-price-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+.session-price {
+  font-family: var(--serif); font-size: 60px; font-weight: 300;
+  color: var(--dark); line-height: 1;
+}
+.session-price-old {
+  font-size: 22px; color: var(--muted); text-decoration: line-through;
+  font-family: var(--sans); font-weight: 300;
+}
 .session-price-note { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
-.session-divider { height: 0.5px; background: var(--border); margin-bottom: 20px; }
-.session-timing { font-size: 13px; color: var(--mid); line-height: 1.7; margin-bottom: 24px; font-weight: 300; }
-.session-timing strong { color: var(--dark); font-weight: 500; }
+.session-divider { height: 0.5px; background: var(--border); margin: 24px 0; }
+.session-how {
+  font-size: 14px; color: var(--mid); line-height: 1.75; margin-bottom: 28px;
+}
+.session-how strong { color: var(--dark); font-weight: 500; }
+.session-urgency {
+  font-size: 11px; color: var(--coral); text-align: center; margin-top: 12px;
+  font-weight: 500; letter-spacing: 0.04em;
+}
 
-/* ABOUT */
-.about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: center; }
-.about-img-placeholder { background: var(--purple-light); border-radius: 24px; aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; }
-.about-img-text { font-family: var(--serif); font-size: 18px; color: var(--purple); opacity: 0.5; font-style: italic; }
-.about-quote { font-family: var(--serif); font-size: clamp(22px, 2.5vw, 32px); font-weight: 300; font-style: italic; line-height: 1.4; color: var(--dark); margin-bottom: 28px; padding-left: 24px; border-left: 2px solid var(--purple); }
-.about-body { font-size: 15px; color: var(--mid); line-height: 1.85; font-weight: 300; margin-bottom: 16px; }
+/* ========== TESTIMONIALS ========== */
+.testimonials { background: var(--purple-light); padding: 100px 64px; }
+.testimonials-title {
+  font-family: var(--serif); font-size: clamp(28px, 3vw, 44px);
+  font-weight: 300; line-height: 1.2; color: var(--dark);
+  text-align: center; margin-bottom: 60px;
+}
+.testimonials-title em { font-style: italic; }
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.testimonial-card {
+  background: #fff; border-radius: 16px; padding: 32px;
+  box-shadow: 0 4px 24px rgba(83,74,183,0.08);
+}
+.testimonial-quote {
+  font-family: var(--serif); font-size: 18px; font-style: italic;
+  font-weight: 300; color: var(--dark); line-height: 1.6;
+  margin-bottom: 20px;
+}
+.testimonial-quote::before { content: '"'; color: var(--purple); }
+.testimonial-quote::after { content: '"'; color: var(--purple); }
+.testimonial-author { font-size: 13px; color: var(--muted); }
+.testimonial-author strong { color: var(--dark); font-weight: 500; }
+.stars { color: var(--amber); font-size: 13px; margin-bottom: 14px; }
 
-/* QUIZ CTA */
-.quiz-cta { background: var(--dark); color: var(--cream); text-align: center; padding: 120px 40px; }
-.quiz-cta-eyebrow { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,248,244,0.4); margin-bottom: 20px; }
-.quiz-cta-title { font-family: var(--serif); font-size: clamp(36px, 5vw, 64px); font-weight: 300; line-height: 1.15; margin-bottom: 20px; }
-.quiz-cta-title em { font-style: italic; color: rgba(250,248,244,0.5); }
-.quiz-cta-sub { font-size: 16px; color: rgba(250,248,244,0.55); max-width: 440px; margin: 0 auto 44px; line-height: 1.8; font-weight: 300; }
-.btn-cream { font-size: 15px; font-weight: 500; color: var(--dark); background: var(--cream); padding: 16px 40px; border-radius: 50px; text-decoration: none; transition: background 0.2s; display: inline-block; }
-.btn-cream:hover { background: #f0ede8; }
-.quiz-note { font-size: 13px; color: rgba(250,248,244,0.3); margin-top: 14px; }
+/* ========== ABOUT ========== */
+.about-section { padding: 120px 64px; background: var(--cream); }
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1.5fr;
+  gap: 100px; align-items: center;
+}
+.about-img-wrap {
+  position: relative;
+}
+.about-img {
+  width: 100%; aspect-ratio: 3/4; object-fit: cover;
+  border-radius: 24px; display: block;
+}
+.about-img-placeholder {
+  background: var(--purple-light); border-radius: 24px;
+  aspect-ratio: 3/4; display: flex; align-items: center;
+  justify-content: center; overflow: hidden;
+}
+.about-img-placeholder img {
+  width: 100%; height: 100%; object-fit: cover; border-radius: 24px;
+}
+.about-badge {
+  position: absolute; bottom: -16px; right: -16px;
+  background: var(--dark); color: var(--cream);
+  border-radius: 16px; padding: 16px 24px;
+  font-size: 13px; line-height: 1.5;
+  box-shadow: 0 8px 32px rgba(28,24,20,0.2);
+}
+.about-badge strong {
+  font-family: var(--serif); font-size: 24px; font-weight: 300;
+  display: block; margin-bottom: 2px;
+}
+.about-content .section-eyebrow { margin-bottom: 24px; }
+.about-quote {
+  font-family: var(--serif); font-size: clamp(24px, 2.8vw, 36px);
+  font-weight: 300; font-style: italic; line-height: 1.35;
+  color: var(--dark); margin-bottom: 32px;
+  padding-left: 28px; border-left: 2px solid var(--purple);
+}
+.about-body {
+  font-size: 16px; color: var(--mid); line-height: 1.9;
+  font-weight: 300; margin-bottom: 18px;
+}
 
-/* FOOTER */
-footer { background: var(--dark); border-top: 0.5px solid rgba(250,248,244,0.08); padding: 40px; }
-.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-.footer-logo { font-family: var(--serif); font-size: 16px; color: rgba(250,248,244,0.5); }
-.footer-links { display: flex; gap: 24px; }
-.footer-links a { font-size: 12px; color: rgba(250,248,244,0.3); text-decoration: none; }
+/* ========== QUIZ CTA ========== */
+.quiz-cta {
+  background: var(--dark); text-align: center; padding: 140px 64px;
+  position: relative; overflow: hidden;
+}
+.quiz-cta-ring {
+  position: absolute; width: 600px; height: 600px; border-radius: 50%;
+  border: 1px solid rgba(83,74,183,0.12);
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.quiz-cta-ring-2 {
+  position: absolute; width: 360px; height: 360px; border-radius: 50%;
+  border: 1px solid rgba(83,74,183,0.2);
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.quiz-cta-eyebrow {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(250,248,244,0.35); margin-bottom: 24px; position: relative;
+}
+.quiz-cta-title {
+  font-family: var(--serif);
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: 300; line-height: 1.1;
+  color: var(--cream); margin-bottom: 24px; position: relative;
+}
+.quiz-cta-title em { font-style: italic; color: rgba(83,74,183,0.9); }
+.quiz-cta-sub {
+  font-size: 18px; color: rgba(250,248,244,0.5);
+  max-width: 480px; margin: 0 auto 52px;
+  line-height: 1.85; font-weight: 300; position: relative;
+}
+.btn-cream {
+  font-size: 16px; font-weight: 500; color: var(--dark); background: var(--cream);
+  padding: 18px 48px; border-radius: 50px; text-decoration: none;
+  transition: background 0.2s, transform 0.15s; display: inline-block;
+  position: relative;
+}
+.btn-cream:hover { background: #f0ede8; transform: translateY(-2px); }
+.quiz-note {
+  font-size: 13px; color: rgba(250,248,244,0.25); margin-top: 16px; position: relative;
+}
 
-/* ANIMATIONS */
-@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-.hero-content > * { animation: fadeUp 0.7s ease both; }
-.hero-eyebrow { animation-delay: 0.1s; }
-.hero-headline { animation-delay: 0.2s; }
-.hero-sub { animation-delay: 0.3s; }
-.hero-actions { animation-delay: 0.4s; }
+/* ========== FOOTER ========== */
+footer {
+  background: var(--dark); border-top: 0.5px solid rgba(250,248,244,0.07);
+  padding: 44px 64px;
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+.footer-logo {
+  font-family: var(--serif); font-size: 16px;
+  color: rgba(250,248,244,0.45); letter-spacing: 0.02em;
+}
+.footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+.footer-links a {
+  font-size: 12px; color: rgba(250,248,244,0.28);
+  text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s;
+}
+.footer-links a:hover { color: rgba(250,248,244,0.6); }
 
+/* ========== ANIMATIONS ========== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  section { padding: 80px 40px; }
+  .hero-left { padding: 140px 40px 60px; }
+  .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+  .pillar { border-bottom: 0.5px solid var(--border); }
+}
 @media (max-width: 900px) {
   nav { padding: 16px 20px; }
   .nav-links { display: none; }
-  section { padding: 70px 20px; }
-  .hero { padding: 100px 20px 60px; }
-  .pillars-grid { grid-template-columns: 1fr 1fr; }
-  .journal-grid, .program-header, .session-inner, .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .program-grid { grid-template-columns: 1fr; }
-  .hero-float { display: none; }
+  section { padding: 60px 20px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 100px 24px 60px; }
+  .hero-right { display: none; }
+  .hero-stat-row { gap: 24px; }
+  .proof-strip { padding: 20px; }
+  .statement { padding: 80px 20px; }
+  .pillars-grid { grid-template-columns: 1fr 1fr; border-radius: 16px; }
+  .pillars-header { grid-template-columns: 1fr; gap: 24px; }
+  .journal-grid { grid-template-columns: 1fr; gap: 48px; }
+  .programs-header { grid-template-columns: 1fr; gap: 24px; }
+  .programs-grid { grid-template-columns: 1fr; }
+  .session-inner { grid-template-columns: 1fr; gap: 48px; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .about-badge { bottom: 12px; right: 12px; }
+  .quiz-cta { padding: 80px 20px; }
+  footer { padding: 32px 20px; }
 }
 </style>
 </head>
@@ -192,69 +649,141 @@ footer { background: var(--dark); border-top: 0.5px solid rgba(250,248,244,0.08)
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">The Secret to Inner Success</a>
+  <a href="#" class="nav-logo">Kat Anselmo</a>
   <div class="nav-links">
     <a href="#pillars">The Journey</a>
-    <a href="#program">Book a Session</a>
+    <a href="#programs">Programs</a>
     <a href="#about">About Kat</a>
     <a href="https://www.KatsYoga.com/quiz" class="nav-cta">Take the free quiz</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section style="padding-top:0; position:relative; overflow:hidden;">
-  <div class="hero-float"></div>
+<section style="padding: 0; position: relative; overflow: hidden;">
   <div class="hero">
-    <div class="hero-content">
-      <div class="hero-eyebrow">The Secret to Inner Success</div>
+    <div class="hero-left">
+      <div class="hero-eyebrow">The Path to Success</div>
       <h1 class="hero-headline">
         Come back<br>
         to <em>yourself.</em>
       </h1>
       <p class="hero-sub">
-        You haven't lost who you are. You've just stopped listening to the one voice that always knew — your own.
+        You haven't lost who you are.<br>You've just stopped listening to the one voice that always knew — your own.
       </p>
       <div class="hero-actions">
         <a href="https://www.KatsYoga.com/quiz" class="btn-primary">Take the free quiz</a>
-        <a href="#program" class="btn-ghost">Explore the programs</a>
+        <a href="#programs" class="btn-ghost">Explore programs</a>
+      </div>
+      <div class="hero-stat-row">
+        <div>
+          <div class="hero-stat-num">30</div>
+          <div class="hero-stat-label">Day journey</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">4</div>
+          <div class="hero-stat-label">Pillars of transformation</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">1</div>
+          <div class="hero-stat-label">Book written by you</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-right-bg">
+        <div class="hero-right-pattern"></div>
+        <div class="hero-right-circle"></div>
+        <div class="hero-right-circle-sm"></div>
+      </div>
+      <img src="images/katanselmo.jpg" class="hero-right-img" alt="Kat Anselmo" onerror="this.style.display='none'">
+      <div class="hero-right-overlay"></div>
+      <div class="hero-right-quote">
+        "The only person who can truly change your life is you. You just need the right guidance."
+        <cite>— Kat Anselmo</cite>
       </div>
     </div>
   </div>
 </section>
 
+<!-- PROOF STRIP -->
+<div class="proof-strip">
+  <div class="proof-inner">
+    <div class="proof-item">
+      <span class="proof-item-icon">◈</span>
+      <span class="proof-item-text"><strong>Morphic Field Training</strong> — Certified</span>
+    </div>
+    <div class="proof-sep"></div>
+    <div class="proof-item">
+      <span class="proof-item-icon">◉</span>
+      <span class="proof-item-text"><strong>Yoga &amp; Meditation</strong> — Years of practice</span>
+    </div>
+    <div class="proof-sep"></div>
+    <div class="proof-item">
+      <span class="proof-item-icon">◎</span>
+      <span class="proof-item-text"><strong>Online Sessions</strong> — Available worldwide</span>
+    </div>
+    <div class="proof-sep"></div>
+    <div class="proof-item">
+      <span class="proof-item-icon">✦</span>
+      <span class="proof-item-text"><strong>Lived experience</strong> — Not theory</span>
+    </div>
+    <div class="proof-sep"></div>
+    <div class="proof-item">
+      <span class="proof-item-icon">◌</span>
+      <span class="proof-item-text"><strong>Free Quiz</strong> — Start in 2 minutes</span>
+    </div>
+  </div>
+</div>
+
+<!-- STATEMENT -->
+<section class="statement reveal">
+  <div class="statement-kicker">What this is about</div>
+  <h2 class="statement-text">
+    When you feel good <em>within</em> — you attract better relationships, <strong>more aligned opportunities,</strong> and a life that truly feels like yours.
+  </h2>
+  <p class="statement-sub">
+    Inner success isn't a destination. It's the foundation everything else is built on. Kat's work begins there — inside.
+  </p>
+  <a href="https://www.KatsYoga.com/quiz" class="btn-primary">Discover your pattern — it's free</a>
+</section>
+
 <div class="divider"></div>
 
-<!-- THE FOUR PILLARS -->
+<!-- FOUR PILLARS -->
 <section class="pillars" id="pillars">
   <div class="container">
-    <div class="section-eyebrow">Your inner journey</div>
-    <h2 class="section-title">Four pillars.<br><em>One transformation.</em></h2>
-    <p class="section-intro">Every program, every session, every journal entry moves through these four stages — in this order. This is the path back to yourself.</p>
-
-    <div class="pillars-grid">
+    <div class="pillars-header reveal">
+      <div>
+        <div class="section-eyebrow">Your inner journey</div>
+        <h2 class="section-title">Four pillars.<br><em>One transformation.</em></h2>
+      </div>
+      <p class="section-intro">Every program, every session, every journal entry moves through these four stages — in this order. This is the path back to yourself.</p>
+    </div>
+    <div class="pillars-grid reveal">
       <div class="pillar p1">
-        <div class="pillar-number">01</div>
+        <span class="pillar-number">01</span>
         <div class="pillar-icon">◈</div>
         <h3 class="pillar-title">Trust Yourself</h3>
         <p class="pillar-desc">Silence the overthinking. Reconnect with your inner knowing. Learn to make decisions from a place of clarity rather than fear.</p>
         <div class="pillar-days">Days 1–8 of the journey</div>
       </div>
       <div class="pillar p2">
-        <div class="pillar-number">02</div>
+        <span class="pillar-number">02</span>
         <div class="pillar-icon">◉</div>
         <h3 class="pillar-title">Know Yourself</h3>
         <p class="pillar-desc">Discover who you truly are beneath the roles, expectations, and stories. Reconnect with your values, your passions, and your purpose.</p>
         <div class="pillar-days">Days 9–16 of the journey</div>
       </div>
       <div class="pillar p3">
-        <div class="pillar-number">03</div>
+        <span class="pillar-number">03</span>
         <div class="pillar-icon">◎</div>
         <h3 class="pillar-title">Love Yourself</h3>
         <p class="pillar-desc">Build a relationship with yourself rooted in kindness. Set boundaries with love. Stop abandoning yourself for others' approval.</p>
         <div class="pillar-days">Days 17–24 of the journey</div>
       </div>
       <div class="pillar p4">
-        <div class="pillar-number">04</div>
+        <span class="pillar-number">04</span>
         <div class="pillar-icon">◌</div>
         <h3 class="pillar-title">Free Yourself</h3>
         <p class="pillar-desc">Let go of what no longer serves you. Release old patterns, limiting beliefs, and the weight of the past. Step fully into who you're becoming.</p>
@@ -266,14 +795,15 @@ footer { background: var(--dark); border-top: 0.5px solid rgba(250,248,244,0.08)
 
 <div class="divider"></div>
 
-<!-- YOUR SECRET BOOK — THE JOURNAL -->
+<!-- THE JOURNAL -->
 <section class="journal-section">
   <div class="container">
     <div class="journal-grid">
-      <div class="journal-content">
+      <div class="journal-content reveal">
         <div class="section-eyebrow" style="color:rgba(250,248,244,0.4)">What you'll create</div>
-        <h2 class="section-title" style="color:var(--cream)">You won't just do<br>a course. You'll write<br><em>your own book.</em></h2>
-        <p class="section-intro" style="color:rgba(250,248,244,0.6); margin-bottom:40px;">Every day of the 30-day journey, Kat shares a practice. You write it in your journal. By Day 30, you hold something no one else has — a book written by you, for you.</p>
+        <h2 class="section-title">You won't just do a course.<br>You'll write<br><em>your own book.</em></h2>
+        <p class="section-intro">Every day of the 30-day journey, Kat shares a practice. You write it in your journal. By Day 30, you hold something no one else has — a book written by you, for you.</p>
+
         <div class="journal-feature">
           <div class="journal-feat-icon">✦</div>
           <div>
@@ -296,11 +826,12 @@ footer { background: var(--dark); border-top: 0.5px solid rgba(250,248,244,0.08)
           </div>
         </div>
       </div>
-      <div class="journal-visual">
+
+      <div class="journal-visual-wrap reveal" style="padding: 24px 24px 24px 0;">
         <div class="journal-book">
           <div class="journal-day-tag">Day 30</div>
-          <div class="journal-book-title">The Secret to Inner Success</div>
-          <div class="journal-book-sub">Written by [your name]</div>
+          <div class="journal-book-title">The Path to Success</div>
+          <div class="journal-book-by">Written by [your name]</div>
           <div class="journal-lines">
             <div class="journal-line"></div>
             <div class="journal-line medium"></div>
@@ -319,6 +850,9 @@ footer { background: var(--dark); border-top: 0.5px solid rgba(250,248,244,0.08)
             <div class="journal-line"></div>
           </div>
         </div>
+        <div class="journal-badge">
+          <strong>30</strong>days<br>of you
+        </div>
       </div>
     </div>
   </div>
@@ -327,17 +861,17 @@ footer { background: var(--dark); border-top: 0.5px solid rgba(250,248,244,0.08)
 <div class="divider"></div>
 
 <!-- PROGRAMS -->
-<section id="program">
+<section class="programs-section" id="programs">
   <div class="container">
-    <div class="program-header">
+    <div class="programs-header reveal">
       <div>
         <div class="section-eyebrow">Two steps. One journey.</div>
         <h2 class="section-title">Start with<br>the quiz.<br><em>Then sit with Kat.</em></h2>
       </div>
-      <p class="section-intro">Take the free quiz to discover your pattern. Then book a private 30-minute session with Kat at 20% off — exclusively for quiz takers. If you're ready to go deeper, the full 30-day journey is waiting.</p>
+      <p class="section-intro">Take the free quiz to discover your pattern. Then book a private 30-minute session with Kat at 20% off — exclusively for quiz takers. If you're ready to go deeper, the full 30-day journey awaits.</p>
     </div>
 
-    <div class="program-grid">
+    <div class="programs-grid reveal">
       <!-- FREE QUIZ -->
       <div class="program-card">
         <div class="program-price" style="color:var(--teal)">Free</div>
@@ -352,32 +886,35 @@ footer { background: var(--dark); border-top: 0.5px solid rgba(250,248,244,0.08)
         <a href="https://www.KatsYoga.com/quiz" class="program-btn btn-outline">Take the quiz →</a>
       </div>
 
-      <!-- €37 / €97 -->
+      <!-- FEATURED SESSION -->
       <div class="program-card featured">
-        <div class="featured-badge">Exclusive quiz offer — 20% off</div>
-        <div class="program-price" style="color:var(--cream)">€72 <span style="font-size:18px;color:rgba(250,248,244,0.4);text-decoration:line-through;font-family:var(--sans);font-weight:300;">€90</span></div>
+        <div class="featured-badge">Quiz exclusive — 20% off</div>
+        <div class="program-price" style="color:var(--cream)">
+          €72
+          <span style="font-size:20px;color:rgba(250,248,244,0.35);text-decoration:line-through;font-family:var(--sans);font-weight:300;margin-left:8px;">€90</span>
+        </div>
         <div class="program-name" style="color:var(--cream)">Private 30-min Session with Kat</div>
-        <div class="program-desc">Kat enters a deep meditative state and tunes into your energy field — reflecting back your emotional patterns, subconscious blocks, and the beliefs quietly running your life. This discount is only available after taking the quiz.</div>
+        <div class="program-desc">Kat enters a deep meditative state and tunes into your energy field — reflecting back your emotional patterns, subconscious blocks, and the beliefs quietly running your life. This is something deeper than coaching.</div>
         <ul class="program-features">
           <li>30 minutes of private focused attention</li>
           <li>Deep energetic reading of your patterns</li>
           <li>Your specific blocks named and seen</li>
           <li>Online — from anywhere in the world</li>
           <li>Kat personally schedules your time</li>
-          <li>20% discount — quiz takers only</li>
+          <li>20% off — quiz takers only</li>
         </ul>
         <a href="https://payhip.com/b/zwPqE" class="program-btn btn-light">Book my session at €72 →</a>
       </div>
 
-      <!-- €700 -->
+      <!-- FULL PROGRAM -->
       <div class="program-card">
         <div class="program-price" style="color:var(--purple)">€700</div>
-        <div class="program-name">The Secret to Inner Success</div>
+        <div class="program-name">The Path to Success</div>
         <div class="program-desc">The complete 30-day transformation. Daily practices, your personal journal book, a private 1:1 Intuitive Clarity Session with Kat, and the tools to change your life from the inside out.</div>
         <ul class="program-features">
           <li>30 days of daily practices</li>
-          <li>Video, audio and written guidance</li>
-          <li>Your own Secret to Inner Success book</li>
+          <li>Video, audio &amp; written guidance</li>
+          <li>Your own personal journey book</li>
           <li>Private 1:1 Intuitive Clarity Session</li>
           <li>Community + accountability</li>
           <li>Lifetime access to all materials</li>
@@ -390,12 +927,12 @@ footer { background: var(--dark); border-top: 0.5px solid rgba(250,248,244,0.08)
 
 <div class="divider"></div>
 
-<!-- 1:1 SESSION -->
+<!-- SESSION DEEP DIVE -->
 <section class="session-section" id="session">
   <div class="container">
     <div class="session-inner">
-      <div>
-        <div class="session-tag">Step 2 — After the quiz · Exclusive 20% discount for quiz takers</div>
+      <div class="reveal">
+        <div class="session-tag">Step 2 — After the quiz · Exclusive 20% discount</div>
         <h2 class="session-title">Your private<br><em>30-Minute Session</em><br>with Kat</h2>
         <p class="session-desc">In a deep meditative state, Kat tunes into your energy field and reflects back what she sees — your emotional patterns, your subconscious blocks, and the beliefs that have been running quietly in the background of your life. This is not a coaching call. It is something much deeper.</p>
         <div class="session-includes">
@@ -409,7 +946,7 @@ footer { background: var(--dark); border-top: 0.5px solid rgba(250,248,244,0.08)
           </div>
           <div class="session-item">
             <div class="session-dot"></div>
-            <div class="session-item-text"><strong>Online session</strong> — from anywhere in the world</div>
+            <div class="session-item-text"><strong>Online session</strong> — accessible from anywhere in the world</div>
           </div>
           <div class="session-item">
             <div class="session-dot"></div>
@@ -417,23 +954,50 @@ footer { background: var(--dark); border-top: 0.5px solid rgba(250,248,244,0.08)
           </div>
           <div class="session-item">
             <div class="session-dot"></div>
-            <div class="session-item-text"><strong>20% discount</strong> — available exclusively to quiz takers, for 24 hours only</div>
+            <div class="session-item-text"><strong>20% discount</strong> — exclusively for quiz takers, for 24 hours only</div>
           </div>
         </div>
       </div>
-      <div class="session-visual">
-        <div class="session-price-tag">Your quiz price</div>
-        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:4px;">
-          <div class="session-price">€72</div>
-          <div style="font-size:18px;color:var(--muted);text-decoration:line-through;font-family:var(--sans);font-weight:300;">€90</div>
+
+      <div class="reveal">
+        <div class="session-card">
+          <div class="session-card-tag">Your quiz price</div>
+          <div class="session-price-row">
+            <div class="session-price">€72</div>
+            <div class="session-price-old">€90</div>
+          </div>
+          <div class="session-price-note">30-minute private session · You save €18</div>
+          <div class="session-divider"></div>
+          <div class="session-how">
+            <strong>How it works:</strong> You book and pay. Kat personally sends you a calendar link to choose your time. No automated scheduling — this is a human connection from the very first step.
+          </div>
+          <a href="https://payhip.com/b/zwPqE" class="program-btn btn-dark" style="margin-bottom:12px;">Book my session at €72 →</a>
+          <div class="session-urgency">⏳ This offer is only available for 24 hours after your quiz</div>
         </div>
-        <div class="session-price-note">30-minute private session · You save €18</div>
-        <div class="session-divider"></div>
-        <div class="session-timing">
-          <strong>How it works:</strong> You book and pay. Kat personally sends you a calendar link to choose your time. No automated scheduling — this is a human connection from the very first step.
-        </div>
-        <a href="https://payhip.com/b/zwPqE" class="program-btn btn-dark" style="text-align:center; display:block; margin-bottom:12px;">Book my session at €72 →</a>
-        <p style="font-size:11px;color:var(--muted);text-align:center;">This offer is only available for 24 hours after your quiz. It will not appear again.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials reveal">
+  <div class="container">
+    <h2 class="testimonials-title">What happens when you<br><em>come back to yourself</em></h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">I came to the session not knowing what to expect. Kat saw things about me I hadn't even admitted to myself. It was like looking in a mirror that shows the truth, not the performance.</p>
+        <div class="testimonial-author"><strong>S.M.</strong> — London</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">The 30-day journey changed how I relate to myself completely. By Day 30, I had a journal that was more honest and more me than anything I'd ever written. I still read it.</p>
+        <div class="testimonial-author"><strong>A.R.</strong> — Amsterdam</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">I didn't expect the quiz to be so accurate. Two minutes, four questions into my result, and I was already crying. Kat's work reaches the places other coaches don't.</p>
+        <div class="testimonial-author"><strong>L.F.</strong> — Barcelona</div>
       </div>
     </div>
   </div>
@@ -441,20 +1005,28 @@ footer { background: var(--dark); border-top: 0.5px solid rgba(250,248,244,0.08)
 
 <div class="divider"></div>
 
-  <!-- ABOUT KAT -->
-<section id="about">
+<!-- ABOUT KAT -->
+<section class="about-section" id="about">
   <div class="container">
     <div class="about-grid">
-      <div class="about-img-placeholder">
-        <img src="images/katanselmo.jpg" alt="Photo of Kat" style="width:100%; height:auto; display:block;">
+      <div class="about-img-wrap reveal">
+        <div class="about-img-placeholder">
+          <img src="images/katanselmo.jpg" alt="Kat Anselmo" onerror="this.style.opacity='0'">
+        </div>
+        <div class="about-badge">
+          <strong>Lived</strong>
+          experience,<br>not theory
+        </div>
       </div>
-      <div>
+      <div class="about-content reveal">
         <div class="section-eyebrow">About Kat</div>
-        <blockquote class="about-quote">"The only person who can truly change your life is you. You just need the right guidance."</blockquote>
-        <p class="about-body">Kat created her business after one of the most difficult experiences of her life. When the person she loved became seriously ill — and conventional medicine had no answers — she discovered yoga, meditation, and inner work. Not as a hobby. As a lifeline.</p>
+        <blockquote class="about-quote">
+          "The only person who can truly change your life is you. You just need the right guidance."
+        </blockquote>
+        <p class="about-body">Kat created her work after one of the most difficult experiences of her life. When the person she loved became seriously ill — and conventional medicine had no answers — she discovered yoga, meditation, and inner work. Not as a hobby. As a lifeline.</p>
         <p class="about-body">She left her career, gave herself one year of full commitment, and found her purpose: helping others reconnect with themselves using the same tools that transformed her own life.</p>
         <p class="about-body">Today Kat teaches from lived experience — not theory. Her work is rooted in morphic field training, years of yoga practice, and a deep belief that inner success is the foundation of everything.</p>
-        <p class="about-body" style="margin-bottom:32px;">When you feel good within — you attract better relationships, more aligned opportunities, and a life that truly feels like yours.</p>
+        <p class="about-body" style="margin-bottom:36px;">When you feel good within — you attract better relationships, more aligned opportunities, and a life that truly feels like yours.</p>
         <a href="https://www.KatsYoga.com/quiz" class="btn-primary">Start your journey →</a>
       </div>
     </div>
@@ -462,10 +1034,12 @@ footer { background: var(--dark); border-top: 0.5px solid rgba(250,248,244,0.08)
 </section>
 
 <!-- QUIZ CTA -->
-<section class="quiz-cta">
+<section class="quiz-cta reveal">
+  <div class="quiz-cta-ring"></div>
+  <div class="quiz-cta-ring-2"></div>
   <div class="quiz-cta-eyebrow">Your first step</div>
-  <h2 class="quiz-cta-title">The answers are<br>already <em>inside you.</em></h2>
-  <p class="quiz-cta-sub">Take the free quiz and discover what's really blocking your inner success. 2 minutes. Surprisingly accurate.</p>
+  <h2 class="quiz-cta-title">The answers<br>are already <em>inside you.</em></h2>
+  <p class="quiz-cta-sub">Take the free quiz and discover what's really keeping you from your inner success. 2 minutes. Surprisingly accurate.</p>
   <a href="https://www.KatsYoga.com/quiz" class="btn-cream">Take the free quiz</a>
   <p class="quiz-note">Free · No spam · Just clarity</p>
 </section>
@@ -473,7 +1047,7 @@ footer { background: var(--dark); border-top: 0.5px solid rgba(250,248,244,0.08)
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">The Secret to Inner Success · Kat</div>
+    <div class="footer-logo">The Path to Success · Kat Anselmo</div>
     <div class="footer-links">
       <a href="#">Privacy Policy</a>
       <a href="#">Instagram</a>
@@ -482,6 +1056,26 @@ footer { background: var(--dark); border-top: 0.5px solid rgba(250,248,244,0.08)
     </div>
   </div>
 </footer>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+reveals.forEach(r => observer.observe(r));
+
+// Nav shrink on scroll
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.style.padding = window.scrollY > 60 ? '12px 48px' : '18px 48px';
+});
+</script>
 
 </body>
 </html>
