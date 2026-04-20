@@ -1,127 +1,195 @@
 <!DOCTYPE html>
-<html lang="en" class="sans_52c9b8cc-module__llAyaW__variable antialiased">
+<html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Kat Anselmo | Results Coach</title>
-    
-    <link rel="stylesheet" href="97c6fd0b3a56e5fc.css">
-    <link rel="stylesheet" href="a9c3b5d5a02da83a.css">
-    <link rel="stylesheet" href="fe81322e39413244.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kat Anselmo | Results Coach & Heart Connection Specialist</title>
+    <meta name="description" content="Stop overthinking. Reconnect with your heart. Get your personalized breakthrough strategy in 2 minutes.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        /* Essential overrides to ensure Kat's identity is maintained within the Robbins structure */
-        :root {
-            --brand-red: #E31C23;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+        
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .heading { font-family: 'Playfair Display', sans-serif; }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(10, 37, 64, 0.75), rgba(10, 37, 64, 0.85)), 
+                        url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
         }
-        .tr-hero-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2000'); /* MOCKUP HERO */
-            background-size: cover;
-            background-position: center;
-        }
-        .btn-tony {
-            background-color: var(--brand-red);
-            font-family: var(--font-sans);
-            letter-spacing: -0.02em;
-        }
+        
+        .nav-scrolled { background-color: rgba(10, 37, 64, 0.95); backdrop-filter: blur(12px); }
     </style>
 </head>
-<body class="bg-black text-white">
+<body class="bg-[#F8F1E9] text-[#112233]">
 
-    <nav class="z-50 sticky top-0 bg-black border-b border-gray-800 py-4">
-        <div class="max-w-[1440px] mx-auto px-6 flex justify-between items-center">
-            <div class="text-2xl font-black uppercase tracking-tighter">
-                KAT <span class="text-red-600">ANSELMO</span>
+    <!-- STICKY NAV -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-5">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <a href="#" class="text-2xl font-bold tracking-tight heading">KAT ANSELMO</a>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#" class="hover:text-[#FF4D6A] transition">About</a>
+                <a href="#" class="hover:text-[#FF4D6A] transition">Events</a>
+                <a href="#" class="hover:text-[#FF4D6A] transition">Programs</a>
+                <a href="#" class="hover:text-[#FF4D6A] transition">1:1 Coaching</a>
+                <a href="quiz.html" class="hover:text-[#FF4D6A] transition">Free Assessment</a>
+                <a href="#" class="hover:text-[#FF4D6A] transition">Free Resources</a>
             </div>
-            <div class="hidden lg:flex gap-8 text-xs font-bold uppercase tracking-widest">
-                <a href="#about" class="hover:text-red-600 transition-colors">About Kat</a>
-                <a href="quiz.html" class="bg-red-600 px-5 py-2 text-white">Start Assessment</a>
-            </div>
+            
+            <a href="quiz.html" 
+               class="bg-[#FF4D6A] text-white px-8 py-3.5 rounded-full font-semibold hover:bg-[#ff3366] transition shadow-lg">
+                TAKE THE ASSESSMENT
+            </a>
         </div>
     </nav>
 
-    <main>
-        <section class="tr-hero-bg relative min-h-[85vh] flex items-center overflow-hidden">
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="max-w-4xl">
-                    <div class="flex items-center gap-2 mb-6">
-                        <span class="w-10 h-[2px] bg-red-600"></span>
-                        <span class="uppercase font-bold tracking-[0.3em] text-sm text-red-600">Free Result Assessment</span>
-                    </div>
-                    <h1 class="text-5xl md:text-8xl font-black uppercase leading-[0.9] mb-8 tracking-tighter">
-                        WHAT IS HOLDING <br/>YOU BACK?
-                    </h1>
-                    <p class="text-lg md:text-2xl text-gray-300 mb-10 max-w-2xl leading-relaxed">
-                        Identify the mental patterns—Overthinking, People Pleasing, or Disconnection—that are stalling your progress. Take the 2-minute assessment to unlock your personalized results.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="quiz.html" class="btn-tony text-center px-10 py-6 text-xl font-black uppercase transition-transform hover:scale-105 inline-block">
-                            TAKE THE ASSESSMENT
-                        </a>
-                    </div>
+    <!-- HERO -->
+    <section class="hero-bg h-screen flex items-center text-white">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h1 class="text-6xl md:text-7xl heading font-bold leading-none mb-6">
+                WHAT'S REALLY<br>HOLDING YOU BACK?
+            </h1>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-10 text-white/90">
+                Discover your hidden mental patterns in just 2 minutes — Overthinking, People Pleasing, or Disconnection — 
+                and receive your personalized Heart Strategy.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="quiz.html" 
+                   class="inline-block bg-[#FF4D6A] text-white text-lg font-semibold px-12 py-6 rounded-2xl hover:scale-105 transition transform">
+                    START FREE ASSESSMENT →
+                </a>
+                <a href="#" onclick="playVideo()" 
+                   class="inline-flex items-center gap-3 border-2 border-white text-white text-lg font-medium px-10 py-6 rounded-2xl hover:bg-white hover:text-[#0A2540] transition">
+                    <i class="fas fa-play"></i> WATCH KAT'S STORY
+                </a>
+            </div>
+            
+            <div class="mt-16 flex justify-center gap-8 text-sm">
+                <div class="flex items-center gap-2"><i class="fas fa-check text-[#D4AF77]"></i> Strategic Intervention Certified</div>
+                <div class="flex items-center gap-2"><i class="fas fa-check text-[#D4AF77]"></i> 1,000+ Transformations</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <div class="bg-white py-6 border-b">
+        <div class="max-w-6xl mx-auto px-6 flex flex-wrap justify-center items-center gap-x-12 gap-y-4 opacity-70">
+            <p class="font-medium">AS SEEN IN</p>
+            <p class="text-xl font-semibold">Forbes</p>
+            <p class="text-xl font-semibold">Entrepreneur</p>
+            <p class="text-xl font-semibold">Strategic Intervention</p>
+        </div>
+    </div>
+
+    <!-- 3-STEP PATH -->
+    <section class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-center text-5xl heading font-bold mb-4">Your Path To Breakthrough</h2>
+            <p class="text-center text-xl text-gray-600 mb-16">Simple. Powerful. Life-changing.</p>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto bg-[#FF4D6A]/10 rounded-3xl flex items-center justify-center text-4xl mb-8 group-hover:scale-110 transition">01</div>
+                    <h3 class="text-2xl font-semibold mb-4">The Assessment</h3>
+                    <p class="text-gray-600">2-minute strategic questionnaire that reveals your core mental pattern.</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto bg-[#FF4D6A]/10 rounded-3xl flex items-center justify-center text-4xl mb-8 group-hover:scale-110 transition">02</div>
+                    <h3 class="text-2xl font-semibold mb-4">Your Profile</h3>
+                    <p class="text-gray-600">Deep-dive analysis into your unique pattern — Overthinker, Pleaser, or Disconnected.</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto bg-[#FF4D6A]/10 rounded-3xl flex items-center justify-center text-4xl mb-8 group-hover:scale-110 transition">03</div>
+                    <h3 class="text-2xl font-semibold mb-4">The Strategy</h3>
+                    <p class="text-gray-600">Personalized Heart Strategy + optional 1:1 breakthrough call with Kat.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="py-24 bg-white text-black">
-            <div class="container mx-auto px-6">
-                <div class="mb-16">
-                    <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter">Your Path To <span class="text-red-600">Breakthrough</span></h2>
+    <!-- PROGRAMS TEASER -->
+    <section class="py-24 bg-[#0A2540] text-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-5xl heading font-bold text-center mb-16">Signature Experiences</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Add your programs here -->
+                <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 hover:bg-white/20 transition">
+                    <h3 class="text-2xl font-semibold mb-4">Heart Strategy Mastery</h3>
+                    <p class="mb-8">6-week group coaching — go from overthinking to heart-led clarity.</p>
+                    <a href="#" class="text-[#FF4D6A] font-medium">Learn More →</a>
                 </div>
-                <div class="grid md:grid-cols-3 gap-12">
-                    <div class="border-t-4 border-black pt-8">
-                        <span class="text-6xl font-black text-gray-200">01</span>
-                        <h3 class="text-2xl font-black uppercase mt-4 mb-4">The Assessment</h3>
-                        <p class="text-gray-600 leading-relaxed">A strategic 2-minute questionnaire designed to reveal your psychological roadblocks.</p>
-                    </div>
-                    <div class="border-t-4 border-black pt-8">
-                        <span class="text-6xl font-black text-gray-200">02</span>
-                        <h3 class="text-2xl font-black uppercase mt-4 mb-4">Your Profile</h3>
-                        <p class="text-gray-600 leading-relaxed">Receive a deep-dive analysis into your specific profile—be it The Overthinker or The Navigator.</p>
-                    </div>
-                    <div class="border-t-4 border-black pt-8">
-                        <span class="text-6xl font-black text-gray-200">03</span>
-                        <h3 class="text-2xl font-black uppercase mt-4 mb-4">The Strategy</h3>
-                        <p class="text-gray-600 leading-relaxed">Apply your results in a 1-on-1 consultation with Kat to turn insight into immediate action.</p>
-                    </div>
+                <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 hover:bg-white/20 transition">
+                    <h3 class="text-2xl font-semibold mb-4">Live Breakthrough Day</h3>
+                    <p class="mb-8">One powerful in-person or virtual day of total transformation.</p>
+                    <a href="#" class="text-[#FF4D6A] font-medium">Learn More →</a>
+                </div>
+                <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 hover:bg-white/20 transition">
+                    <h3 class="text-2xl font-semibold mb-4">1:1 Private Coaching</h3>
+                    <p class="mb-8">Limited spots. Deep, personalized work with Kat.</p>
+                    <a href="#" class="text-[#FF4D6A] font-medium">Apply Now →</a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="about" class="py-24 bg-black text-white">
-            <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <div class="aspect-[4/5] bg-gray-800 relative overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800" class="w-full h-full object-cover" alt="Kat Anselmo Portrait">
-                    </div>
-                </div>
-                <div>
-                    <h2 class="text-5xl font-black uppercase mb-8">Meet <br/><span class="text-red-600">Kat Anselmo</span></h2>
-                    <p class="text-xl text-gray-400 mb-6 font-semibold italic">Results Coach & Heart Connection Specialist</p>
-                    <p class="text-gray-300 text-lg mb-8 leading-relaxed">
-                        Kat uses Strategic Intervention to help you quiet the mental noise of overthinking. Her method bridges the gap between high-performance strategy and heart-centered clarity.
-                    </p>
-                    <div class="grid grid-cols-2 gap-8 mb-10">
-                        <div>
-                            <h4 class="font-black uppercase text-red-600 mb-2">Strategy</h4>
-                            <p class="text-sm text-gray-400">Tactical approaches to break analysis paralysis.</p>
-                        </div>
-                        <div>
-                            <h4 class="font-black uppercase text-red-600 mb-2">Connection</h4>
-                            <p class="text-sm text-gray-400">Internal alignment for faster, intuitive decisions.</p>
-                        </div>
-                    </div>
-                    <a href="quiz.html" class="inline-block border-2 border-white px-8 py-4 font-black uppercase tracking-widest hover:bg-white hover:text-black transition-colors">
-                        Start Now
-                    </a>
+    <!-- FINAL CTA -->
+    <section class="py-32 bg-gradient-to-br from-[#FF4D6A] to-[#0A2540] text-white text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-6xl heading font-bold mb-6">Ready to quiet the noise?</h2>
+            <p class="text-2xl mb-12">Your breakthrough is 2 minutes away.</p>
+            <a href="quiz.html" 
+               class="inline-block bg-white text-[#0A2540] text-2xl font-bold px-16 py-8 rounded-3xl hover:scale-105 transition shadow-2xl">
+                START YOUR FREE ASSESSMENT NOW
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#112233] text-white/70 py-20">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+            <div>
+                <p class="text-2xl font-bold text-white mb-4">KAT ANSELMO</p>
+                <p>Results Coach & Heart Connection Specialist</p>
+            </div>
+            <div>
+                <p class="font-medium mb-4 text-white">Quick Links</p>
+                <ul class="space-y-2">
+                    <li><a href="quiz.html" class="hover:text-white">Free Assessment</a></li>
+                    <li><a href="#" class="hover:text-white">Programs</a></li>
+                    <li><a href="#" class="hover:text-white">1:1 Coaching</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-medium mb-4 text-white">Connect</p>
+                <div class="flex gap-6 text-2xl">
+                    <a href="#" class="hover:text-[#FF4D6A]">IG</a>
+                    <a href="#" class="hover:text-[#FF4D6A]">YT</a>
+                    <a href="#" class="hover:text-[#FF4D6A]">LI</a>
                 </div>
             </div>
-        </section>
-    </main>
-
-    <footer class="py-12 border-t border-gray-900 text-center text-gray-500 text-xs uppercase tracking-widest">
-        <p>&copy; 2026 Kat Anselmo. All Rights Reserved.</p>
+            <div class="text-sm">
+                © 2026 Kat Anselmo. All Rights Reserved.<br>
+                Built with intention.
+            </div>
+        </div>
     </footer>
 
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-scrolled', 'shadow-lg');
+            } else {
+                nav.classList.remove('nav-scrolled', 'shadow-lg');
+            }
+        });
+
+        function playVideo() {
+            alert("Video modal would open here — upload your intro video and I'll add the full modal next.");
+        }
+    </script>
 </body>
 </html>
