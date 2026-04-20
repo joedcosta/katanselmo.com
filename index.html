@@ -1,88 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="sans_52c9b8cc-module__llAyaW__variable antialiased">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kat Anselmo | Personal Results & Heart Connection</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Kat Anselmo | Personal Results Coach</title>
+    <link rel="stylesheet" href="97c6fd0b3a56e5fc.css">
+    <link rel="stylesheet" href="a9c3b5d5a02da83a.css">
+    <style>
+        /* Custom Overrides to match Kat's Cloudinary Mockups */
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1920'); /* Mockup 1 */
+            background-size: cover;
+            background-position: center;
+        }
+        .kat-primary-red { background-color: #E31C23; }
+        .hero-section { min-height: 90vh; display: flex; align-items: center; position: relative; color: white; overflow: hidden; }
+        .overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%); z-index: 1; }
+        .content-z { position: relative; z-index: 2; }
+    </style>
 </head>
-<body>
+<body class="bg-black text-white">
 
-    <nav class="navbar">
-        <div class="container nav-flex">
-            <div class="logo">KAT<span>ANSELMO</span></div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="quiz.html" class="nav-btn">Take the Quiz</a></li>
-            </ul>
+    <nav class="p-6 flex justify-between items-center border-b border-gray-800">
+        <div class="text-2xl font-black tracking-tighter uppercase">KAT <span class="text-red-600">ANSELMO</span></div>
+        <div class="hidden md:flex space-x-8 font-bold text-sm uppercase tracking-widest">
+            <a href="#about" class="hover:text-red-600">About</a>
+            <a href="quiz.html" class="bg-red-600 px-6 py-2 rounded-sm text-white">Take the Quiz</a>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=1920" alt="Kat Anselmo Banner">
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <span class="eyebrow">BREAKTHROUGH ASSESSMENT</span>
-            <h1>STOP OVERTHINKING.<br>START CONNECTING.</h1>
-            <p>What is the #1 psychological barrier holding you back from your next level of clarity?</p>
-            <div class="hero-cta-group">
-                <a href="quiz.html" class="btn-primary">START THE FREE ASSESSMENT</a>
-                <p class="cta-subtext">Takes less than 2 minutes • Personalized Results</p>
-            </div>
-        </div>
-    </header>
-
-    <section class="pain-points container">
-        <div class="section-intro">
-            <h2>Why most people stay stuck...</h2>
-            <div class="divider"></div>
-        </div>
-        <div class="grid-3">
-            <div class="point-card">
-                <div class="icon">01</div>
-                <h3>The Overthinker</h3>
-                <p>Trapped in a cycle of "What ifs" and mental exhaustion. Analysis paralysis is killing your momentum.</p>
-            </div>
-            <div class="point-card">
-                <div class="icon">02</div>
-                <h3>The Disconnected</h3>
-                <p>Achieving on the outside, but feeling empty or "off" on the inside. Your heart and head are at war.</p>
-            </div>
-            <div class="point-card">
-                <div class="icon">03</div>
-                <h3>The Navigator</h3>
-                <p>At a crossroads, looking for the "right" direction instead of listening to the internal compass.</p>
+    <section class="hero-section hero-bg">
+        <div class="overlay"></div>
+        <div class="container mx-auto px-6 content-z">
+            <div class="max-w-3xl">
+                <span class="text-red-600 font-bold uppercase tracking-[0.3em] text-sm">Free Assessment</span>
+                <h1 class="text-6xl md:text-8xl font-black leading-none mt-4 mb-6 uppercase">BREAK THROUGH<br>YOUR NOISE.</h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-xl">
+                    Discover if Overthinking, People Pleasing, or Disconnection is blocking your path to clarity. Take the 2-minute "Heart Connection" assessment.
+                </p>
+                <div class="flex flex-col md:flex-row items-start gap-4">
+                    <a href="quiz.html" class="bg-red-600 hover:bg-red-700 text-white text-xl font-black px-12 py-6 uppercase tracking-tighter transition-all">
+                        Start Your Assessment
+                    </a>
+                    <div class="text-gray-400 text-sm mt-4 md:mt-0 italic">
+                        * Results based on Strategic Intervention coaching models.
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="authority-section">
-        <div class="container grid-2">
-            <div class="auth-img">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" alt="Kat Anselmo Portrait">
+    <section id="about" class="py-24 bg-white text-black">
+        <div class="container mx-auto px-6 grid md:grid-2 gap-20 items-center">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800" class="grayscale hover:grayscale-0 transition-all duration-700" alt="Kat Anselmo">
+                <div class="absolute -bottom-10 -right-10 w-64 h-64 border-[20px] border-red-600 hidden md:block"></div>
             </div>
-            <div class="auth-text">
-                <h2>MEET KAT ANSELMO</h2>
-                <p class="lead">Strategic Interventionist & Heart Connection Specialist.</p>
-                <p>Kat blends high-level strategic coaching with heart-centered emotional intelligence to help high-performers reconnect with their true path.</p>
-                <ul class="benefit-list">
-                    <li>Identify subconscious "Success Blockers"</li>
-                    <li>Align your daily actions with your core values</li>
-                    <li>Move from mental fatigue to intuitive certainty</li>
-                </ul>
-                <a href="quiz.html" class="btn-secondary">LEARN YOUR PROFILE</a>
+            <div>
+                <h2 class="text-5xl font-black uppercase mb-6 leading-tight">Meet Kat Anselmo</h2>
+                <p class="text-lg mb-6">Kat is a Results Coach specializing in Heart Connection. She helps high-performers move from mental exhaustion to intuitive precision.</p>
+                <a href="#" class="font-bold border-b-2 border-red-600 pb-1">Read the full story &rarr;</a>
             </div>
         </div>
     </section>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Kat Anselmo. Designed for Results.</p>
-        </div>
-    </footer>
 
 </body>
 </html>
