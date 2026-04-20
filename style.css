@@ -1,0 +1,26 @@
+body { font-family: 'Inter', sans-serif; margin:0; line-height: 1.6; color: #333; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+.bg-dark { background: #111; color: #fff; padding: 80px 0; }
+
+/* HERO */
+.hero-section { 
+    background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover; 
+    height: 80vh; display: flex; align-items: center; color: white; text-align: center; position: relative;
+}
+.hero-section h1 { font-size: 4rem; font-weight: 800; margin: 0; }
+.badge { background: #ff3e3e; padding: 5px 15px; font-weight: bold; font-size: 0.8rem; }
+
+/* BUTTONS */
+.cta-btn { 
+    padding: 20px 40px; font-size: 1.2rem; font-weight: bold; text-decoration: none; display: inline-block; 
+    transition: 0.3s; border-radius: 5px; cursor: pointer; border: none;
+}
+.main-cta { background: #ff3e3e; color: white; }
+.main-cta:hover { background: #d32f2f; }
+
+/* LAYOUT */
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.card { padding: 30px; border: 1px solid #eee; text-align: center; }
+.offer-box { background: #f4f4f4; padding: 50px; border-top: 5px solid #ff3e3e; text-align: center; margin-top: 40px; }
+.price-tag { font-size: 3rem; font-weight: 800; margin: 20px 0; }

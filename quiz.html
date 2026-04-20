@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assessment | Kat Anselmo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="quiz-bg">
+    <div class="quiz-container">
+        <div id="quiz-ui">
+            <div class="progress-bar"><div id="progress" style="width: 50%;"></div></div>
+            <h2 id="q-text">Which of these resonates most with you right now?</h2>
+            <div class="quiz-options">
+                <button onclick="setResult(1)">I'm mentally tired from replaying decisions.</button>
+                <button onclick="setResult(2)">I struggle to say 'No' to others' demands.</button>
+                <button onclick="setResult(3)">I have big dreams but no grounded action.</button>
+                <button onclick="setResult(4)">I'm in transition and don't know my next move.</button>
+            </div>
+        </div>
+
+        <div id="lead-ui" style="display:none;">
+            <h2>Your Growth Profile is Ready.</h2>
+            <p>Where should we send your results and your custom action plan?</p>
+            <form onsubmit="submitLead(event)">
+                <input type="text" id="name" placeholder="First Name" required>
+                <input type="email" id="email" placeholder="Email Address" required>
+                <button type="submit" class="cta-btn main-cta">GET MY RESULTS</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let selectedProfile = 0;
+        function setResult(id) {
+            selectedProfile = id;
+            document.getElementById('quiz-ui').style.display = 'none';
+            document.getElementById('lead-ui').style.display = 'block';
+        }
+
+        function submitLead(e) {
+            e.preventDefault();
+            // BACKEND: In reality, you'd fetch() to a Google Apps Script or Zapier webhook here.
+            const name = document.getElementById('name').value;
+            window.location.href = `results.html?profile=${selectedProfile}&name=${name}`;
+        }
+    </script>
+</body>
+</html>

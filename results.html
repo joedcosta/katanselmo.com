@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Results | Kat Anselmo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container result-page">
+        <div id="result-header"></div>
+        
+        <div class="offer-box">
+            <h3>GO FURTHER: 45-MINUTE STRATEGY CALL</h3>
+            <p>The results above are just the beginning. During this 1-on-1 session, Kat will help you break the specific patterns of your profile.</p>
+            <div class="price-tag">€99.00</div>
+            <a href="https://yourbookinglink.com" class="cta-btn main-cta">BOOK YOUR CONSULTATION</a>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const p = urlParams.get('profile');
+        const n = urlParams.get('name') || "Friend";
+        const target = document.getElementById('result-header');
+
+        const profiles = {
+            1: { t: "THE OVERTHINKER", b: "Your mind works hard to protect you, but it's creating doubt instead of clarity." },
+            2: { t: "THE PEOPLE PLEASER", b: "You care deeply, but you've lost your own boundaries in the process." },
+            3: { t: "THE DISCONNECTED DREAMER", b: "Your vision is high, but your feet aren't on the ground yet." },
+            4: { t: "THE UNCERTAIN NAVIGATOR", b: "You're at a crossroads. It's time to listen to your inner guidance." }
+        };
+
+        const res = profiles[p] || profiles[1];
+        target.innerHTML = `<h1>${n}, your result: ${res.t}</h1><p class="lead">${res.b}</p>`;
+    </script>
+</body>
+</html>
