@@ -1,47 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="sans_52c9b8cc-module__llAyaW__variable">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8"/>
     <title>Assessment | Kat Anselmo</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="97c6fd0b3a56e5fc.css">
+    <link rel="stylesheet" href="a9c3b5d5a02da83a.css">
+    <style>
+        body { background: #0A0A0A; color: white; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+        .quiz-card { background: #111; border: 1px solid #222; padding: 60px; width: 100%; max-width: 800px; }
+        .option-btn { width: 100%; text-align: left; padding: 25px; border: 1px solid #333; margin-bottom: 15px; font-weight: bold; transition: 0.2s; text-transform: uppercase; }
+        .option-btn:hover { border-color: #E31C23; background: rgba(227, 28, 35, 0.05); }
+    </style>
 </head>
-<body class="quiz-bg">
-    <div class="quiz-container">
-        <div id="quiz-ui">
-            <div class="progress-bar"><div id="progress" style="width: 50%;"></div></div>
-            <h2 id="q-text">Which of these resonates most with you right now?</h2>
-            <div class="quiz-options">
-                <button onclick="setResult(1)">I'm mentally tired from replaying decisions.</button>
-                <button onclick="setResult(2)">I struggle to say 'No' to others' demands.</button>
-                <button onclick="setResult(3)">I have big dreams but no grounded action.</button>
-                <button onclick="setResult(4)">I'm in transition and don't know my next move.</button>
+<body>
+    <div class="quiz-card">
+        <div class="mb-10">
+            <div class="h-1 bg-gray-800 w-full mb-4">
+                <div class="h-1 bg-red-600" style="width: 50%;"></div>
             </div>
+            <span class="text-red-600 font-bold uppercase text-xs tracking-widest">Question 1 of 1</span>
         </div>
 
-        <div id="lead-ui" style="display:none;">
-            <h2>Your Growth Profile is Ready.</h2>
-            <p>Where should we send your results and your custom action plan?</p>
-            <form onsubmit="submitLead(event)">
-                <input type="text" id="name" placeholder="First Name" required>
-                <input type="email" id="email" placeholder="Email Address" required>
-                <button type="submit" class="cta-btn main-cta">GET MY RESULTS</button>
-            </form>
+        <h2 class="text-3xl font-black uppercase mb-10">Which statement best reflects your current mental state?</h2>
+        
+        <div class="space-y-4">
+            <button onclick="saveResult(1)" class="option-btn">I feel mentally tired from constant analysis and second-guessing.</button>
+            <button onclick="saveResult(2)" class="option-btn">I struggle to say "no" and put others' needs before my own.</button>
+            <button onclick="saveResult(3)" class="option-btn">I have high aspirations but lack grounded, daily action.</button>
+            <button onclick="saveResult(4)" class="option-btn">I'm at a crossroads and feel unsure of my next direction.</button>
         </div>
     </div>
 
     <script>
-        let selectedProfile = 0;
-        function setResult(id) {
-            selectedProfile = id;
-            document.getElementById('quiz-ui').style.display = 'none';
-            document.getElementById('lead-ui').style.display = 'block';
-        }
-
-        function submitLead(e) {
-            e.preventDefault();
-            // BACKEND: In reality, you'd fetch() to a Google Apps Script or Zapier webhook here.
-            const name = document.getElementById('name').value;
-            window.location.href = `results.html?profile=${selectedProfile}&name=${name}`;
+        function saveResult(profileId) {
+            // Simulate processing
+            const name = prompt("Where should we send your results? Enter your first name:");
+            const email = prompt("And your email:");
+            if(name && email) {
+                // Here you would inject to Google Sheets via fetch/API
+                window.location.href = `results.html?profile=${profileId}&user=${name}`;
+            }
         }
     </script>
 </body>
