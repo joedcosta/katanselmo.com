@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8"/>
     <title>Your Results | Kat Anselmo</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="97c6fd0b3a56e5fc.css">
+    <style>
+        .result-box { max-width: 800px; margin: 100px auto; padding: 40px; background: #fff; color: #000; border-top: 10px solid #E31C23; }
+        .cta-footer { background: #000; color: #fff; padding: 60px; text-align: center; }
+    </style>
 </head>
-<body>
-    <div class="container result-page">
-        <div id="result-header"></div>
-        
-        <div class="offer-box">
-            <h3>GO FURTHER: 45-MINUTE STRATEGY CALL</h3>
-            <p>The results above are just the beginning. During this 1-on-1 session, Kat will help you break the specific patterns of your profile.</p>
-            <div class="price-tag">€99.00</div>
-            <a href="https://yourbookinglink.com" class="cta-btn main-cta">BOOK YOUR CONSULTATION</a>
-        </div>
+<body class="bg-gray-100">
+
+    <div class="result-box">
+        <div id="dynamic-content">
+            </div>
+    </div>
+
+    <div class="cta-footer">
+        <h2 class="text-4xl font-black uppercase mb-4">Go Further with Kat</h2>
+        <p class="text-xl text-gray-400 mb-8">Schedule your 45-minute One-to-One Breakthrough Consultation</p>
+        <div class="text-5xl font-black text-red-600 mb-10">€99.00</div>
+        <a href="https://your-payment-link.com" class="bg-red-600 px-12 py-5 font-black text-2xl uppercase inline-block">Book My Session</a>
     </div>
 
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const p = urlParams.get('profile');
-        const n = urlParams.get('name') || "Friend";
-        const target = document.getElementById('result-header');
+        const params = new URLSearchParams(window.location.search);
+        const p = params.get('profile');
+        const user = params.get('user') || "Friend";
+        const target = document.getElementById('dynamic-content');
 
-        const profiles = {
-            1: { t: "THE OVERTHINKER", b: "Your mind works hard to protect you, but it's creating doubt instead of clarity." },
-            2: { t: "THE PEOPLE PLEASER", b: "You care deeply, but you've lost your own boundaries in the process." },
-            3: { t: "THE DISCONNECTED DREAMER", b: "Your vision is high, but your feet aren't on the ground yet." },
-            4: { t: "THE UNCERTAIN NAVIGATOR", b: "You're at a crossroads. It's time to listen to your inner guidance." }
+        const data = {
+            "1": { title: "THE OVERTHINKER", body: "Your mind works hard to protect you. You spend time analyzing possibilities, creating doubt instead of clarity..." },
+            "2": { title: "THE PEOPLE PLEASER", body: "You care deeply about others, often putting their comfort before your own needs..." },
+            "3": { title: "THE DISCONNECTED DREAMER", body: "Your vision is high, but you lack the grounded action to make it real..." },
+            "4": { title: "THE UNCERTAIN NAVIGATOR", body: "You are at a crossroads. It's time to listen to your inner guidance..." }
         };
 
-        const res = profiles[p] || profiles[1];
-        target.innerHTML = `<h1>${n}, your result: ${res.t}</h1><p class="lead">${res.b}</p>`;
+        const res = data[p] || data["1"];
+        target.innerHTML = `<h1 class="text-4xl font-black mb-6">🟣 RESULT: ${res.title}</h1><p class="text-xl leading-relaxed">${user}, ${res.body}</p>`;
     </script>
 </body>
 </html>
