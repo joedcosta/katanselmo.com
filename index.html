@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#000000">
 <title>Kat Anselmo — Discover Your Pattern</title>
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/joedcosta/katanselmo.com/main/images/Logo_KatsYoga.png">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/joedcosta/katanselmo.com/main/images/Logo_KatsYoga.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════
@@ -605,7 +607,7 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
     <div class="quiz-left">
       <h2>Ready to take<br>control of<br>your life?</h2>
       <p>Let's find out what's been holding you back.</p>
-      <button class="btn-take-quiz" onclick="showPage('page-contact')">Take the quiz</button>
+      <button class="btn-take-quiz" onclick="showPage('page-q0')">Take the quiz</button>
     </div>
     <div class="quiz-right">
       <div class="mc"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&q=75&auto=format&fit=crop" alt="" loading="lazy"></div>
@@ -628,12 +630,12 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
 <div class="page" id="page-contact">
   <nav class="q-topnav">
     <a href="https://katanselmo.com" class="nav-logo">Kat Anselmo</a>
-    <div class="prog-outer"><div class="prog-inner" style="width:0%"></div></div>
+    <div class="prog-outer"><div class="prog-inner" style="width:100%"></div></div>
     <a href="https://katanselmo.com" class="q-topnav nav-login">Log in</a>
   </nav>
   <div class="contact-body">
     <div class="contact-left">
-      <div class="step-label">Before we begin</div>
+      <div class="step-label">Almost there — one last step</div>
       <div class="step-q">Where shall we<br>send your results?</div>
       <div class="form-grid">
         <div class="fg"><label>First Name *</label><input type="text" id="fName" placeholder="Your first name" autocomplete="given-name"></div>
@@ -654,8 +656,8 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
       </div>
       <p class="form-privacy">🔒 Private. Never shared or sold. Unsubscribe anytime.</p>
       <div class="q-nav-row" style="margin-top:24px; padding-top:18px; border-top:1px solid rgba(255,255,255,.07);">
-        <button class="btn-back" onclick="showPage('page2')">← Back</button>
-        <button class="btn-next" onclick="submitContact()">Start the Quiz →</button>
+        <button class="btn-back" onclick="showPage('page-q6')">← Back</button>
+        <button class="btn-next" onclick="submitContact()">Reveal My Results →</button>
       </div>
     </div>
     <div class="contact-right">
@@ -695,7 +697,7 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
         <div class="book-feat"><span class="book-dot"></span>Personalised to your result</div>
         <div class="book-feat"><span class="book-dot"></span>Walk away with clarity</div>
       </div>
-      <a href="https://calendly.com/katanselmo/10min" target="_blank" rel="noopener" class="btn-book">Book my free call with Kat →</a>
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1GkcRlOUhHiT0jzvaiHLZKrCjnWA-dl1xp6VwymkQsPiprFxIeQ_2zeeGcWaBECu0rfLOYZlV2" target="_blank" rel="noopener" class="btn-book">Book my free call with Kat →</a>
       <a href="https://katanselmo.com/#course" class="btn-book-sec">Or explore The Path to Success →</a>
     </div>
   </div>
@@ -843,11 +845,11 @@ const answers = {};
   const letters = ['A','B','C','D'];
   QUESTIONS.forEach((qData, idx) => {
     const id        = `page-q${idx}`;
-    const prevPage  = idx === 0 ? 'page-contact' : `page-q${idx-1}`;
+    const prevPage  = idx === 0 ? 'page2' : `page-q${idx-1}`;
     const isLast    = idx === QUESTIONS.length - 1;
     const pct       = Math.round(((idx+1) / QUESTIONS.length) * 100);
-    const nextFn    = isLast ? `finishQuiz(${idx})` : `goNext(${idx},'page-q${idx+1}')`;
-    const nextLabel = isLast ? 'See My Results →' : 'Next →';
+    const nextFn    = isLast ? `goNext(${idx},'page-contact')` : `goNext(${idx},'page-q${idx+1}')`;
+    const nextLabel = isLast ? 'Get My Results →' : 'Next →';
 
     const opts = qData.opts.map((o, oi) =>
       `<button class="q-opt" id="opt-${idx}-${oi}" onclick="pick(${idx},${oi},'${o.type}')">
@@ -898,26 +900,6 @@ function goNext(qIdx, nextId) {
   showPage(nextId);
 }
 
-function finishQuiz(lastIdx) {
-  if (!answers[lastIdx]) return;
-  const loader = document.getElementById('loader');
-  loader.classList.add('on');
-  saveToSheet({
-    type:'result',
-    firstName: document.getElementById('fName').value.trim(),
-    lastName:  document.getElementById('lName').value.trim(),
-    email:     document.getElementById('fEmail').value.trim(),
-    intent:    document.getElementById('fIntent').value,
-    scores:    JSON.stringify(scores),
-    result:    winner(),
-    timestamp: new Date().toISOString()
-  });
-  setTimeout(() => {
-    renderResults();
-    loader.classList.remove('on');
-    showPage('page-results');
-  }, 2000);
-}
 
 function winner() {
   return Object.entries(scores).sort((a,b) => b[1]-a[1])[0][0];
@@ -940,15 +922,30 @@ function renderResults() {
 function submitContact() {
   const name  = document.getElementById('fName').value.trim();
   const email = document.getElementById('fEmail').value.trim();
-  if (!name)                          { alert('Please enter your first name.'); return; }
+  if (!name)                               { alert('Please enter your first name.'); return; }
   if (!email||!/\S+@\S+\.\S+/.test(email)) { alert('Please enter a valid email address.'); return; }
+
+  // Save contact + result together — we now have both
   saveToSheet({
-    type:'contact', firstName:name,
-    lastName: document.getElementById('lName').value.trim(),
-    email, intent: document.getElementById('fIntent').value,
-    timestamp: new Date().toISOString(), source: location.href
+    type:'lead',
+    firstName: name,
+    lastName:  document.getElementById('lName').value.trim(),
+    email,
+    intent:    document.getElementById('fIntent').value,
+    scores:    JSON.stringify(scores),
+    result:    winner(),
+    timestamp: new Date().toISOString(),
+    source:    location.href
   });
-  showPage('page-q0');
+
+  // Show loader, then reveal results
+  const loader = document.getElementById('loader');
+  loader.classList.add('on');
+  setTimeout(() => {
+    renderResults();
+    loader.classList.remove('on');
+    showPage('page-results');
+  }, 2000);
 }
 
 /* ── Google Sheets backend ──
