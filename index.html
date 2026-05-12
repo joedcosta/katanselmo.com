@@ -544,7 +544,7 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
 
     <!-- Bottom-left: headline + CTA -->
     <div class="hero-text">
-      <h1>Life is extraordinary.</h1>
+      <h1>Life is extraordinary.<br>Unleash yours.</h1>
       <button class="btn-start-hero" onclick="showPage('page2')">Start Now</button>
     </div>
 
@@ -948,10 +948,9 @@ function submitContact() {
   }, 2000);
 }
 
-/* ── Google Sheets backend ──
-   Replace YOUR_SCRIPT_ID with your deployed Apps Script ID */
+/* ── Google Sheets backend ── */
 function saveToSheet(data) {
-  const URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+  const URL = 'https://script.google.com/macros/s/AKfycbzGGs8LXx2lKCKyTLFY5lHqYB0-ZNOTtAjGeHJ1nnLuhIKs1aXGKjyE8YYr0eomECB8/exec';
   fetch(URL, { method:'POST', mode:'no-cors',
     headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) }).catch(()=>{});
 }
