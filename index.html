@@ -948,11 +948,20 @@ function submitContact() {
   }, 2000);
 }
 
-/* ── Google Sheets backend ── */
+/* ── Google Sheets backend ──
+   URLSearchParams body = "simple request" = no CORS preflight = works with no-cors
+── */
 function saveToSheet(data) {
-  const URL = 'https://script.google.com/macros/s/AKfycbzGGs8LXx2lKCKyTLFY5lHqYB0-ZNOTtAjGeHJ1nnLuhIKs1aXGKjyE8YYr0eomECB8/exec';
-  fetch(URL, { method:'POST', mode:'no-cors',
-    headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) }).catch(()=>{});
+  try {
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxn6oTxetR-GDhApPGPAdLv6TXi352xAhfE41s14smWD9wwnQyfau5jTGhFre-M1SWv/exec';
+    const body = new URLSearchParams();
+    body.append('payload', JSON.stringify(data));
+    fetch(ENDPOINT, {
+      method : 'POST',
+      mode   : 'no-cors',
+      body   : body         /* application/x-www-form-urlencoded → simple request, no preflight */
+    }).catch(err => console.warn('saveToSheet:', err));
+  } catch(e) { console.warn('saveToSheet setup error:', e); }
 }
 </script>
 </body>
