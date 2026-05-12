@@ -953,7 +953,7 @@ function submitContact() {
 ── */
 function saveToSheet(data) {
   try {
-    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxn6oTxetR-GDhApPGPAdLv6TXi352xAhfE41s14smWD9wwnQyfau5jTGhFre-M1SWv/exec';
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbymOy2UNzwG2b97d_-rwOTWzCoXihmn8iUKn67Ku2Ym6P58SewGrzAvoQWEAB6a3B7R/exec';
     const body = new URLSearchParams();
     body.append('payload', JSON.stringify(data));
     fetch(ENDPOINT, {
