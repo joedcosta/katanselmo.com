@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#000000">
+<meta name="description" content="Take Kat Anselmo's free 2-minute quiz to discover the pattern keeping you from living fully — and book a free 10-minute call to go deeper.">
+<meta property="og:title" content="Discover Your Pattern — Free Quiz | Kat Anselmo">
+<meta property="og:description" content="What's keeping you disconnected from yourself? Take the free quiz and find out in 2 minutes.">
+<meta property="og:image" content="https://yt3.googleusercontent.com/EnrWO-MyVOdoss2sHWWYDowAPRiAeF9di5noGTQTJ4oD16N6YJidL72GyLL6UGkLJp0vILEt=w1200">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <title>Kat Anselmo — Discover Your Pattern</title>
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/joedcosta/katanselmo.com/main/images/Logo_KatsYoga.png">
 <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/joedcosta/katanselmo.com/main/images/Logo_KatsYoga.png">
@@ -50,7 +56,8 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
   border-bottom:1px solid rgba(255,255,255,.05);
   display:block; transition:background .15s;
 }
-.mobile-drawer a:last-child { border:none; }
+.mobile-drawer a:last-child,
+.mobile-drawer a:last-of-type { border:none; }
 .mobile-drawer a:hover { background:rgba(255,255,255,.06); }
 .mobile-drawer .drawer-cta {
   margin:16px 24px 0;
@@ -138,20 +145,22 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
     linear-gradient(to top, rgba(0,0,0,.65) 0%, rgba(0,0,0,.15) 40%, transparent 65%),
     linear-gradient(to right, rgba(0,0,0,.4) 0%, transparent 50%);
 }
-/* Hero text — bottom-left */
+/* Hero text — positioned with flex so text and button have controlled spacing */
 .hero-text {
   position:absolute; bottom:52px; left:52px; z-index:2; max-width:580px;
+  display:flex; flex-direction:column; gap:0;
 }
 .hero-text h1 {
   font-size:clamp(36px, 5vw, 70px); font-weight:900;
   line-height:1.04; color:#fff; letter-spacing:-1.5px;
-  margin-bottom:28px;
+  margin-bottom:56px;  /* two line-heights of space between text and button */
 }
 .btn-start-hero {
   display:inline-block; font-size:15px; font-weight:700; color:#000;
   background:#fff; border:none; cursor:pointer;
   padding:16px 38px; border-radius:40px;
   transition:background .2s, transform .15s;
+  align-self:flex-start;
 }
 .btn-start-hero:hover { background:#e0e0e0; transform:scale(1.02); }
 
@@ -205,9 +214,9 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
     height:75svh; min-height:440px;
   }
   .hero-text {
-    bottom:32px; left:24px; right:24px;
+    bottom:28px; left:20px; right:20px;
   }
-  .hero-text h1 { font-size:clamp(30px, 9vw, 46px); margin-bottom:20px; }
+  .hero-text h1 { font-size:clamp(28px, 9vw, 42px); margin-bottom:40px; }
   .btn-start-hero { padding:14px 30px; font-size:14px; }
 
   /* Video card on mobile: NOT absolute, flows below hero */
@@ -588,102 +597,248 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
 }
 
 /* ═══════════════════════════════════════
-   CALENDLY MODAL
+   CALENDLY / GOOGLE CALENDAR MODAL
+   Fixed-size approach: modal has explicit
+   height, iframe fills remaining space
 ═══════════════════════════════════════ */
 .cal-overlay {
-  display:none; position:fixed; inset:0; z-index:8000;
-  background:rgba(0,0,0,.75); backdrop-filter:blur(6px);
+  display:none;
+  position:fixed; inset:0; z-index:8000;
+  background:rgba(0,0,0,.78);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
   align-items:center; justify-content:center;
-  padding:20px;
+  padding:16px;
+  /* iOS momentum scroll fix */
+  -webkit-overflow-scrolling:touch;
 }
-.cal-overlay.open { display:flex; animation:calFadeIn .25s ease; }
+.cal-overlay.open { display:flex; animation:calFadeIn .22s ease; }
 @keyframes calFadeIn { from{opacity:0;} to{opacity:1;} }
 
+/* Modal box — fixed height so iframe doesn't collapse */
 .cal-modal {
-  background:#fff; border-radius:16px; overflow:hidden;
-  width:100%; max-width:780px;
-  max-height:92vh; display:flex; flex-direction:column;
-  box-shadow:0 24px 80px rgba(0,0,0,.5);
-  animation:calSlideIn .3s ease;
+  background:#fff;
+  border-radius:20px;
+  width:100%;
+  max-width:800px;
+  /* Key fix: explicit height, not max-height with flex children */
+  height:90vh;
+  height:90dvh; /* dynamic viewport height — accounts for mobile browser bars */
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  box-shadow:0 32px 100px rgba(0,0,0,.6);
+  animation:calSlideIn .28s cubic-bezier(.34,1,.64,1);
 }
-@keyframes calSlideIn { from{transform:translateY(24px);opacity:0;} to{transform:translateY(0);opacity:1;} }
+@keyframes calSlideIn {
+  from{transform:translateY(28px) scale(.97);opacity:0;}
+  to{transform:translateY(0) scale(1);opacity:1;}
+}
 
+/* Header — fixed height, never shrinks */
 .cal-modal-header {
   display:flex; align-items:center; justify-content:space-between;
-  padding:18px 24px; border-bottom:1px solid #eee; flex-shrink:0;
+  padding:16px 20px;
+  border-bottom:1px solid #eee;
+  flex-shrink:0;
   background:#fff;
+  min-height:64px;
 }
 .cal-modal-title {
-  font-size:16px; font-weight:800; color:#000; letter-spacing:-.3px;
+  font-size:15px; font-weight:800; color:#000; letter-spacing:-.3px;
+  line-height:1.2;
 }
 .cal-modal-sub {
-  font-size:12px; color:#888; margin-top:2px; font-weight:400;
+  font-size:11px; color:#999; margin-top:3px; font-weight:400;
 }
 .cal-close {
-  width:36px; height:36px; border-radius:50%; border:none;
-  background:#f0f0f0; cursor:pointer; display:flex; align-items:center;
-  justify-content:center; font-size:18px; color:#555;
-  transition:background .15s; flex-shrink:0;
+  width:36px; height:36px; min-width:36px; border-radius:50%; border:none;
+  background:#f0f0f0; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; color:#444; transition:background .15s; flex-shrink:0;
+  /* Larger tap target on mobile */
+  padding:0; margin-left:12px;
 }
-.cal-close:hover { background:#e0e0e0; }
+.cal-close:hover { background:#e0e0e0; color:#000; }
+/* iOS tap highlight */
+.cal-close:active { background:#ccc; }
 
+/* Iframe container — takes ALL remaining height */
 .cal-iframe-wrap {
-  flex:1; overflow:hidden; position:relative; min-height:500px;
+  flex:1;           /* fills rest of modal */
+  position:relative;
+  overflow:hidden;  /* clip iframe, don't scroll the wrapper */
+  min-height:0;     /* critical flex fix — prevents overflow */
 }
 .cal-iframe-wrap iframe {
-  width:100%; height:100%; border:none; display:block;
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  border:none; display:block;
+  /* Allow iframe content to scroll internally on iOS */
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
 }
 
-/* Loading spinner inside modal */
+/* Loading spinner */
 .cal-loading {
-  position:absolute; inset:0; display:flex;
-  flex-direction:column; align-items:center; justify-content:center;
-  background:#fff; z-index:1; transition:opacity .3s;
+  position:absolute; inset:0;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  background:#fff; z-index:2;
+  transition:opacity .3s;
 }
 .cal-loading.hidden { opacity:0; pointer-events:none; }
 .cal-spinner {
-  width:40px; height:40px; border:2px solid #eee;
+  width:38px; height:38px; border:2px solid #eee;
   border-top-color:#000; border-radius:50%;
-  animation:spin .7s linear infinite; margin-bottom:16px;
+  animation:spin .7s linear infinite; margin-bottom:14px;
 }
-.cal-loading p { font-size:13px; color:#aaa; font-weight:500; }
+.cal-loading p { font-size:13px; color:#bbb; font-weight:500; }
 
-/* ── Success confirmation screen ── */
+/* Success screen */
 .cal-success {
   display:none; flex-direction:column; align-items:center;
   justify-content:center; text-align:center;
-  padding:56px 40px; background:#fff;
+  padding:48px 32px; background:#fff;
+  position:absolute; inset:0; z-index:3;
 }
 .cal-success.show { display:flex; }
 .cal-success-icon {
   width:72px; height:72px; border-radius:50%;
   background:#000; display:flex; align-items:center;
-  justify-content:center; margin-bottom:24px;
-  font-size:32px; animation:popIn .4s cubic-bezier(.34,1.56,.64,1);
+  justify-content:center; margin-bottom:20px;
+  font-size:30px; color:#fff;
+  animation:popIn .4s cubic-bezier(.34,1.56,.64,1);
 }
 @keyframes popIn { from{transform:scale(0);} to{transform:scale(1);} }
 .cal-success h3 {
-  font-size:26px; font-weight:900; color:#000;
+  font-size:24px; font-weight:900; color:#000;
   letter-spacing:-.5px; margin-bottom:10px;
 }
-.cal-success p { font-size:15px; color:#666; line-height:1.65; max-width:360px; margin-bottom:32px; }
+.cal-success p {
+  font-size:15px; color:#666; line-height:1.65;
+  max-width:340px; margin-bottom:28px;
+}
 .cal-success-close {
   background:#000; color:#fff; border:none; cursor:pointer;
-  font-size:13px; font-weight:700; padding:14px 32px;
+  font-size:13px; font-weight:700; padding:14px 30px;
   border-radius:40px; font-family:'Inter',sans-serif;
-  transition:background .15s;
+  transition:background .15s; min-width:200px;
 }
 .cal-success-close:hover { background:#222; }
 
+/* ── TABLET ── */
+@media (min-width:769px) and (max-width:1024px) {
+  .cal-modal { height:88vh; height:88dvh; max-width:680px; }
+}
+
+/* ── MOBILE: sheet from bottom ── */
 @media (max-width:768px) {
-  .cal-overlay { padding:0; align-items:flex-end; }
-  .cal-modal {
-    border-radius:20px 20px 0 0; max-height:96vh;
-    animation:calSlideUp .3s ease;
+  .cal-overlay {
+    padding:0;
+    align-items:flex-end;
   }
-  @keyframes calSlideUp { from{transform:translateY(100%);} to{transform:translateY(0);} }
-  .cal-iframe-wrap { min-height:420px; }
-  .cal-success { padding:40px 28px; }
+  .cal-modal {
+    border-radius:24px 24px 0 0;
+    /* On mobile use almost full screen height */
+    height:92vh;
+    height:92dvh;
+    max-width:100%;
+    animation:calSlideUp .3s cubic-bezier(.34,1,.64,1);
+  }
+  @keyframes calSlideUp {
+    from{transform:translateY(100%);}
+    to{transform:translateY(0);}
+  }
+  .cal-modal-header { padding:14px 18px; }
+  .cal-modal-title { font-size:14px; }
+  .cal-success h3 { font-size:22px; }
+  .cal-success p { font-size:14px; }
+  /* Pull handle indicator */
+  .cal-modal::before {
+    content:'';
+    display:block;
+    width:36px; height:4px;
+    background:#ddd; border-radius:4px;
+    margin:10px auto 2px;
+    flex-shrink:0;
+  }
+}
+
+/* ── Small phones (SE, Galaxy A etc) ── */
+@media (max-width:380px) {
+  .cal-modal { height:96vh; height:96dvh; }
+  .cal-modal-title { font-size:13px; }
+  .cal-close { width:32px; height:32px; font-size:14px; }
+}
+
+/* ═══════════════════════════════════════
+   GLOBAL DEVICE COMPATIBILITY
+═══════════════════════════════════════ */
+
+/* iOS: prevent font size auto-adjustment */
+html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+
+/* iOS: prevent input zoom (inputs need font-size ≥ 16px) */
+.fg input, .fg select, .f-group input, .f-group select {
+  font-size:16px !important; /* prevents iOS zoom on focus */
+}
+
+/* All interactive elements: minimum 44px tap target (Apple HIG) */
+.btn-next, .btn-back, .btn-take-quiz, .btn-start-hero,
+.btn-start-nav, .btn-book, .q-opt, .cal-close,
+.btn-start-nav, .nav-hamburger {
+  min-height:44px;
+  touch-action:manipulation; /* remove 300ms tap delay */
+}
+
+/* Smooth scrolling on iOS */
+.q-left, .contact-left, .res-left, .results-left,
+#page1, #page2, #page-contact, #page-results, .q-page {
+  -webkit-overflow-scrolling:touch;
+}
+
+/* Remove tap highlight on all clickable elements */
+a, button, [onclick] { -webkit-tap-highlight-color:transparent; }
+
+/* Prevent horizontal overflow on all pages */
+.page, .split, .q-body, .results-body, .contact-body {
+  max-width:100vw; overflow-x:hidden;
+}
+
+/* Fix select arrow on iOS */
+.fg select, .f-group select {
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='rgba(255,255,255,0.5)' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
+  padding-right:36px;
+}
+
+/* Safe area padding for iPhone notch/home bar */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .q-nav-row, .snav { padding-bottom:max(16px, env(safe-area-inset-bottom)); }
+  #videoMobile > div:last-child { padding-bottom:max(20px, env(safe-area-inset-bottom)); }
+  .cal-modal { padding-bottom:env(safe-area-inset-bottom); }
+  nav, .q-topnav { padding-top:env(safe-area-inset-top, 0px); }
+}
+
+/* Landscape phones — reduce heights so content fits */
+@media (max-height:500px) and (max-width:900px) {
+  .hero-wrap { height:100svh; min-height:unset; }
+  .hero-text h1 { font-size:clamp(22px,6vw,36px); margin-bottom:24px; }
+  .hero-text { bottom:16px; left:16px; right:16px; }
+  .q-right { height:35vw; min-height:140px; }
+  .cal-modal { height:96vh; height:96dvh; border-radius:0; }
+  .cal-modal-header { padding:10px 16px; min-height:52px; }
+}
+
+/* Very small screens (Galaxy Fold etc) */
+@media (max-width:320px) {
+  .hero-text h1 { font-size:26px; }
+  .hero-sub { font-size:15px; }
+  .btn-start-hero { padding:12px 24px; font-size:13px; }
+  .q-question { font-size:16px; }
+  .quiz-left h2 { font-size:26px; }
 }
 </style>
 </head>
@@ -692,7 +847,7 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
 <!-- LOADER -->
 <div id="loader">
   <div class="loader-ring"></div>
-  <div class="loader-txt">Analysing your pattern…</div>
+  <div class="loader-txt">Analysing your answers…</div>
 </div>
 
 <!-- MOBILE NAV DRAWER — shared across all pages -->
@@ -736,7 +891,7 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
 
     <!-- Bottom-left: headline + CTA -->
     <div class="hero-text">
-      <h1>Life is<br>extraordinary.<br><span class="hero-sub">Learn to live yours Fully</span></h1>
+      <h1>Life is<br>extraordinary.<br><span class="hero-sub">Learn to live yours fully</span></h1>
       <button class="btn-start-hero" onclick="showPage('page2')">Start Now</button>
     </div>
 
@@ -779,7 +934,7 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
       </div>
     </a>
     <div style="padding:12px 20px 20px; font-size:12px; color:rgba(255,255,255,.3); line-height:1.6; text-align:center;">
-      Scroll up to start your free quiz ↑
+      Scroll up to take the free quiz ↑
     </div>
   </div>
 
@@ -806,7 +961,7 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
     <div class="quiz-left">
       <h2>Ready to take<br>control of<br>your life?</h2>
       <p>Let's find out what's been holding you back.</p>
-      <button class="btn-take-quiz" onclick="showPage('page-q0')">Take the quiz</button>
+      <button class="btn-take-quiz" onclick="resetQuiz(); showPage('page-q0')">Take the quiz</button>
     </div>
     <div class="quiz-right">
       <div class="mc"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&q=75&auto=format&fit=crop" alt="" loading="lazy"></div>
@@ -830,11 +985,11 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
   <nav class="q-topnav">
     <a href="https://katanselmo.com" class="nav-logo">Kat Anselmo</a>
     <div class="prog-outer"><div class="prog-inner" style="width:100%"></div></div>
-    <a href="https://katanselmo.com" class="q-topnav nav-login">Log in</a>
+    <a href="https://katanselmo.com" class="nav-login">Log in</a>
   </nav>
   <div class="contact-body">
     <div class="contact-left">
-      <div class="step-label">Almost there — one last step</div>
+      <div class="step-label">Almost there — just one last step</div>
       <div class="step-q">Where shall we<br>send your results?</div>
       <div class="form-grid">
         <div class="fg"><label>First Name *</label><input type="text" id="fName" placeholder="Your first name" autocomplete="given-name"></div>
@@ -853,7 +1008,7 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
           </select>
         </div>
       </div>
-      <p class="form-privacy">🔒 Private. Never shared or sold. Unsubscribe anytime.</p>
+      <p class="form-privacy">🔒 Your details are private. Never shared or sold. You can unsubscribe at any time.</p>
       <div class="q-nav-row" style="margin-top:24px; padding-top:18px; border-top:1px solid rgba(255,255,255,.07);">
         <button class="btn-back" onclick="showPage('page-q6')">← Back</button>
         <button class="btn-next" onclick="submitContact()">Reveal My Results →</button>
@@ -873,7 +1028,7 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
   <nav class="q-topnav">
     <a href="https://katanselmo.com" class="nav-logo">Kat Anselmo</a>
     <div class="prog-outer"><div class="prog-inner" style="width:100%"></div></div>
-    <a href="https://katanselmo.com" class="q-topnav nav-login">Log in</a>
+    <a href="https://katanselmo.com" class="nav-login">Log in</a>
   </nav>
   <div class="results-body">
     <div class="res-left">
@@ -890,7 +1045,7 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
       <div class="book-eyebrow">Your Next Step</div>
       <div class="book-who" id="bookWho"></div>
       <div class="book-title">Ready to go<br>deeper with Kat?</div>
-      <p class="book-desc">Book a free 10-minute call. Kat will look at your results and show you exactly what your pattern means — no pressure, no pitch.</p>
+      <p class="book-desc">Book a free 10-minute call with Kat. She will walk through your results, answer your questions, and show you exactly what your pattern means — no pressure, no pitch.</p>
       <div class="book-feats">
         <div class="book-feat"><span class="book-dot"></span>10 minutes — completely free</div>
         <div class="book-feat"><span class="book-dot"></span>Personalised to your result</div>
@@ -968,7 +1123,7 @@ const QUESTIONS = [
     opts: [
       { text: "Blame yourself",                               type: "overthinker" },
       { text: "Worry about what others think",                type: "overthinker" },
-      { text: "Find silver linings and move on",              type: "pleaser"     },
+      { text: "Find silver linings and move on",              type: "navigator"   },
       { text: "Make a plan around possible outcomes",         type: "navigator"   }
     ]
   },
@@ -1037,7 +1192,7 @@ const QUESTIONS = [
 const ARCHETYPES = {
   overthinker: {
     badge:"The Overthinker", name:"The Overthinker",
-    tagline:"Exhausted by your own mind.",
+    tagline:"Your mind is working overtime.",
     body:`<p>You have a rich, analytical mind — and right now it's working against you. You replay situations endlessly, searching for what you missed, what you could have done differently, what others really meant.</p><p>This constant mental activity was likely an adaptation — a way to feel safe when life felt unpredictable. Over time it has become a loop that keeps you disconnected from your own inner knowing.</p><p>The way forward is not to stop thinking. It's to learn to trust yourself again — one small decision at a time.</p>`,
     traits:["Replaying conversations","Second-guessing decisions","Difficulty letting go","Analysis paralysis"],
     insights:["Replaying conversations long after they've passed","Difficulty trusting your instincts even when you know the answer","Finding constant analysis physically and emotionally exhausting"]
@@ -1045,20 +1200,20 @@ const ARCHETYPES = {
   pleaser: {
     badge:"The People Pleaser", name:"The People Pleaser",
     tagline:"So focused on others, you've lost yourself.",
-    body:`<p>You naturally tend to others' needs — often putting everyone else first. This empathy is a beautiful quality that makes you a thoughtful friend, partner, or colleague.</p><p>But all this love you extend to others makes it difficult to stay connected to your own needs, your own voice, and what you actually want from life.</p><p>Breaking free is not about becoming selfish. It's about learning to care for yourself with the same warmth you give so freely to everyone else.</p>`,
+    body:`<p>You naturally attend to others' needs — often putting everyone else before your own. This empathy is a beautiful quality that makes you a thoughtful friend, partner, or colleague.</p><p>But all this love you extend to others makes it difficult to stay connected to your own needs, your own voice, and what you actually want from life.</p><p>Breaking free is not about becoming selfish. It's about learning to care for yourself with the same warmth you give so freely to everyone else.</p>`,
     traits:["Difficulty saying no","Feeling responsible for others","Losing your voice","Seeking validation"],
     insights:["Avoiding conflict even when it costs you something important","Feeling responsible for other people's emotions","Losing your own perspective whenever others push back"]
   },
   avoider: {
     badge:"The Avoider", name:"The Avoider",
-    tagline:"Postponing the feelings that matter most.",
+    tagline:"You keep the hard feelings at arm's length.",,
     body:`<p>When situations feel overwhelming or emotionally charged, you naturally pull back — keeping busy, staying distracted, or simply not going there.</p><p>You might tell yourself you're "not ready yet." But underneath there's often a fear of feeling things fully — a belief that if you stop running, something difficult will be waiting.</p><p>Avoidance isn't laziness. It's a sign that something feels emotionally tender and you've never had a truly safe space to feel it. Creating that space is where everything begins to shift.</p>`,
     traits:["Staying busy to avoid feeling","Delaying hard conversations","Emotional withdrawal","Difficulty with vulnerability"],
-    insights:["Keeping yourself 'busy' to avoid sitting with feelings","Postponing conversations that actually matter to you","Feeling relief followed by guilt when you avoid something"]
+    insights:["Keeping yourself busy to avoid sitting with your feelings","Postponing conversations that actually matter to you","Feeling relief followed by guilt when you avoid something"]
   },
   navigator: {
     badge:"The Uncertain Navigator", name:"The Uncertain Navigator",
-    tagline:"Lost your direction. Not sure what you want.",
+    tagline:"Searching for a direction that feels truly yours.",
     body:`<p>You may be in a period of deep transition. Feeling unsure about your direction is disorienting — but it actually signals that you're ready to think more deeply about what is truly yours, not what was expected of you.</p><p>This sense of "who am I really?" often happens to thoughtful people who have spent a long time living by others' expectations. It creates a feeling of being stuck or disconnected from your own life.</p><p>Reconnecting with your inner voice often brings a clarity that surprises people. The answers aren't far away — they're already inside you.</p>`,
     traits:["Questioning your direction","Feeling disconnected","Searching for meaning","Uncertainty about what you want"],
     insights:["Feeling 'stuck' without being able to name exactly why","Questioning whether your goals are truly yours","Sensing a shift is coming but not knowing which way to go"]
@@ -1066,8 +1221,17 @@ const ARCHETYPES = {
 };
 
 /* ── State ── */
-const scores = { overthinker:0, pleaser:0, avoider:0, navigator:0 };
-const answers = {};
+let scores  = { overthinker:0, pleaser:0, avoider:0, navigator:0 };
+let answers = {};
+
+function resetQuiz() {
+  scores  = { overthinker:0, pleaser:0, avoider:0, navigator:0 };
+  answers = {};
+  // Clear all selected options
+  document.querySelectorAll('.q-opt.sel').forEach(o => o.classList.remove('sel'));
+  // Disable all Next buttons
+  document.querySelectorAll('[id^="nx-"]').forEach(b => b.disabled = true);
+}
 
 /* ── Build quiz pages ── */
 (function buildQuiz() {
@@ -1131,7 +1295,10 @@ function goNext(qIdx, nextId) {
 
 
 function winner() {
-  return Object.entries(scores).sort((a,b) => b[1]-a[1])[0][0];
+  // Sort by score DESC; on tie, use predefined priority order
+  const priority = ['overthinker','pleaser','avoider','navigator'];
+  return Object.entries(scores)
+    .sort((a,b) => b[1] - a[1] || priority.indexOf(a[0]) - priority.indexOf(b[0]))[0][0];
 }
 
 function renderResults() {
@@ -1139,20 +1306,23 @@ function renderResults() {
   const R = ARCHETYPES[w];
   const fn = document.getElementById('fName').value.trim().split(' ')[0];
   document.getElementById('rBadge').textContent    = R.badge;
-  document.getElementById('rName').textContent     = fn ? `${fn}, you are ${R.name}.` : R.name;
+  document.getElementById('rName').textContent     = fn ? `${fn}, meet ${R.name}.` : R.name;
   document.getElementById('rTagline').textContent  = `"${R.tagline}"`;
   document.getElementById('rBody').innerHTML        = R.body;
   document.getElementById('rTraits').innerHTML      = R.traits.map(t=>`<span class="res-trait">${t}</span>`).join('');
   document.getElementById('rInsights').innerHTML    =
-    `<h4>You might notice yourself…</h4><ul>${R.insights.map(i=>`<li>${i}</li>`).join('')}</ul>`;
-  document.getElementById('bookWho').textContent    = `You are ${R.name}.`;
+    `<h4>You may recognise yourself in these:</h4><ul>${R.insights.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+  document.getElementById('bookWho').textContent    = `Based on your answers, ${fn ? fn + ", you are" : "you are"} ${R.name}.`;
 }
 
+let _submitting = false;
 function submitContact() {
+  if (_submitting) return; // prevent double-tap
   const name  = document.getElementById('fName').value.trim();
   const email = document.getElementById('fEmail').value.trim();
   if (!name)                               { alert('Please enter your first name.'); return; }
   if (!email||!/\S+@\S+\.\S+/.test(email)) { alert('Please enter a valid email address.'); return; }
+  _submitting = true;
 
   // Save contact + result together — we now have both
   saveToSheet({
@@ -1174,6 +1344,7 @@ function submitContact() {
     renderResults();
     loader.classList.remove('on');
     showPage('page-results');
+    _submitting = false; // allow re-submit if user navigates back
   }, 2000);
 }
 
@@ -1182,95 +1353,99 @@ function submitContact() {
 ══════════════════════════════════════════ */
 const CAL_URL = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1GkcRlOUhHiT0jzvaiHLZKrCjnWA-dl1xp6VwymkQsPiprFxIeQ_2zeeGcWaBECu0rfLOYZlV2';
 
+let _calSrcSet   = false;  // true once src is set (avoids reload on re-open)
+let _calReady    = false;  // true once iframe has loaded for the first time
+let _calPollTimer = null;
+
 function openCalendly() {
-  const overlay  = document.getElementById('calOverlay');
-  const iframe   = document.getElementById('calIframe');
-  const loading  = document.getElementById('calLoading');
-  const success  = document.getElementById('calSuccess');
-  const iframeWrap = document.getElementById('calIframeWrap');
+  const overlay = document.getElementById('calOverlay');
+  const iframe  = document.getElementById('calIframe');
+  const loading = document.getElementById('calLoading');
+  const success = document.getElementById('calSuccess');
 
-  // Reset state
-  loading.classList.remove('hidden');
+  // Reset success screen; show spinner only if not yet loaded
   success.classList.remove('show');
-  iframeWrap.style.display = 'block';
+  if (!_calReady) loading.classList.remove('hidden');
+  else            loading.classList.add('hidden');
 
-  // Set iframe src only when opening (lazy load)
-  if (!iframe.src || iframe.src === window.location.href) {
+  // Set src only the very first time (subsequent opens reuse loaded iframe)
+  if (!_calSrcSet) {
     iframe.src = CAL_URL;
+    _calSrcSet = true;
   }
 
   overlay.classList.add('open');
-  document.body.style.overflow = 'hidden'; // prevent bg scroll
+  // Lock background scroll — iOS requires position:fixed trick
+  document.body.style.overflow = 'hidden';
+  document.body.style.position = 'fixed';
+  document.body.style.width    = '100%';
 }
 
 function closeCalendly() {
+  clearInterval(_calPollTimer);
   document.getElementById('calOverlay').classList.remove('open');
+  // Restore scrolling
   document.body.style.overflow = '';
+  document.body.style.position = '';
+  document.body.style.width    = '';
 }
 
-function iframeLoaded() {
+// Hide spinner once real calendar content loads (ignore about:blank fire)
+document.getElementById('calIframe').addEventListener('load', function() {
+  if (!_calSrcSet) return; // ignore the initial about:blank load
+  _calReady = true;
   document.getElementById('calLoading').classList.add('hidden');
-}
+  startCalendarPolling();
+});
 
-// Close when clicking the dark overlay backdrop (not the modal itself)
+// Close overlay click (but not modal itself)
 function handleOverlayClick(e) {
-  if (e.target === document.getElementById('calOverlay')) {
-    closeCalendly();
-  }
+  if (e.target === document.getElementById('calOverlay')) closeCalendly();
 }
 
-// Close on Escape key
+// Escape key
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeCalendly();
 });
 
-// Listen for Calendly booking confirmed event
-// Google Calendar Appointment Scheduling fires a postMessage on completion
+// postMessage from Google Calendar / Calendly on booking confirmed
 window.addEventListener('message', function(e) {
-  // Calendly fires: { event: 'calendly.event_scheduled' }
-  // Google Calendar fires a redirect / url change we detect below
-  if (e.data && e.data.event && e.data.event === 'calendly.event_scheduled') {
-    showBookingSuccess();
-    return;
-  }
-  // Also handle plain string message some calendar tools fire
-  if (typeof e.data === 'string' && e.data.includes('scheduled')) {
+  if (!e.data) return;
+  const d = typeof e.data === 'string' ? e.data : JSON.stringify(e.data);
+  if (
+    d.includes('calendly.event_scheduled') ||
+    d.includes('booking_confirmed') ||
+    d.includes('"status":"confirmed"')
+  ) {
     showBookingSuccess();
   }
 });
 
-// Polling fallback: detect when Google Calendar redirects to a confirmation page
-// by watching the iframe URL change (works when same-origin; shows success after delay otherwise)
-let _calPollTimer = null;
+// Poll iframe URL for Google Calendar confirmation redirect
 function startCalendarPolling() {
+  clearInterval(_calPollTimer);
   _calPollTimer = setInterval(function() {
     try {
-      const iframeHref = document.getElementById('calIframe').contentWindow.location.href;
-      // Google Calendar confirmation pages contain "complete" or "booked" in the URL
-      if (iframeHref.includes('complete') || iframeHref.includes('booked') || iframeHref.includes('confirmed')) {
+      const href = document.getElementById('calIframe').contentWindow.location.href;
+      if (href && href !== 'about:blank' && (
+        href.includes('complete') ||
+        href.includes('booked')   ||
+        href.includes('confirmed')||
+        href.includes('success')
+      )) {
         clearInterval(_calPollTimer);
         showBookingSuccess();
       }
-    } catch(e) {
-      // Cross-origin — can't read URL. Use the 8-minute timeout fallback below instead.
+    } catch(_) {
+      // Cross-origin block — expected, silent
     }
-  }, 1500);
+  }, 1200);
 }
 
 function showBookingSuccess() {
   clearInterval(_calPollTimer);
-  const iframeWrap = document.getElementById('calIframeWrap');
-  const success    = document.getElementById('calSuccess');
-  // Fade out iframe, show success
-  iframeWrap.style.display = 'none';
-  success.classList.add('show');
+  document.getElementById('calSuccess').classList.add('show');
 }
-
-// Start polling when iframe loads
-document.getElementById('calIframe').addEventListener('load', function() {
-  iframeLoaded();
-  startCalendarPolling();
-});
 
 /* ── Google Sheets backend ──
    URLSearchParams body = "simple request" = no CORS preflight = works with no-cors
@@ -1290,12 +1465,12 @@ function saveToSheet(data) {
 </script>
 
 <!-- ═══════════════════════════════════════
-     CALENDLY INLINE MODAL
+     CALENDLY / GOOGLE CALENDAR INLINE MODAL
 ═══════════════════════════════════════ -->
 <div class="cal-overlay" id="calOverlay" onclick="handleOverlayClick(event)">
   <div class="cal-modal" id="calModal">
 
-    <!-- Header -->
+    <!-- Header — always visible, never scrolls away -->
     <div class="cal-modal-header">
       <div>
         <div class="cal-modal-title">Book your free 10-min call with Kat</div>
@@ -1304,29 +1479,29 @@ function saveToSheet(data) {
       <button class="cal-close" onclick="closeCalendly()" aria-label="Close">✕</button>
     </div>
 
-    <!-- Iframe + loading spinner -->
+    <!-- Iframe area — flex:1 fills exact remaining height; iframe is position:absolute inset:0 -->
     <div class="cal-iframe-wrap" id="calIframeWrap">
+      <!-- Spinner shown until iframe fires load -->
       <div class="cal-loading" id="calLoading">
         <div class="cal-spinner"></div>
         <p>Loading Kat's calendar…</p>
       </div>
+      <!-- src set by JS on open to avoid loading on page start -->
       <iframe
         id="calIframe"
-        src=""
+        src="about:blank"
         title="Book a free call with Kat Anselmo"
-        onload="iframeLoaded()"
       ></iframe>
-    </div>
-
-    <!-- Success screen (hidden until booking confirmed) -->
-    <div class="cal-success" id="calSuccess">
-      <div class="cal-success-icon">✓</div>
-      <h3>You're booked!</h3>
-      <p>
-        Your free 10-minute consultation with Kat is confirmed.<br>
-        Check your email for the details — we can't wait to speak with you.
-      </p>
-      <button class="cal-success-close" onclick="closeCalendly()">Close &amp; return to results</button>
+      <!-- Success overlay — appears on top of iframe when booking detected -->
+      <div class="cal-success" id="calSuccess">
+        <div class="cal-success-icon">✓</div>
+        <h3>You're booked!</h3>
+        <p>
+          Your free 10-minute call with Kat is confirmed.<br>
+          Check your email for the details — we can't wait to speak with you.
+        </p>
+        <button class="cal-success-close" onclick="closeCalendly()">Close &amp; return to results</button>
+      </div>
     </div>
 
   </div>
