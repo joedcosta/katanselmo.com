@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#000000">
-<title>Kat Anselmo — Life is extraordinary</title>
+<title>Kat Anselmo — Discover Your Pattern</title>
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/joedcosta/katanselmo.com/main/images/Logo_KatsYoga.png">
 <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/joedcosta/katanselmo.com/main/images/Logo_KatsYoga.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -18,21 +18,52 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
 
 /* ═══════════════════════════════════════
    PAGE SYSTEM
-   Desktop: fixed, full-viewport panels
-   Mobile:  normal flow, scrollable
 ═══════════════════════════════════════ */
 .page { display:none; flex-direction:column; }
 .page.active { display:flex; }
 
-/* Desktop: each page locks to viewport */
 @media (min-width:769px) {
   .page { position:fixed; inset:0; overflow:hidden; }
 }
-/* Mobile: pages are full natural-height blocks */
 @media (max-width:768px) {
-  .page { position:relative; min-height:100svh; }
+  /* svh fallback for older Android */
+  .page { position:relative; min-height:100vh; min-height:100svh; }
   .page.active { display:flex; }
 }
+
+/* ═══════════════════════════════════════
+   MOBILE NAV DRAWER
+═══════════════════════════════════════ */
+.mobile-drawer {
+  display:none;
+  position:fixed; top:64px; left:0; right:0; z-index:500;
+  background:#000; border-top:1px solid rgba(255,255,255,.08);
+  flex-direction:column; padding:16px 0 24px;
+  box-shadow:0 12px 40px rgba(0,0,0,.8);
+  animation:drawerIn .2s ease;
+}
+.mobile-drawer.open { display:flex; }
+@keyframes drawerIn { from{opacity:0;transform:translateY(-8px);} to{opacity:1;transform:translateY(0);} }
+.mobile-drawer a {
+  padding:14px 24px; font-size:15px; font-weight:600;
+  color:rgba(255,255,255,.85); text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.05);
+  display:block; transition:background .15s;
+}
+.mobile-drawer a:last-child { border:none; }
+.mobile-drawer a:hover { background:rgba(255,255,255,.06); }
+.mobile-drawer .drawer-cta {
+  margin:16px 24px 0;
+  display:inline-block; text-align:center;
+  background:#fff; color:#000; font-size:14px; font-weight:700;
+  padding:13px 24px; border-radius:40px; border:none;
+  cursor:pointer; font-family:'Inter',sans-serif;
+}
+/* Hamburger open state — X icon */
+.nav-hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity:0; }
+.nav-hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+.nav-hamburger span { transition:transform .2s, opacity .2s; transform-origin:center; }
 
 /* ═══════════════════════════════════════
    SHARED NAV
@@ -127,7 +158,7 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
 /* Video card — desktop: absolute bottom-right of hero */
 .video-card {
   position:absolute; bottom:36px; right:40px; z-index:3;
-  width:280px; background:#111; border-radius:14px;
+  width:260px; background:#111; border-radius:14px;
   overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,.7);
 }
 .video-label {
@@ -135,13 +166,33 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
   font-size:9px; font-weight:700; letter-spacing:2.5px;
   text-transform:uppercase; color:rgba(255,255,255,.5);
 }
-.video-embed {
-  position:relative; width:100%; height:196px; overflow:hidden;
-  background:#000; display:flex; align-items:center; justify-content:center;
+/* Thumbnail-based video card (iframe embedding disabled on this video) */
+.video-thumb-link {
+  display:block; position:relative; width:100%;
+  aspect-ratio:16/9; overflow:hidden; text-decoration:none;
+  background:#000;
 }
-.video-embed iframe {
-  /* Shorts are 9:16 — at 196px height, width = 110px; we scale up a bit */
-  width:112px; height:196px; border:none; flex-shrink:0;
+.video-thumb-img {
+  width:100%; height:100%; object-fit:cover; display:block;
+  opacity:.8; transition:opacity .2s;
+}
+.video-thumb-link:hover .video-thumb-img { opacity:.65; }
+.video-thumb-overlay {
+  position:absolute; inset:0;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:8px;
+}
+.video-play-btn {
+  width:48px; height:48px; border-radius:50%;
+  background:rgba(255,255,255,.95);
+  display:flex; align-items:center; justify-content:center;
+  transition:transform .2s, background .2s;
+}
+.video-play-btn svg { width:20px; height:20px; margin-left:3px; }
+.video-thumb-link:hover .video-play-btn { transform:scale(1.08); background:#fff; }
+.video-watch-label {
+  font-size:10px; font-weight:700; letter-spacing:1.5px;
+  text-transform:uppercase; color:rgba(255,255,255,.9);
 }
 
 /* ── MOBILE: hero becomes scroll layout ── */
@@ -223,18 +274,22 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
 .mc img { width:100%; height:100%; object-fit:cover; display:block; }
 
 @media (max-width:768px) {
-  #page2 { overflow-y:auto; }
+  #page2 { overflow-y:auto; min-height:100vh; min-height:100svh; }
   .quiz-split { flex-direction:column; overflow:visible; }
   .quiz-left {
-    width:100%; padding:48px 24px 36px;
+    width:100%; padding:36px 24px 40px;
     justify-content:flex-start; order:2;
   }
   .quiz-right {
+    /* 3×3 grid: each cell needs enough height to show full images */
     width:100%; order:1;
-    height:55vw; min-height:200px; max-height:300px;
-    padding:0; gap:3px;
+    height:auto;          /* let content breathe */
+    aspect-ratio:1 / 1;  /* square mosaic, fully visible */
+    max-height:420px;
+    padding:4px; gap:4px;
   }
-  .mc { border-radius:5px; }
+  .mc { border-radius:6px; }
+  .mc img { width:100%; height:100%; object-fit:cover; }
 }
 
 /* ═══════════════════════════════════════
@@ -301,10 +356,14 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
 .form-privacy { font-size:11px; color:rgba(255,255,255,.2); line-height:1.6; margin-top:10px; }
 
 @media (max-width:768px) {
-  #page-contact { overflow-y:auto; min-height:100svh; }
+  #page-contact { overflow-y:auto; min-height:100vh; min-height:100svh; }
   .contact-body { flex-direction:column; overflow:visible; }
-  .contact-right { width:100%; height:220px; order:-1; }
-  .contact-left { width:100%; padding:36px 24px; }
+  .contact-right {
+    width:100%; order:-1;
+    height:56vw; min-height:220px; max-height:320px; flex-shrink:0;
+  }
+  .contact-right img { object-position:center 20%; }
+  .contact-left { width:100%; padding:32px 20px 36px; }
   .form-grid { grid-template-columns:1fr; }
 }
 
@@ -373,14 +432,21 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
 .btn-next:disabled { opacity:.25; cursor:not-allowed; transform:none; }
 
 @media (max-width:768px) {
-  .q-page { overflow-y:auto; min-height:100svh; }
+  .q-page { overflow-y:auto; min-height:100vh; min-height:100svh; }
   .q-body { flex-direction:column; overflow:visible; }
-  .q-right { width:100%; height:45vw; min-height:180px; order:-1; }
-  .q-left { width:100%; padding:28px 20px 32px; overflow:visible; }
-  .q-question { font-size:clamp(18px,5.5vw,26px); margin-bottom:20px; }
+  .q-right {
+    width:100%; order:-1;
+    height:52vw;          /* taller so faces/subjects aren't cropped */
+    min-height:220px;
+    max-height:340px;
+    flex-shrink:0;
+  }
+  .q-right img { width:100%; height:100%; object-fit:cover; object-position:center 30%; }
+  .q-left { width:100%; padding:24px 20px 32px; overflow:visible; }
+  .q-question { font-size:clamp(17px,5vw,24px); margin-bottom:18px; }
   .q-opt { padding:13px 14px; font-size:13px; }
-  .q-letter { width:26px; height:26px; min-width:26px; font-size:10px; }
-  .q-nav-row { margin-top:20px; padding-top:16px; }
+  .q-letter { width:28px; height:28px; min-width:28px; font-size:10px; }
+  .q-nav-row { margin-top:16px; padding-top:14px; }
 }
 
 /* ═══════════════════════════════════════
@@ -454,11 +520,14 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
 .btn-book-sec:hover { color:rgba(255,255,255,.6); }
 
 @media (max-width:768px) {
-  #page-results { overflow-y:auto; min-height:100svh; }
+  #page-results { overflow-y:auto; min-height:100vh; min-height:100svh; }
   .results-body { flex-direction:column; overflow:visible; }
   .res-left { width:100%; padding:32px 20px 28px; overflow:visible; order:1; }
-  .res-right { width:100%; padding:36px 20px; order:2; }
-  .res-name { font-size:clamp(26px,7vw,38px); }
+  .res-right { width:100%; padding:36px 20px 48px; order:2; }
+  .res-name { font-size:clamp(24px,7vw,36px); }
+  .book-title { font-size:clamp(24px,7vw,38px); }
+  .book-desc { max-width:100%; }
+  .btn-book { width:100%; justify-content:center; }
 }
 
 /* ═══════════════════════════════════════
@@ -502,6 +571,120 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
     .q-left, .contact-left, .res-left { padding-bottom: calc(32px + env(safe-area-inset-bottom)); }
   }
 }
+
+/* ═══════════════════════════════════════
+   HERO SUBTITLE (smaller second line)
+═══════════════════════════════════════ */
+.hero-sub {
+  display:block;
+  font-size:clamp(22px, 3vw, 44px);   /* ~60% of parent h1 size */
+  font-weight:800;
+  letter-spacing:-.5px;
+  line-height:1.1;
+  color:rgba(255,255,255,.92);
+}
+@media (max-width:768px) {
+  .hero-sub { font-size:clamp(16px, 5.5vw, 26px); }
+}
+
+/* ═══════════════════════════════════════
+   CALENDLY MODAL
+═══════════════════════════════════════ */
+.cal-overlay {
+  display:none; position:fixed; inset:0; z-index:8000;
+  background:rgba(0,0,0,.75); backdrop-filter:blur(6px);
+  align-items:center; justify-content:center;
+  padding:20px;
+}
+.cal-overlay.open { display:flex; animation:calFadeIn .25s ease; }
+@keyframes calFadeIn { from{opacity:0;} to{opacity:1;} }
+
+.cal-modal {
+  background:#fff; border-radius:16px; overflow:hidden;
+  width:100%; max-width:780px;
+  max-height:92vh; display:flex; flex-direction:column;
+  box-shadow:0 24px 80px rgba(0,0,0,.5);
+  animation:calSlideIn .3s ease;
+}
+@keyframes calSlideIn { from{transform:translateY(24px);opacity:0;} to{transform:translateY(0);opacity:1;} }
+
+.cal-modal-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px 24px; border-bottom:1px solid #eee; flex-shrink:0;
+  background:#fff;
+}
+.cal-modal-title {
+  font-size:16px; font-weight:800; color:#000; letter-spacing:-.3px;
+}
+.cal-modal-sub {
+  font-size:12px; color:#888; margin-top:2px; font-weight:400;
+}
+.cal-close {
+  width:36px; height:36px; border-radius:50%; border:none;
+  background:#f0f0f0; cursor:pointer; display:flex; align-items:center;
+  justify-content:center; font-size:18px; color:#555;
+  transition:background .15s; flex-shrink:0;
+}
+.cal-close:hover { background:#e0e0e0; }
+
+.cal-iframe-wrap {
+  flex:1; overflow:hidden; position:relative; min-height:500px;
+}
+.cal-iframe-wrap iframe {
+  width:100%; height:100%; border:none; display:block;
+}
+
+/* Loading spinner inside modal */
+.cal-loading {
+  position:absolute; inset:0; display:flex;
+  flex-direction:column; align-items:center; justify-content:center;
+  background:#fff; z-index:1; transition:opacity .3s;
+}
+.cal-loading.hidden { opacity:0; pointer-events:none; }
+.cal-spinner {
+  width:40px; height:40px; border:2px solid #eee;
+  border-top-color:#000; border-radius:50%;
+  animation:spin .7s linear infinite; margin-bottom:16px;
+}
+.cal-loading p { font-size:13px; color:#aaa; font-weight:500; }
+
+/* ── Success confirmation screen ── */
+.cal-success {
+  display:none; flex-direction:column; align-items:center;
+  justify-content:center; text-align:center;
+  padding:56px 40px; background:#fff;
+}
+.cal-success.show { display:flex; }
+.cal-success-icon {
+  width:72px; height:72px; border-radius:50%;
+  background:#000; display:flex; align-items:center;
+  justify-content:center; margin-bottom:24px;
+  font-size:32px; animation:popIn .4s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes popIn { from{transform:scale(0);} to{transform:scale(1);} }
+.cal-success h3 {
+  font-size:26px; font-weight:900; color:#000;
+  letter-spacing:-.5px; margin-bottom:10px;
+}
+.cal-success p { font-size:15px; color:#666; line-height:1.65; max-width:360px; margin-bottom:32px; }
+.cal-success-close {
+  background:#000; color:#fff; border:none; cursor:pointer;
+  font-size:13px; font-weight:700; padding:14px 32px;
+  border-radius:40px; font-family:'Inter',sans-serif;
+  transition:background .15s;
+}
+.cal-success-close:hover { background:#222; }
+
+@media (max-width:768px) {
+  .cal-overlay { padding:0; align-items:flex-end; }
+  .cal-modal {
+    border-radius:20px 20px 0 0; max-height:96vh;
+    animation:calSlideUp .3s ease;
+  }
+  @keyframes calSlideUp { from{transform:translateY(100%);} to{transform:translateY(0);} }
+  .cal-iframe-wrap { min-height:420px; }
+  .cal-success { padding:40px 28px; }
+}
 </style>
 </head>
 <body>
@@ -510,6 +693,15 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
 <div id="loader">
   <div class="loader-ring"></div>
   <div class="loader-txt">Analysing your pattern…</div>
+</div>
+
+<!-- MOBILE NAV DRAWER — shared across all pages -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <a href="https://katanselmo.com/#about" onclick="closeDrawer()">About Kat</a>
+  <a href="https://katanselmo.com/#course" onclick="closeDrawer()">The Program</a>
+  <a href="https://katanselmo.com/#pillars" onclick="closeDrawer()">The Journey</a>
+  <a href="https://katanselmo.com/#contact" onclick="closeDrawer()">Coaching</a>
+  <button class="drawer-cta" onclick="closeDrawer(); showPage('page2')">Take the Quiz →</button>
 </div>
 
 
@@ -532,7 +724,7 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
       </button>
       <a href="https://katanselmo.com" class="nav-login">Log in</a>
       <button class="btn-start-nav" onclick="showPage('page2')">Start now</button>
-      <button class="nav-hamburger" aria-label="Menu" onclick="showPage('page2')">
+      <button class="nav-hamburger" id="ham1" aria-label="Menu" onclick="toggleDrawer(this)">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -544,42 +736,49 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
 
     <!-- Bottom-left: headline + CTA -->
     <div class="hero-text">
-      <h1>Life is extraordinary.<br>Unleash yours.</h1>
+      <h1>Life is<br>extraordinary.<br><span class="hero-sub">Learn to live yours Fully</span></h1>
       <button class="btn-start-hero" onclick="showPage('page2')">Start Now</button>
     </div>
 
-    <!-- Bottom-right: YouTube Short — desktop only inside hero -->
+    <!-- Bottom-right: YouTube thumbnail → opens video on YouTube (Error 153 = embedding disabled) -->
     <div class="video-card" id="videoCardDesktop">
       <div class="video-label">Latest from Kat</div>
-      <div class="video-embed">
-        <iframe
-          src="https://www.youtube.com/embed/zFO2ka9Cxts?autoplay=1&mute=1&loop=1&playlist=zFO2ka9Cxts&controls=1&modestbranding=1&rel=0&playsinline=1"
-          allow="autoplay; encrypted-media; picture-in-picture"
-          allowfullscreen
-          title="Kat Anselmo — Latest video"
-        ></iframe>
-      </div>
+      <a class="video-thumb-link" href="https://youtube.com/shorts/zFO2ka9Cxts" target="_blank" rel="noopener" aria-label="Watch on YouTube">
+        <img
+          class="video-thumb-img"
+          src="https://i.ytimg.com/vi/zFO2ka9Cxts/hqdefault.jpg"
+          alt="Watch latest video from Kat Anselmo"
+          loading="lazy"
+        >
+        <div class="video-thumb-overlay">
+          <div class="video-play-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span class="video-watch-label">Watch on YouTube</span>
+        </div>
+      </a>
     </div>
   </div>
 
-  <!-- ── MOBILE ONLY: video below the hero, visible on scroll ── -->
+  <!-- ── MOBILE ONLY: video thumbnail below hero ── -->
   <div id="videoMobile" style="display:none; background:#111; border-top:1px solid rgba(255,255,255,.06);">
-    <div style="padding:14px 20px 8px; display:flex; align-items:center; justify-content:space-between;">
+    <div style="padding:14px 20px 10px; display:flex; align-items:center; justify-content:space-between;">
       <span style="font-size:9px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,.4);">Latest from Kat</span>
       <button onclick="showPage('page2')" style="font-size:11px; font-weight:700; color:#000; background:#fff; border:none; cursor:pointer; padding:7px 16px; border-radius:40px;">Take the quiz →</button>
     </div>
-    <!-- Wider embed for mobile — full width 16:9 aspect -->
-    <div style="position:relative; width:100%; padding-top:56.25%; background:#000;">
-      <iframe
-        id="mobileIframe"
-        style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"
-        src="https://www.youtube.com/embed/zFO2ka9Cxts?autoplay=0&mute=0&controls=1&modestbranding=1&rel=0&playsinline=1"
-        allow="autoplay; encrypted-media; picture-in-picture"
-        allowfullscreen
-        title="Kat Anselmo — Latest video"
-      ></iframe>
-    </div>
-    <div style="padding:14px 20px 20px; font-size:12px; color:rgba(255,255,255,.3); line-height:1.6;">
+    <a href="https://youtube.com/shorts/zFO2ka9Cxts" target="_blank" rel="noopener"
+       style="display:block; position:relative; width:100%; background:#000; text-decoration:none;">
+      <img src="https://i.ytimg.com/vi/zFO2ka9Cxts/hqdefault.jpg"
+           alt="Watch latest video from Kat Anselmo"
+           style="width:100%; max-height:260px; object-fit:cover; display:block; opacity:.85;">
+      <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;">
+        <div style="width:56px; height:56px; background:rgba(255,255,255,.95); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <span style="font-size:12px; font-weight:700; color:#fff; letter-spacing:1px; text-transform:uppercase;">Watch on YouTube</span>
+      </div>
+    </a>
+    <div style="padding:12px 20px 20px; font-size:12px; color:rgba(255,255,255,.3); line-height:1.6; text-align:center;">
       Scroll up to start your free quiz ↑
     </div>
   </div>
@@ -599,7 +798,7 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
     </ul>
     <div class="nav-right">
       <a href="https://katanselmo.com" class="nav-login">Log in</a>
-      <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="nav-hamburger" id="ham2" aria-label="Menu" onclick="toggleDrawer(this)"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
@@ -697,9 +896,7 @@ body { font-family:'Inter',sans-serif; background:#000; color:#fff; overflow-x:h
         <div class="book-feat"><span class="book-dot"></span>Personalised to your result</div>
         <div class="book-feat"><span class="book-dot"></span>Walk away with clarity</div>
       </div>
-      <!-- Google Calendar-->
-      <!--a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1GkcRlOUhHiT0jzvaiHLZKrCjnWA-dl1xp6VwymkQsPiprFxIeQ_2zeeGcWaBECu0rfLOYZlV2" target="_blank" rel="noopener" class="btn-book">Book my free call with Kat →</a-->
-      <a href="https://calendly.com/katagendas/30min" target="_blank" rel="noopener" class="btn-book">Book my free call with Kat →</a>
+      <button class="btn-book" onclick="openCalendly()">Book my free call with Kat →</button>
       <a href="https://katanselmo.com/#course" class="btn-book-sec">Or explore The Path to Success →</a>
     </div>
   </div>
@@ -715,19 +912,49 @@ function applyLayout() {
   const mobile = window.innerWidth <= 768;
   const deskCard = document.getElementById('videoCardDesktop');
   const mobCard  = document.getElementById('videoMobile');
-  if (deskCard) deskCard.style.display = mobile ? 'none'  : '';
+  if (deskCard) deskCard.style.display = mobile ? 'none' : '';
   if (mobCard)  mobCard.style.display  = mobile ? 'block' : 'none';
 }
 applyLayout();
 window.addEventListener('resize', applyLayout);
 
+/* ── Mobile nav drawer ── */
+let _activeHam = null;
+
+function toggleDrawer(btn) {
+  const drawer = document.getElementById('mobileDrawer');
+  const isOpen = drawer.classList.contains('open');
+  if (isOpen) {
+    closeDrawer();
+  } else {
+    drawer.classList.add('open');
+    if (_activeHam) _activeHam.classList.remove('open');
+    btn.classList.add('open');
+    _activeHam = btn;
+  }
+}
+
+function closeDrawer() {
+  document.getElementById('mobileDrawer').classList.remove('open');
+  if (_activeHam) { _activeHam.classList.remove('open'); _activeHam = null; }
+}
+
+/* Close drawer when tapping outside */
+document.addEventListener('click', function(e) {
+  const drawer = document.getElementById('mobileDrawer');
+  if (!drawer.classList.contains('open')) return;
+  if (!drawer.contains(e.target) && !e.target.closest('.nav-hamburger')) {
+    closeDrawer();
+  }
+});
+
 /* ── Page navigation ── */
 function showPage(id) {
+  closeDrawer(); // always close drawer on navigation
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const el = document.getElementById(id);
   if (el) {
     el.classList.add('active');
-    // Scroll each page's scrollable content to top
     el.scrollTo?.(0, 0);
     window.scrollTo(0, 0);
   }
@@ -950,6 +1177,101 @@ function submitContact() {
   }, 2000);
 }
 
+/* ══════════════════════════════════════════
+   CALENDLY INLINE MODAL
+══════════════════════════════════════════ */
+const CAL_URL = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1GkcRlOUhHiT0jzvaiHLZKrCjnWA-dl1xp6VwymkQsPiprFxIeQ_2zeeGcWaBECu0rfLOYZlV2';
+
+function openCalendly() {
+  const overlay  = document.getElementById('calOverlay');
+  const iframe   = document.getElementById('calIframe');
+  const loading  = document.getElementById('calLoading');
+  const success  = document.getElementById('calSuccess');
+  const iframeWrap = document.getElementById('calIframeWrap');
+
+  // Reset state
+  loading.classList.remove('hidden');
+  success.classList.remove('show');
+  iframeWrap.style.display = 'block';
+
+  // Set iframe src only when opening (lazy load)
+  if (!iframe.src || iframe.src === window.location.href) {
+    iframe.src = CAL_URL;
+  }
+
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden'; // prevent bg scroll
+}
+
+function closeCalendly() {
+  document.getElementById('calOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function iframeLoaded() {
+  document.getElementById('calLoading').classList.add('hidden');
+}
+
+// Close when clicking the dark overlay backdrop (not the modal itself)
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('calOverlay')) {
+    closeCalendly();
+  }
+}
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeCalendly();
+});
+
+// Listen for Calendly booking confirmed event
+// Google Calendar Appointment Scheduling fires a postMessage on completion
+window.addEventListener('message', function(e) {
+  // Calendly fires: { event: 'calendly.event_scheduled' }
+  // Google Calendar fires a redirect / url change we detect below
+  if (e.data && e.data.event && e.data.event === 'calendly.event_scheduled') {
+    showBookingSuccess();
+    return;
+  }
+  // Also handle plain string message some calendar tools fire
+  if (typeof e.data === 'string' && e.data.includes('scheduled')) {
+    showBookingSuccess();
+  }
+});
+
+// Polling fallback: detect when Google Calendar redirects to a confirmation page
+// by watching the iframe URL change (works when same-origin; shows success after delay otherwise)
+let _calPollTimer = null;
+function startCalendarPolling() {
+  _calPollTimer = setInterval(function() {
+    try {
+      const iframeHref = document.getElementById('calIframe').contentWindow.location.href;
+      // Google Calendar confirmation pages contain "complete" or "booked" in the URL
+      if (iframeHref.includes('complete') || iframeHref.includes('booked') || iframeHref.includes('confirmed')) {
+        clearInterval(_calPollTimer);
+        showBookingSuccess();
+      }
+    } catch(e) {
+      // Cross-origin — can't read URL. Use the 8-minute timeout fallback below instead.
+    }
+  }, 1500);
+}
+
+function showBookingSuccess() {
+  clearInterval(_calPollTimer);
+  const iframeWrap = document.getElementById('calIframeWrap');
+  const success    = document.getElementById('calSuccess');
+  // Fade out iframe, show success
+  iframeWrap.style.display = 'none';
+  success.classList.add('show');
+}
+
+// Start polling when iframe loads
+document.getElementById('calIframe').addEventListener('load', function() {
+  iframeLoaded();
+  startCalendarPolling();
+});
+
 /* ── Google Sheets backend ──
    URLSearchParams body = "simple request" = no CORS preflight = works with no-cors
 ── */
@@ -966,5 +1288,49 @@ function saveToSheet(data) {
   } catch(e) { console.warn('saveToSheet setup error:', e); }
 }
 </script>
+
+<!-- ═══════════════════════════════════════
+     CALENDLY INLINE MODAL
+═══════════════════════════════════════ -->
+<div class="cal-overlay" id="calOverlay" onclick="handleOverlayClick(event)">
+  <div class="cal-modal" id="calModal">
+
+    <!-- Header -->
+    <div class="cal-modal-header">
+      <div>
+        <div class="cal-modal-title">Book your free 10-min call with Kat</div>
+        <div class="cal-modal-sub">No pressure · No pitch · Just clarity</div>
+      </div>
+      <button class="cal-close" onclick="closeCalendly()" aria-label="Close">✕</button>
+    </div>
+
+    <!-- Iframe + loading spinner -->
+    <div class="cal-iframe-wrap" id="calIframeWrap">
+      <div class="cal-loading" id="calLoading">
+        <div class="cal-spinner"></div>
+        <p>Loading Kat's calendar…</p>
+      </div>
+      <iframe
+        id="calIframe"
+        src=""
+        title="Book a free call with Kat Anselmo"
+        onload="iframeLoaded()"
+      ></iframe>
+    </div>
+
+    <!-- Success screen (hidden until booking confirmed) -->
+    <div class="cal-success" id="calSuccess">
+      <div class="cal-success-icon">✓</div>
+      <h3>You're booked!</h3>
+      <p>
+        Your free 10-minute consultation with Kat is confirmed.<br>
+        Check your email for the details — we can't wait to speak with you.
+      </p>
+      <button class="cal-success-close" onclick="closeCalendly()">Close &amp; return to results</button>
+    </div>
+
+  </div>
+</div>
+
 </body>
 </html>
