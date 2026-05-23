@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#000000">
-<meta name="description" content="Kat Anselmo — Personal transformation coach helping you reconnect with yourself, find clarity, and live fully.">
-<meta property="og:title" content="Kat Anselmo — Life is extraordinary. Learn to live yours fully.">
-<meta property="og:description" content="Discover your pattern, find your direction, and take the next step with Kat Anselmo — personal coach and creator of the Inner Success Method™.">
+<meta name="description" content="Kat Anselmo, Personal transformation coach helping you reconnect with yourself, find clarity, and live fully.">
+<meta property="og:title" content="Kat Anselmo, Life is extraordinary. Learn to live yours fully.">
+<meta property="og:description" content="Discover your pattern, find your direction, and take the next step with Kat Anselmo, personal coach and creator of the Inner Success Method™.">
 <meta property="og:image" content="https://yt3.googleusercontent.com/EnrWO-MyVOdoss2sHWWYDowAPRiAeF9di5noGTQTJ4oD16N6YJidL72GyLL6UGkLJp0vILEt=w1200">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<title>Kat Anselmo — Life is extraordinary. Learn to live yours fully.</title>
+<title>Kat Anselmo, Life is extraordinary. Learn to live yours fully.</title>
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/joedcosta/katanselmo.com/main/images/Logo_KatsYoga.png">
 <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/joedcosta/katanselmo.com/main/images/Logo_KatsYoga.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@ img { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
 
 /* ══════════════════════════════════════════
-   FIXED NAV — black, stays on top
+   FIXED NAV, black, stays on top
 ══════════════════════════════════════════ */
 .site-nav {
   position: fixed; top: 0; left: 0; right: 0;
@@ -119,17 +119,26 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ══════════════════════════════════════════
-   HOMEPAGE — scrollable sections
+   HOMEPAGE, scrollable sections
    All sections sit below the fixed nav (pt:64px)
 ══════════════════════════════════════════ */
 .homepage { padding-top: 64px; }
 
 /* ── HERO ── */
 .hero {
-  position: relative; width: 100%;
-  height: calc(100vh - 64px);
-  height: calc(100dvh - 64px);
-  overflow: hidden; background: #000;
+  /* Black background shows around rounded image, Tony Robbins look */
+  background: #000;
+  padding: 20px 20px 0;
+}
+.hero-inner {
+  /* The actual rounded image container */
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 64px - 20px);
+  height: calc(100dvh - 64px - 20px);
+  min-height: 500px;
+  overflow: hidden;
+  border-radius: 24px;
 }
 .hero-bg {
   position: absolute; inset: 0;
@@ -139,11 +148,11 @@ a { text-decoration: none; color: inherit; }
 .hero-bg::after {
   content: ''; position: absolute; inset: 0;
   background:
-    linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.2) 40%, transparent 65%),
-    linear-gradient(to right, rgba(0,0,0,.5) 0%, transparent 55%);
+    linear-gradient(to top, rgba(0,0,0,.8) 0%, rgba(0,0,0,.2) 45%, transparent 70%),
+    linear-gradient(to right, rgba(0,0,0,.55) 0%, transparent 55%);
 }
 .hero-content {
-  position: absolute; bottom: 56px; left: 52px;
+  position: absolute; bottom: 52px; left: 52px;
   z-index: 2; max-width: 640px;
 }
 .hero-content h1 {
@@ -164,7 +173,7 @@ a { text-decoration: none; color: inherit; }
 }
 .hero-cta:hover { background: #e0e0e0; }
 
-/* Video card — Tony Robbins style: poster + play button → lightbox */
+/* Video card, Tony Robbins style: poster + play button → lightbox */
 .hero-video-card {
   position: absolute; bottom: 36px; right: 40px; z-index: 3;
   width: 300px; border-radius: 20px; overflow: hidden;
@@ -228,13 +237,16 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 768px) {
   .hero { height: 75svh; min-height: 440px; }
   .hero-content { bottom: 28px; left: 20px; right: 20px; }
-  .hero-content h1 { font-size: clamp(28px, 9vw, 42px); margin-bottom: 36px; }
+  .hero-content h1 { font-size: clamp(28px, 9vw, 42px); margin-bottom: 32px; }
   .hero-sub { font-size: clamp(16px, 5.5vw, 24px); }
   .hero-cta { padding: 14px 30px; font-size: 14px; }
-  .hero-video-card { width: calc(100% - 40px); right: 20px; bottom: 20px; }
+  .hero-video-card { display: none !important; }
+  .hero { padding: 12px 12px 0; }
+  .hero-inner { height: 75svh; min-height: 400px; border-radius: 18px; }
+  .hero-content { bottom: 24px; left: 20px; right: 20px; }
 }
 
-/* Mobile — show video section as a "Watch Kat" strip below hero */
+/* Mobile video strip, only visible below 768px */
 .mobile-video {
   display: none; background: #111;
   border-top: 1px solid rgba(255,255,255,.06);
@@ -279,7 +291,7 @@ a { text-decoration: none; color: inherit; }
   color: rgba(255,255,255,.3); text-align: center;
 }
 
-/* ── QUIZ STRIP — call to action between hero and pillars ── */
+/* ── QUIZ STRIP, call to action between hero and pillars ── */
 .quiz-strip {
   background: #fff; color: #000;
   display: flex; align-items: center; justify-content: space-between;
@@ -363,11 +375,11 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ── PROGRAM ── */
-.program { background: #fff; color: #000; }
+.program { background: #fff; color: #000; padding-top: 20px; }
 .program-hero {
   position: relative; height: 70vh; min-height: 480px; overflow: hidden;
   border-radius: 24px;
-  margin: 32px;
+  margin: 48px 48px 0;
 }
 .program-hero img {
   width: 100%; height: 100%; object-fit: cover;
@@ -449,6 +461,12 @@ a { text-decoration: none; color: inherit; }
 .program-right img { width: 100%; height: 100%; object-fit: cover; }
 
 @media (max-width: 1024px) { .program-body { flex-direction: column; } .program-left, .program-right { width: 100%; } .program-right { height: 50vw; } }
+@media (max-width: 768px) {
+  .program-hero { margin: 24px 16px 0; border-radius: 16px; }
+  .program-hero-content { padding: 24px 20px; }
+  .program-left { padding: 32px 20px; }
+  .program-price-box { flex-direction: column; align-items: flex-start; }
+}
 @media (max-width: 768px) {
   .program-hero-content { padding: 32px 20px; }
   .program-left { padding: 40px 20px; }
@@ -979,7 +997,7 @@ a { text-decoration: none; color: inherit; }
   <a href="#program"  onclick="closeDrawer()">The Program</a>
   <a href="#journey"  onclick="closeDrawer()">The Journey</a>
   <a href="#coaching" onclick="closeDrawer()">Coaching</a>
-  <button class="drawer-cta" onclick="closeDrawer(); startQuiz()">Take the Free Quiz →</button>
+  <button class="drawer-cta" onclick="closeDrawer(); startQuiz()">Take the Free Quiz</button>
 </div>
 
 <!-- Loader -->
@@ -998,7 +1016,7 @@ a { text-decoration: none; color: inherit; }
       <div class="cal-success" id="calSuccess">
         <div class="cal-success-icon">✓</div>
         <h3>You're booked!</h3>
-        <p>Your free 10-minute call with Kat is confirmed.<br>Check your email for the details — we can't wait to speak with you.</p>
+        <p>Your free 10-minute call with Kat is confirmed.<br>Check your email for the details, we we look forward to speaking with you.</p>
         <button class="cal-success-close" onclick="closeCalendly()">Close &amp; return to your results</button>
       </div>
     </div>
@@ -1011,22 +1029,24 @@ a { text-decoration: none; color: inherit; }
 ══════════════════════════════════════ -->
 <div class="homepage" id="homepage">
 
-  <!-- HERO -->
+  <!-- HERO: black background + rounded image = Tony Robbins look -->
   <section class="hero" id="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <h1>Life is<br>extraordinary.<br><span class="hero-sub">Learn to live yours fully</span></h1>
-      <button class="hero-cta" onclick="startQuiz()">Start Now</button>
-    </div>
-    <!-- Video card: poster + play → lightbox (Tony Robbins style) -->
-    <div class="hero-video-card" onclick="openVideoModal()">
-      <div class="hero-video-label">Latest from Kat</div>
-      <img class="hero-video-poster" src="https://i.ytimg.com/vi/zFO2ka9Cxts/maxresdefault.jpg" alt="Watch Kat's latest video" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/zFO2ka9Cxts/hqdefault.jpg'">
-      <div class="hero-video-play">
-        <div class="hero-video-play-btn">
-          <svg viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg>
+    <div class="hero-inner">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <h1>Life is<br>extraordinary.<br><span class="hero-sub">Learn to live yours fully</span></h1>
+        <button class="hero-cta" onclick="startQuiz()">Start Now</button>
+      </div>
+      <!-- Video card: visible on desktop only, hidden on mobile via CSS -->
+      <div class="hero-video-card" onclick="openVideoModal()">
+        <div class="hero-video-label">Latest from Kat</div>
+        <img class="hero-video-poster" src="https://i.ytimg.com/vi/zFO2ka9Cxts/maxresdefault.jpg" alt="Watch Kat's latest video" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/zFO2ka9Cxts/hqdefault.jpg'">
+        <div class="hero-video-play">
+          <div class="hero-video-play-btn">
+            <svg viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span class="hero-video-play-text">Watch</span>
         </div>
-        <span class="hero-video-play-text">Watch</span>
       </div>
     </div>
   </section>
@@ -1035,7 +1055,7 @@ a { text-decoration: none; color: inherit; }
   <div class="mobile-video">
     <div class="mobile-video-header">
       <span class="mobile-video-label">Latest from Kat</span>
-      <button class="mobile-video-cta" onclick="startQuiz()">Take the quiz →</button>
+      <button class="mobile-video-cta" onclick="startQuiz()">Take the quiz</button>
     </div>
     <div class="mobile-video-poster-wrap" onclick="openVideoModal()">
       <img src="https://i.ytimg.com/vi/zFO2ka9Cxts/maxresdefault.jpg" alt="Watch Kat's latest video" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/zFO2ka9Cxts/hqdefault.jpg'">
@@ -1064,7 +1084,7 @@ a { text-decoration: none; color: inherit; }
     <h2>Pillars for an<br>Extraordinary Life</h2>
     <div class="pillars-grid">
       <div class="pillar-card">
-        <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=600&q=80&auto=format&fit=crop" alt="Mindset" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1200&q=90&fit=crop&auto=format&fit=crop" alt="Mindset" loading="lazy">
         <div class="pillar-card-content">
           <span class="pillar-number">01</span>
           <h3>Mindset</h3>
@@ -1072,15 +1092,15 @@ a { text-decoration: none; color: inherit; }
         </div>
       </div>
       <div class="pillar-card">
-        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&q=80&auto=format&fit=crop" alt="Relationships" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1200&q=90&fit=crop&auto=format&fit=crop" alt="Relationships" loading="lazy">
         <div class="pillar-card-content">
           <span class="pillar-number">02</span>
           <h3>Relationships</h3>
-          <p>Learn to connect deeply — starting with the relationship you have with yourself.</p>
+          <p>Learn to connect deeply, starting with the relationship you have with yourself.</p>
         </div>
       </div>
       <div class="pillar-card">
-        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=80&auto=format&fit=crop" alt="Purpose" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1200&q=90&fit=crop&auto=format&fit=crop" alt="Purpose" loading="lazy">
         <div class="pillar-card-content">
           <span class="pillar-number">03</span>
           <h3>Purpose</h3>
@@ -1088,7 +1108,7 @@ a { text-decoration: none; color: inherit; }
         </div>
       </div>
       <div class="pillar-card">
-        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80&auto=format&fit=crop" alt="Clarity" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1200&q=90&fit=crop&auto=format&fit=crop" alt="Clarity" loading="lazy">
         <div class="pillar-card-content">
           <span class="pillar-number">04</span>
           <h3>Clarity</h3>
@@ -1098,17 +1118,17 @@ a { text-decoration: none; color: inherit; }
     </div>
   </section>
 
-  <!-- PROGRAM — Self-contained product page (Tony Robbins strategy) -->
+  <!-- PROGRAM, Self-contained product page (Tony Robbins strategy) -->
   <section class="program" id="program">
 
     <!-- Hero: full-bleed emotion-first image with headline -->
     <div class="program-hero">
-      <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=1600&q=80&auto=format&fit=crop" alt="The Secret to Inner Success" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1600&q=85&auto=format&fit=crop" alt="The Secret to Inner Success" loading="lazy">
       <div class="program-hero-content">
         <div class="section-label">30-Day Flagship Programme</div>
         <h2>The Secret to<br>Inner Success</h2>
-        <p>Nobody ever taught you how to handle your emotions, trust yourself, or know what you truly want. This changes that — in 30 days.</p>
-        <button class="btn-program-hero" onclick="document.getElementById('program-enrol').scrollIntoView({behavior:'smooth'})">Discover the Programme ↓</button>
+        <p>Nobody ever taught you how to handle your emotions, trust yourself, or know what you truly want. This changes that, in 30 days.</p>
+        <button class="btn-program-hero" onclick="document.getElementById('program-enrol').scrollIntoView({behavior:'smooth'})">Discover the Programme</button>
       </div>
     </div>
 
@@ -1122,10 +1142,10 @@ a { text-decoration: none; color: inherit; }
           <div class="prog-prob-item"><span class="prob-icon">→</span>You keep repeating the same patterns</div>
           <div class="prog-prob-item"><span class="prob-icon">→</span>You put everyone else first and lose yourself</div>
           <div class="prog-prob-item"><span class="prob-icon">→</span>You make decisions from fear, not from clarity</div>
-          <div class="prog-prob-item"><span class="prob-icon">→</span>You know what you don't want — but not what you do</div>
-          <div class="prog-prob-item"><span class="prob-icon">→</span>You've tried to change before — but nothing stuck</div>
+          <div class="prog-prob-item"><span class="prob-icon">→</span>You know what you don't want, but not what you do</div>
+          <div class="prog-prob-item"><span class="prob-icon">→</span>You've tried to change before, but nothing stuck</div>
         </div>
-        <p class="prog-problem-note">If any of these feel true — this programme was built for you.</p>
+        <p class="prog-problem-note">If any of these feel true, this programme was built for you.</p>
       </div>
     </div>
 
@@ -1134,7 +1154,7 @@ a { text-decoration: none; color: inherit; }
       <div class="program-left">
         <h3>The 30-Day Life<br>Clarity Experience</h3>
         <p>Most personal development works on the surface. This goes underneath. Using the <strong>Inner Success Method™</strong>, you'll spend 30 days reconnecting with yourself through structured daily reflection, personalised insight, and a private session with Kat designed to reveal the hidden patterns quietly running your life.</p>
-        <p>By the end, you won't just have new information — you'll have your own written <strong>Personal Inner Success Book</strong>: a guide built entirely from your own self-knowledge that you can return to whenever you feel lost.</p>
+        <p>By the end, you won't just have new information, you'll have your own written <strong>Personal Inner Success Book</strong>: a guide built entirely from your own self-knowledge that you can return to whenever you feel lost.</p>
 
         <!-- Who it's for -->
         <div class="prog-for-box">
@@ -1143,7 +1163,7 @@ a { text-decoration: none; color: inherit; }
             <li>You're going through a life transition and don't know where to go next</li>
             <li>You've experienced burnout, overwhelm, or emotional exhaustion</li>
             <li>You struggle with self-doubt and keep second-guessing yourself</li>
-            <li>You want clarity about what you actually want — not what others expect</li>
+            <li>You want clarity about what you actually want, not what others expect</li>
           </ul>
         </div>
 
@@ -1151,23 +1171,23 @@ a { text-decoration: none; color: inherit; }
           <h4>Everything included</h4>
           <div class="program-item">
             <div class="program-item-icon">✓</div>
-            <div><strong>30 days of guided daily reflection</strong> — structured journalling prompts that build self-knowledge progressively</div>
+            <div><strong>30 days of guided daily reflection</strong>, structured journalling prompts that build self-knowledge progressively</div>
           </div>
           <div class="program-item">
             <div class="program-item-icon">✓</div>
-            <div><strong>Private 1:1 Inner Alignment Reading with Kat</strong> — a personalised session to identify your hidden emotional blocks and subconscious patterns</div>
+            <div><strong>Private 1:1 Inner Alignment Reading with Kat</strong>, a personalised session to identify your hidden emotional blocks and subconscious patterns</div>
           </div>
           <div class="program-item">
             <div class="program-item-icon">✓</div>
-            <div><strong>Your Personal Inner Success Book</strong> — a written guide built from your own journey, to return to whenever you need it</div>
+            <div><strong>Your Personal Inner Success Book</strong>, a written guide built from your own journey, to return to whenever you need it</div>
           </div>
           <div class="program-item">
             <div class="program-item-icon">✓</div>
-            <div><strong>Inner Success Library access</strong> — ebooks, reflection workbooks, and mindset trainings for ongoing growth</div>
+            <div><strong>Inner Success Library access</strong>, ebooks, reflection workbooks, and mindset trainings for ongoing growth</div>
           </div>
           <div class="program-item">
             <div class="program-item-icon">✓</div>
-            <div><strong>Optional private Telegram community</strong> — share reflections, ask questions, and feel supported by others on the same journey</div>
+            <div><strong>Optional private Telegram community</strong>, share reflections, ask questions, and feel supported by others on the same journey</div>
           </div>
         </div>
 
@@ -1188,7 +1208,7 @@ a { text-decoration: none; color: inherit; }
             <ul>
               <li>Grounded and emotionally aware</li>
               <li>Reconnected with your inner voice</li>
-              <li>Understanding your patterns — and how to shift them</li>
+              <li>Understanding your patterns, and how to shift them</li>
               <li>Confident in your choices and direction</li>
             </ul>
           </div>
@@ -1201,14 +1221,14 @@ a { text-decoration: none; color: inherit; }
             <div class="price-sub">One-time investment · Lifetime access · Starts when you're ready</div>
           </div>
           <div class="prog-cta-stack">
-            <a href="https://payhip.com/b/zwPqE" target="_blank" rel="noopener" class="btn-enroll">Enrol Now →</a>
-            <button class="btn-enroll-soft" onclick="openCalendly()">Not sure? Book a free call first</button>
+            <a href="https://payhip.com/b/zwPqE" target="_blank" rel="noopener" class="btn-enroll">Enrol Now</a>
+            <button class="btn-enroll-soft" onclick="openCalendly()">Not sure? Book a free 10-min call first</button>
           </div>
         </div>
       </div>
 
       <div class="program-right">
-        <img src="https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=800&q=80&auto=format&fit=crop" alt="" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&q=85&auto=format&fit=crop" alt="30-day clarity experience" loading="lazy">
       </div>
     </div>
   </section>
@@ -1223,9 +1243,9 @@ a { text-decoration: none; color: inherit; }
         <div class="jc-card-content">
           <div class="jc-card-tag">The Journey · 1:1 Coaching</div>
           <h3>Inner Clarity<br>Session</h3>
-          <p>Stop guessing. Start knowing yourself. You bring what you're stuck on — a decision, a pattern, a relationship, a direction. Kat connects with your energy field and reflects back exactly what she finds: the hidden blocks, the blind spots, the patterns quietly running your life. Most people feel immediate clarity just from having it named.</p>
+          <p>Stop guessing. Start knowing yourself. You bring what you're stuck on, a decision, a pattern, a relationship, a direction. Kat connects with your energy field and reflects back exactly what she finds: the hidden blocks, the blind spots, the patterns quietly running your life. Most people feel immediate clarity just from having it named.</p>
           <div class="jc-price">From <strong>€90</strong> · 60-minute 1:1 session</div>
-          <button class="btn-jc" onclick="openCalendly()">Book a Free Discovery Call First →</button>
+          <button class="btn-jc" onclick="openCalendly()">Book a Free Discovery Call</button>
         </div>
       </div>
       <div class="jc-card">
@@ -1233,9 +1253,9 @@ a { text-decoration: none; color: inherit; }
         <div class="jc-card-content">
           <div class="jc-card-tag">Coaching · Free Call</div>
           <h3>Free 10-Min<br>Consultation</h3>
-          <p>Not sure where to start? Book a free 10-minute call with Kat. She'll listen, ask the right questions, and help you understand which path is right for you — no pressure, no pitch.</p>
+          <p>Not sure where to start? Book a free 10-minute call with Kat. She'll listen, ask the right questions, and help you understand which path is right for you, no pressure, no pitch.</p>
           <div class="jc-price"><strong>Free</strong></div>
-          <button class="btn-jc" onclick="openCalendly()">Book Free Call →</button>
+          <button class="btn-jc" onclick="openCalendly()">Book a Free Call</button>
         </div>
       </div>
     </div>
@@ -1251,13 +1271,13 @@ a { text-decoration: none; color: inherit; }
         <div class="section-label">About Kat</div>
         <h2>I'm Kat. And I've been<br><em>where you are.</em></h2>
         <div class="about-body">
-          <p>Life was good — until it wasn't. One day everything changed. And in that moment I realised: life is short, and I wasn't truly living mine.</p>
-          <p>So I made a decision. I quit my job, signed a one-year contract with myself, and showed up every single day — no matter what. <strong>I didn't have a plan. I had a promise.</strong> And that promise changed everything.</p>
-          <p>I found my purpose. I found myself. And I realised that without knowing it, I had created a formula — a way back to yourself that actually works.</p>
+          <p>Life was good, until it wasn't. One day everything changed. And in that moment I realised: life is short, and I wasn't truly living mine.</p>
+          <p>So I made a decision. I quit my job, signed a one-year contract with myself, and showed up every single day, no matter what. <strong>I didn't have a plan. I had a promise.</strong> And that promise changed everything.</p>
+          <p>I found my purpose. I found myself. And I realised that without knowing it, I had created a formula, a way back to yourself that actually works.</p>
           <p>Now it's my mission to share it. Because I believe this deeply: <strong>you can only guide someone through what you've already walked through yourself.</strong> I've done the work. I know the way. And I'm here to walk you through it too.</p>
         </div>
         <div class="about-cta">
-          <button class="btn-about" onclick="startQuiz()">Discover Your Pattern →</button>
+          <button class="btn-about" onclick="startQuiz()">Discover Your Pattern</button>
         </div>
       </div>
     </div>
@@ -1282,7 +1302,7 @@ a { text-decoration: none; color: inherit; }
       </div>
       <div class="testimonial-card">
         <div class="testimonial-quote">"</div>
-        <p>The 30-day experience was a turning point for me. I finally understand the patterns I've been repeating my whole life — and I have real tools to change them.</p>
+        <p>The 30-day experience was a turning point for me. I finally understand the patterns I've been repeating my whole life, and I have real tools to change them.</p>
         <div class="testimonial-author">Sofia R.</div>
         <div class="testimonial-role">30-Day Clarity Experience</div>
       </div>
@@ -1300,7 +1320,7 @@ a { text-decoration: none; color: inherit; }
     <div class="final-cta-bg"></div>
     <div class="final-cta-content">
       <h2>The life you want<br>already exists.</h2>
-      <p>You just need to find the way back to yourself. Start with the free quiz — it takes two minutes and it might change everything.</p>
+      <p>You just need to find the way back to yourself. Start with the free quiz, it takes two minutes and it might change everything.</p>
       <div class="final-cta-btns">
         <button class="btn-cta-primary" onclick="startQuiz()">Take the Free Quiz</button>
         <button class="btn-cta-secondary" onclick="openCalendly()">Book a Free Call</button>
@@ -1331,7 +1351,7 @@ a { text-decoration: none; color: inherit; }
   <div class="vid-modal" id="vidModal">
     <button class="vid-close" onclick="closeVideoModal()">✕ Close</button>
     <!-- src set by JS on open so video doesn't preload -->
-    <iframe id="vidIframe" src="about:blank" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Kat Anselmo — Latest video"></iframe>
+    <iframe id="vidIframe" src="about:blank" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Kat Anselmo, Latest video"></iframe>
   </div>
 </div>
 
@@ -1351,7 +1371,7 @@ a { text-decoration: none; color: inherit; }
       <div class="q-left" style="justify-content:center;">
         <h2 style="font-size:clamp(28px,3.8vw,54px);font-weight:900;color:#fff;letter-spacing:-1px;line-height:1.08;margin-bottom:14px;">Ready to take<br>control of<br>your life?</h2>
         <p style="font-size:17px;color:rgba(255,255,255,.55);margin-bottom:36px;line-height:1.55;">Let's find out what's been holding you back.</p>
-        <button class="btn-next" style="align-self:flex-start;" onclick="resetQuiz(); showQP('qp-q0')">Take the quiz →</button>
+        <button class="btn-next" style="align-self:flex-start;" onclick="resetQuiz(); showQP('qp-q0')">Take the quiz</button>
       </div>
       <div class="q-right" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:5px;padding:5px;background:#000;">
         <div style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&q=75&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
@@ -1378,7 +1398,7 @@ a { text-decoration: none; color: inherit; }
     </nav>
     <div class="contact-form-wrap">
       <div class="contact-left">
-        <div class="step-label">Almost there — just one last step</div>
+        <div class="step-label">Almost there, just one last step</div>
         <div class="step-q">Where shall we<br>send your results?</div>
         <div class="form-grid">
           <div class="fg"><label>First Name *</label><input type="text" id="fName" placeholder="Your first name" autocomplete="given-name"></div>
@@ -1400,7 +1420,7 @@ a { text-decoration: none; color: inherit; }
         <p class="form-privacy">🔒 Your details are private. Never shared or sold. You can unsubscribe at any time.</p>
         <div class="q-nav-row" style="margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,.07);">
           <button class="btn-back" onclick="showQP('qp-q6')">← Back</button>
-          <button class="btn-next" onclick="submitContact()">Reveal My Results →</button>
+          <button class="btn-next" onclick="submitContact()">Reveal My Results</button>
         </div>
       </div>
       <div class="contact-right">
@@ -1431,14 +1451,14 @@ a { text-decoration: none; color: inherit; }
         <div class="book-eyebrow">Your Next Step</div>
         <div class="book-who"  id="bookWho"></div>
         <div class="book-title">Ready to go<br>deeper with Kat?</div>
-        <p class="book-desc">Book a free 10-minute call with Kat. She will walk through your results, answer your questions, and show you exactly what your pattern means — no pressure, no pitch.</p>
+        <p class="book-desc">Book a free 10-minute call with Kat. She will walk through your results, answer your questions, and show you exactly what your pattern means, no pressure, no pitch.</p>
         <div class="book-feats">
-          <div class="book-feat"><span class="book-dot"></span>10 minutes — completely free</div>
+          <div class="book-feat"><span class="book-dot"></span>10 minutes, completely free</div>
           <div class="book-feat"><span class="book-dot"></span>Personalised to your result</div>
           <div class="book-feat"><span class="book-dot"></span>Walk away with clarity</div>
         </div>
-        <button class="btn-book" onclick="openCalendly()">Book my free call with Kat →</button>
-        <a href="https://payhip.com/b/zwPqE" target="_blank" rel="noopener" class="btn-book-sec">Or explore The 30-Day Clarity Experience →</a>
+        <button class="btn-book" onclick="openCalendly()">Book my free call with Kat</button>
+        <a href="https://payhip.com/b/zwPqE" target="_blank" rel="noopener" class="btn-book-sec">Or explore The 30-Day Clarity Experience</a>
       </div>
     </div>
   </div>
@@ -1456,24 +1476,24 @@ const QUESTIONS = [
   { q:"When something doesn't go as planned, you tend to:", photo:"https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=900&q=80&auto=format&fit=crop",
     opts:[{text:"Blame yourself",type:"overthinker"},{text:"Worry about what others think",type:"overthinker"},{text:"Find silver linings and move on",type:"navigator"},{text:"Make a plan around possible outcomes",type:"navigator"}]},
   { q:"When thinking about the future, you feel:", photo:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=900&q=80&auto=format&fit=crop",
-    opts:[{text:"Anxious — it feels out of my control",type:"overthinker"},{text:"Responsible for everyone else's outcome",type:"pleaser"},{text:"Disconnected — like it doesn't really concern me",type:"avoider"},{text:"Confused — I genuinely don't know what I want",type:"navigator"}]},
+    opts:[{text:"Anxious, it feels out of my control",type:"overthinker"},{text:"Responsible for everyone else's outcome",type:"pleaser"},{text:"Disconnected, like it doesn't really concern me",type:"avoider"},{text:"Confused, I genuinely don't know what I want",type:"navigator"}]},
   { q:"When something emotionally difficult happens, you:", photo:"https://images.unsplash.com/photo-1552058544-f2b08422138a?w=900&q=80&auto=format&fit=crop",
     opts:[{text:"Keep busy to avoid feeling it",type:"avoider"},{text:"Replay it in your mind on loop",type:"overthinker"},{text:"Focus on helping others instead",type:"pleaser"},{text:"Feel emotions you struggle to explain",type:"navigator"}]},
   { q:"When faced with an important decision, you usually:", photo:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900&q=80&auto=format&fit=crop",
-    opts:[{text:"Overthink every option until you're exhausted",type:"overthinker"},{text:"Ask everyone around you what you should do",type:"pleaser"},{text:"Avoid deciding — \"I'll think about it later\"",type:"avoider"},{text:"Act on what looks right from the outside",type:"navigator"}]},
+    opts:[{text:"Overthink every option until you're exhausted",type:"overthinker"},{text:"Ask everyone around you what you should do",type:"pleaser"},{text:"Avoid deciding, \"I'll think about it later\"",type:"avoider"},{text:"Act on what looks right from the outside",type:"navigator"}]},
   { q:"Your biggest challenge right now feels like:", photo:"https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=900&q=80&auto=format&fit=crop",
     opts:[{text:"Lack of confidence in myself",type:"overthinker"},{text:"Fear of disappointing others",type:"avoider"},{text:"Facing feelings I keep pushing away",type:"avoider"},{text:"Not knowing what my purpose really is",type:"navigator"}]},
   { q:"When reflecting on your situation, you most often look:", photo:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=900&q=80&auto=format&fit=crop",
-    opts:[{text:"To the past — replaying and analysing",type:"overthinker"},{text:"To others — to find your answer in them",type:"pleaser"},{text:"Away — you'd rather not look at all",type:"avoider"},{text:"Forward, but feeling genuinely lost",type:"navigator"}]},
+    opts:[{text:"To the past, replaying and analysing",type:"overthinker"},{text:"To others, to find your answer in them",type:"pleaser"},{text:"Away, you'd rather not look at all",type:"avoider"},{text:"Forward, but feeling genuinely lost",type:"navigator"}]},
   { q:"In relationships or work, you often:", photo:"https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80&auto=format&fit=crop",
     opts:[{text:"Seek others' approval before trusting yourself",type:"pleaser"},{text:"Prioritise others so much you lose yourself",type:"pleaser"},{text:"Avoid conflict at almost any cost",type:"avoider"},{text:"Feel like you don't quite belong anywhere",type:"navigator"}]}
 ];
 
 const ARCHETYPES = {
-  overthinker:{badge:"The Overthinker",name:"The Overthinker",tagline:"Your mind is working overtime.",body:`<p>You have a rich, analytical mind — and right now it's working against you. You replay situations endlessly, searching for what you missed, what you could have done differently, what others really meant.</p><p>This constant mental activity was likely an adaptation — a way to feel safe when life felt unpredictable. Over time it has become a loop that keeps you disconnected from your own inner knowing.</p><p>The way forward is not to stop thinking. It's to learn to trust yourself again — one small decision at a time.</p>`,traits:["Replaying conversations","Second-guessing decisions","Difficulty letting go","Analysis paralysis"],insights:["Replaying conversations long after they've passed","Difficulty trusting your instincts even when you know the answer","Finding constant analysis physically and emotionally exhausting"]},
-  pleaser:{badge:"The People Pleaser",name:"The People Pleaser",tagline:"So focused on others, you've lost yourself.",body:`<p>You naturally attend to others' needs — often putting everyone else before your own. This empathy is a beautiful quality that makes you a thoughtful friend, partner, or colleague.</p><p>But all this love you extend to others makes it difficult to stay connected to your own needs, your own voice, and what you actually want from life.</p><p>Breaking free is not about becoming selfish. It's about learning to care for yourself with the same warmth you give so freely to everyone else.</p>`,traits:["Difficulty saying no","Feeling responsible for others","Losing your voice","Seeking validation"],insights:["Avoiding conflict even when it costs you something important","Feeling responsible for other people's emotions","Losing your own perspective whenever others push back"]},
-  avoider:{badge:"The Avoider",name:"The Avoider",tagline:"You keep the hard feelings at arm's length.",body:`<p>When situations feel overwhelming or emotionally charged, you naturally pull back — keeping busy, staying distracted, or simply not going there.</p><p>You might tell yourself you're "not ready yet." But underneath there's often a fear of feeling things fully — a belief that if you stop running, something difficult will be waiting.</p><p>Avoidance isn't laziness. It's a sign that something feels emotionally tender and you've never had a truly safe space to feel it. Creating that space is where everything begins to shift.</p>`,traits:["Staying busy to avoid feeling","Delaying hard conversations","Emotional withdrawal","Difficulty with vulnerability"],insights:["Keeping yourself busy to avoid sitting with your feelings","Postponing conversations that actually matter to you","Feeling relief followed by guilt when you avoid something"]},
-  navigator:{badge:"The Uncertain Navigator",name:"The Uncertain Navigator",tagline:"Searching for a direction that feels truly yours.",body:`<p>You may be in a period of deep transition. Feeling unsure about your direction is disorienting — but it actually signals that you're ready to think more deeply about what is truly yours, not what was expected of you.</p><p>This sense of "who am I really?" often happens to thoughtful people who have spent a long time living by others' expectations. It creates a feeling of being stuck or disconnected from your own life.</p><p>Reconnecting with your inner voice often brings a clarity that surprises people. The answers aren't far away — they're already inside you.</p>`,traits:["Questioning your direction","Feeling disconnected","Searching for meaning","Uncertainty about what you want"],insights:["Feeling 'stuck' without being able to name exactly why","Questioning whether your goals are truly yours","Sensing a shift is coming but not knowing which way to go"]}
+  overthinker:{badge:"The Overthinker",name:"The Overthinker",tagline:"Your mind is working overtime.",body:`<p>You have a rich, analytical mind, and right now it's working against you. You replay situations endlessly, searching for what you missed, what you could have done differently, what others really meant.</p><p>This constant mental activity was likely an adaptation, a way to feel safe when life felt unpredictable. Over time it has become a loop that keeps you disconnected from your own inner knowing.</p><p>The way forward is not to stop thinking. It's to learn to trust yourself again, one small decision at a time.</p>`,traits:["Replaying conversations","Second-guessing decisions","Difficulty letting go","Analysis paralysis"],insights:["Replaying conversations long after they've passed","Difficulty trusting your instincts even when you know the answer","Finding constant analysis physically and emotionally exhausting"]},
+  pleaser:{badge:"The People Pleaser",name:"The People Pleaser",tagline:"So focused on others, you've lost yourself.",body:`<p>You naturally attend to others' needs, often putting everyone else before your own. This empathy is a beautiful quality that makes you a thoughtful friend, partner, or colleague.</p><p>But all this love you extend to others makes it difficult to stay connected to your own needs, your own voice, and what you actually want from life.</p><p>Breaking free is not about becoming selfish. It's about learning to care for yourself with the same warmth you give so freely to everyone else.</p>`,traits:["Difficulty saying no","Feeling responsible for others","Losing your voice","Seeking validation"],insights:["Avoiding conflict even when it costs you something important","Feeling responsible for other people's emotions","Losing your own perspective whenever others push back"]},
+  avoider:{badge:"The Avoider",name:"The Avoider",tagline:"You keep the hard feelings at arm's length.",body:`<p>When situations feel overwhelming or emotionally charged, you naturally pull back, keeping busy, staying distracted, or simply not going there.</p><p>You might tell yourself you're "not ready yet." But underneath there's often a fear of feeling things fully, a belief that if you stop running, something difficult will be waiting.</p><p>Avoidance isn't laziness. It's a sign that something feels emotionally tender and you've never had a truly safe space to feel it. Creating that space is where everything begins to shift.</p>`,traits:["Staying busy to avoid feeling","Delaying hard conversations","Emotional withdrawal","Difficulty with vulnerability"],insights:["Keeping yourself busy to avoid sitting with your feelings","Postponing conversations that actually matter to you","Feeling relief followed by guilt when you avoid something"]},
+  navigator:{badge:"The Uncertain Navigator",name:"The Uncertain Navigator",tagline:"Searching for a direction that feels truly yours.",body:`<p>You may be in a period of deep transition. Feeling unsure about your direction is disorienting, but it actually signals that you're ready to think more deeply about what is truly yours, not what was expected of you.</p><p>This sense of "who am I really?" often happens to thoughtful people who have spent a long time living by others' expectations. It creates a feeling of being stuck or disconnected from your own life.</p><p>Reconnecting with your inner voice often brings a clarity that surprises people. The answers aren't far away, they're already inside you.</p>`,traits:["Questioning your direction","Feeling disconnected","Searching for meaning","Uncertainty about what you want"],insights:["Feeling 'stuck' without being able to name exactly why","Questioning whether your goals are truly yours","Sensing a shift is coming but not knowing which way to go"]}
 };
 
 /* ── State ── */
