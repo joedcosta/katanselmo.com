@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1489,11 +1490,59 @@ const QUESTIONS = [
     opts:[{text:"Seek others' approval before trusting yourself",type:"pleaser"},{text:"Prioritise others so much you lose yourself",type:"pleaser"},{text:"Avoid conflict at almost any cost",type:"avoider"},{text:"Feel like you don't quite belong anywhere",type:"navigator"}]}
 ];
 
-const ARCHETYPES = {
-  overthinker:{badge:"The Overthinker",name:"The Overthinker",tagline:"Your mind is working overtime.",body:`<p>You have a rich, analytical mind, and right now it's working against you. You replay situations endlessly, searching for what you missed, what you could have done differently, what others really meant.</p><p>This constant mental activity was likely an adaptation, a way to feel safe when life felt unpredictable. Over time it has become a loop that keeps you disconnected from your own inner knowing.</p><p>The way forward is not to stop thinking. It's to learn to trust yourself again, one small decision at a time.</p>`,traits:["Replaying conversations","Second-guessing decisions","Difficulty letting go","Analysis paralysis"],insights:["Replaying conversations long after they've passed","Difficulty trusting your instincts even when you know the answer","Finding constant analysis physically and emotionally exhausting"]},
-  pleaser:{badge:"The People Pleaser",name:"The People Pleaser",tagline:"So focused on others, you've lost yourself.",body:`<p>You naturally attend to others' needs, often putting everyone else before your own. This empathy is a beautiful quality that makes you a thoughtful friend, partner, or colleague.</p><p>But all this love you extend to others makes it difficult to stay connected to your own needs, your own voice, and what you actually want from life.</p><p>Breaking free is not about becoming selfish. It's about learning to care for yourself with the same warmth you give so freely to everyone else.</p>`,traits:["Difficulty saying no","Feeling responsible for others","Losing your voice","Seeking validation"],insights:["Avoiding conflict even when it costs you something important","Feeling responsible for other people's emotions","Losing your own perspective whenever others push back"]},
-  avoider:{badge:"The Avoider",name:"The Avoider",tagline:"You keep the hard feelings at arm's length.",body:`<p>When situations feel overwhelming or emotionally charged, you naturally pull back, keeping busy, staying distracted, or simply not going there.</p><p>You might tell yourself you're "not ready yet." But underneath there's often a fear of feeling things fully, a belief that if you stop running, something difficult will be waiting.</p><p>Avoidance isn't laziness. It's a sign that something feels emotionally tender and you've never had a truly safe space to feel it. Creating that space is where everything begins to shift.</p>`,traits:["Staying busy to avoid feeling","Delaying hard conversations","Emotional withdrawal","Difficulty with vulnerability"],insights:["Keeping yourself busy to avoid sitting with your feelings","Postponing conversations that actually matter to you","Feeling relief followed by guilt when you avoid something"]},
-  navigator:{badge:"The Uncertain Navigator",name:"The Uncertain Navigator",tagline:"Searching for a direction that feels truly yours.",body:`<p>You may be in a period of deep transition. Feeling unsure about your direction is disorienting, but it actually signals that you're ready to think more deeply about what is truly yours, not what was expected of you.</p><p>This sense of "who am I really?" often happens to thoughtful people who have spent a long time living by others' expectations. It creates a feeling of being stuck or disconnected from your own life.</p><p>Reconnecting with your inner voice often brings a clarity that surprises people. The answers aren't far away, they're already inside you.</p>`,traits:["Questioning your direction","Feeling disconnected","Searching for meaning","Uncertainty about what you want"],insights:["Feeling 'stuck' without being able to name exactly why","Questioning whether your goals are truly yours","Sensing a shift is coming but not knowing which way to go"]}
+cconst ARCHETYPES = {
+  overthinker: {
+    badge: "The Overthinker",
+    name: "The Overthinker",
+    tagline: "Your mind works hard to protect you.",
+    body: `<p>You likely spend a lot of time thinking through possibilities, analysing outcomes, and trying to make the "right" decision. This ability to reflect deeply can be a strength — it shows that you care about making thoughtful choices.</p><p>However, when the mind becomes too active, it can begin to create doubt instead of clarity. You may notice yourself replaying conversations, worrying about mistakes, or second-guessing choices after you've already made them. Over time, this pattern can make it harder to trust your own instincts.</p><p>The clarity you're looking for doesn't come from thinking more — it comes from giving your instincts space to speak.</p>`,
+    traits: ["Replaying conversations", "Second-guessing decisions", "Difficulty letting go", "Analysis paralysis"],
+    insights: ["Replaying conversations long after they've passed", "Difficulty trusting your instincts even when you know the answer", "Finding constant analysis physically and emotionally exhausting"],
+    plan: [
+      { day: "Day 1 — Name it", text: "Notice one decision today where you catch yourself overthinking. Write down the moment. Then pick an option and go with it, even if it's not the \"perfect\" one." },
+      { day: "Day 2 — Interrupt the loop", text: "Set a 2-minute timer whenever you feel yourself spiraling on something. When it rings, stop and ask: what does my gut already know?" },
+      { day: "Day 3 — Trust one instinct", text: "Pick one small decision today and make it without re-checking it. Notice what it feels like to trust yourself, just once." }
+    ]
+  },
+  pleaser: {
+    badge: "The People Pleaser",
+    name: "The People Pleaser",
+    tagline: "So focused on others, you've lost yourself.",
+    body: `<p>You care deeply about others. You may naturally be someone who wants the people around you to feel comfortable, supported, and happy. This empathy is a beautiful quality and often makes you a thoughtful friend, partner, or colleague.</p><p>At the same time, constantly considering everyone else's needs can make it difficult to stay connected to your own. You might notice yourself saying yes when you'd rather say no, or feeling responsible for how others feel. Over time, this pattern can create a quiet sense of exhaustion or disconnection from what you truly want.</p><p>Reconnecting with yourself doesn't mean becoming selfish — it means learning to care for yourself with the same kindness you offer others.</p>`,
+    traits: ["Difficulty saying no", "Feeling responsible for others", "Losing your voice", "Seeking validation"],
+    insights: ["Avoiding conflict even when it costs you something important", "Feeling responsible for other people's emotions", "Losing your own perspective whenever others push back"],
+    plan: [
+      { day: "Day 1 — Notice the yes", text: "Track every moment today you say yes when part of you wanted to say no. No need to change anything yet — just notice." },
+      { day: "Day 2 — Practice one no", text: "Choose one low-stakes moment and say no, or ask for something you need." },
+      { day: "Day 3 — Check in with you", text: "Before answering a request today, pause and ask: what do I actually want here? — then respond from that." }
+    ]
+  },
+  avoider: {
+    badge: "The Avoider",
+    name: "The Avoider",
+    tagline: "You keep the hard feelings at arm's length.",
+    body: `<p>When situations feel emotionally difficult or uncertain, it can feel easier to postpone decisions or avoid facing them directly. This response is actually very human — avoidance is often a way our system tries to protect us from overwhelm.</p><p>You might notice yourself delaying important conversations, postponing decisions, or feeling stuck even when you want change. Avoidance often isn't about laziness — it can simply be a sign that something feels emotionally heavy or unclear.</p><p>Often, the decisions you've been avoiding start to feel clearer the moment you create a little space to face them.</p>`,
+    traits: ["Staying busy to avoid feeling", "Delaying hard conversations", "Emotional withdrawal", "Difficulty with vulnerability"],
+    insights: ["Keeping yourself busy to avoid sitting with your feelings", "Postponing conversations that actually matter to you", "Feeling relief followed by guilt when you avoid something"],
+    plan: [
+      { day: "Day 1 — Name the postponed thing", text: "Write down one decision or conversation you've been putting off." },
+      { day: "Day 2 — Take the smallest step", text: "Break it into the tiniest possible first move. Do only that piece." },
+      { day: "Day 3 — Face it fully", text: "Take the next real step toward that thing, even if it still feels uncomfortable." }
+    ]
+  },
+  navigator: {
+    badge: "The Uncertain Navigator",
+    name: "The Uncertain Navigator",
+    tagline: "Searching for a direction that feels truly yours.",
+    body: `<p>You may be in a period of transition or reflection. Feeling unsure about your direction can feel frustrating, but it can also be a sign that you're beginning to question things more deeply.</p><p>You might notice yourself wondering what you actually want, or whether you're on the right path. When clarity is missing, it can feel difficult to commit to decisions or long-term plans — creating a sense of being stuck or disconnected from your own direction.</p><p>Often, the answers you're searching for become clearer once you slow down and reconnect with yourself.</p>`,
+    traits: ["Questioning your direction", "Feeling disconnected", "Searching for meaning", "Uncertainty about what you want"],
+    insights: ["Feeling 'stuck' without being able to name exactly why", "Questioning whether your goals are truly yours", "Sensing a shift is coming but not knowing which way to go"],
+    plan: [
+      { day: "Day 1 — Get curious", text: "Write down three moments today that felt like \"you,\" even small ones." },
+      { day: "Day 2 — Ask the question", text: "Spend 5 minutes journaling on: what do I actually want right now? — no editing yourself." },
+      { day: "Day 3 — Choose a direction", text: "Pick one small step this week toward what you wrote. No need for certainty, just direction." }
+    ]
+  }
 };
 
 /* ── State ── */
