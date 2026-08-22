@@ -985,8 +985,8 @@ a { text-decoration: none; color: inherit; }
     <li><a href="#coaching">Coaching<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a></li>
   </ul>
   <div class="nav-right">
-    <button class="nav-btn" onclick="startQuiz()">Take the Quiz</button>
-    <button class="nav-hamburger" id="mainHam" aria-label="Menu" onclick="toggleDrawer(this)">
+    <button type="button" class="nav-btn" onclick="startQuiz(event)">Take the Quiz</button>
+    <button type="button" class="nav-hamburger" id="mainHam" aria-label="Menu" onclick="toggleDrawer(this)">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -998,7 +998,7 @@ a { text-decoration: none; color: inherit; }
   <a href="#program"  onclick="closeDrawer()">The Program</a>
   <a href="#journey"  onclick="closeDrawer()">The Journey</a>
   <a href="#coaching" onclick="closeDrawer()">Coaching</a>
-  <button class="drawer-cta" onclick="closeDrawer(); startQuiz()">Take the Free Quiz</button>
+  <button type="button" class="drawer-cta" onclick="closeDrawer(); startQuiz(event)">Take the Free Quiz</button>
 </div>
 
 <!-- Loader -->
@@ -1009,7 +1009,7 @@ a { text-decoration: none; color: inherit; }
   <div class="cal-modal">
     <div class="cal-modal-header">
       <div><div class="cal-modal-title">Book your call with Kat</div><div class="cal-modal-sub">No pressure · No pitch · Just clarity</div></div>
-      <button class="cal-close" onclick="closeCalendly()" aria-label="Close">✕</button>
+      <button type="button" class="cal-close" onclick="closeCalendly()" aria-label="Close">✕</button>
     </div>
     <div class="cal-iframe-wrap" id="calIframeWrap">
       <div class="cal-loading" id="calLoading"><div class="cal-spinner"></div><p>Loading Kat's calendar…</p></div>
@@ -1018,7 +1018,7 @@ a { text-decoration: none; color: inherit; }
         <div class="cal-success-icon">✓</div>
         <h3>You're booked!</h3>
         <p>Your call with Kat is confirmed.<br>Check your email for the details, we we look forward to speaking with you.</p>
-        <button class="cal-success-close" onclick="closeCalendly()">Close &amp; return to your results</button>
+        <button type="button" class="cal-success-close" onclick="closeCalendly()">Close &amp; return to your results</button>
       </div>
     </div>
   </div>
@@ -1036,7 +1036,7 @@ a { text-decoration: none; color: inherit; }
       <div class="hero-bg"></div>
       <div class="hero-content">
         <h1>Life is<br>extraordinary.<br><span class="hero-sub">Learn to live yours fully</span></h1>
-        <button class="hero-cta" onclick="startQuiz()">Start Now</button>
+        <button class="hero-cta" type="button" onclick="startQuiz(event)">Start Now</button>
       </div>
       <!-- Video card: visible on desktop only, hidden on mobile via CSS -->
       <div class="hero-video-card" onclick="openVideoModal()">
@@ -1056,7 +1056,7 @@ a { text-decoration: none; color: inherit; }
   <div class="mobile-video">
     <div class="mobile-video-header">
       <span class="mobile-video-label">Latest from Kat</span>
-      <button class="mobile-video-cta" onclick="startQuiz()">Take the quiz</button>
+      <button class="mobile-video-cta" type="button" onclick="startQuiz(event)">Take the quiz</button>
     </div>
     <div class="mobile-video-poster-wrap" onclick="openVideoModal()">
       <img src="https://i.ytimg.com/vi/zFO2ka9Cxts/maxresdefault.jpg" alt="Watch Kat's latest video" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/zFO2ka9Cxts/hqdefault.jpg'">
@@ -1075,7 +1075,7 @@ a { text-decoration: none; color: inherit; }
       <p>Let's find out what's been holding you back. Take the free 2-minute quiz and discover your pattern.</p>
     </div>
     <div class="quiz-strip-right">
-      <button class="btn-quiz-strip" onclick="startQuiz()">Take the free quiz</button>
+      <button class="btn-quiz-strip" type="button" onclick="startQuiz(event)">Take the free quiz</button>
     </div>
   </section>
 
@@ -1129,7 +1129,7 @@ a { text-decoration: none; color: inherit; }
         <div class="section-label">30-Day Flagship Programme</div>
         <h2>The Secret to<br>Inner Success</h2>
         <p>Nobody ever taught you how to handle your emotions, trust yourself, or know what you truly want. This changes that, in 30 days.</p>
-        <button class="btn-program-hero" onclick="document.getElementById('program-enrol').scrollIntoView({behavior:'smooth'})">Discover the Programme</button>
+        <button class="btn-program-hero" type="button" onclick="document.getElementById('program-enrol').scrollIntoView({behavior:'smooth'})">Discover the Programme</button>
       </div>
     </div>
 
@@ -1150,7 +1150,7 @@ a { text-decoration: none; color: inherit; }
       </div>
     </div>
 
-    <!-- Product body: description left, image right -->
+<!-- Product body: description left, image right -->
     <div class="program-body">
       <div class="program-left">
         <h3>The 30-Day Life<br>Clarity Experience</h3>
@@ -1215,7 +1215,7 @@ a { text-decoration: none; color: inherit; }
           </div>
         </div>
 
-        <!-- Price + CTA -->
+<!-- Price + CTA -->
         <div class="program-price-box" id="program-enrol">
           <div>
             <div class="price">€697</div>
@@ -1223,7 +1223,7 @@ a { text-decoration: none; color: inherit; }
           </div>
           <div class="prog-cta-stack">
             <a href="https://payhip.com/b/zwPqE" target="_blank" rel="noopener" class="btn-enroll">Enrol Now</a>
-            <button class="btn-enroll-soft" onclick="openCalendly()">Not sure? Book a free 10-min call first</button>
+            <button type="button" class="btn-enroll-soft" onclick="openCalendly()">Not sure? Book a free 10-min call first</button>
           </div>
         </div>
       </div>
@@ -1246,7 +1246,7 @@ a { text-decoration: none; color: inherit; }
           <h3>Inner Clarity<br>Session</h3>
           <p>Stop guessing. Start knowing yourself. You bring what you're stuck on, a decision, a pattern, a relationship, a direction. Kat connects with your energy field and reflects back exactly what she finds: the hidden blocks, the blind spots, the patterns quietly running your life. Most people feel immediate clarity just from having it named.</p>
           <div class="jc-price">From <strong>€90</strong> · 30-minute 1:1 session</div>
-          <button class="btn-jc" onclick="openCalendly(CAL_SESSION)">Book a Session</button>
+          <button type="button" class="btn-jc" onclick="openCalendly(CAL_SESSION)">Book a Session</button>
         </div>
       </div>
       <div class="jc-card">
@@ -1256,7 +1256,7 @@ a { text-decoration: none; color: inherit; }
           <h3>Free 10-Min<br>Consultation</h3>
           <p>Not sure where to start? Book a free 10-minute call with Kat. She'll listen, ask the right questions, and help you understand which path is right for you, no pressure, no pitch.</p>
           <div class="jc-price"><strong>Free</strong></div>
-          <button class="btn-jc" onclick="openCalendly(CAL_FREE)">Book a Free Call</button>
+          <button type="button" class="btn-jc" onclick="openCalendly(CAL_FREE)">Book a Free Call</button>
         </div>
       </div>
     </div>
@@ -1278,13 +1278,13 @@ a { text-decoration: none; color: inherit; }
           <p>Now it's my mission to share it. Because I believe this deeply: <strong>you can only guide someone through what you've already walked through yourself.</strong> I've done the work. I know the way. And I'm here to walk you through it too.</p>
         </div>
         <div class="about-cta">
-          <button class="btn-about" onclick="startQuiz()">Discover Your Pattern</button>
+          <button type="button" class="btn-about" onclick="startQuiz(event)">Discover Your Pattern</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
+<!-- TESTIMONIALS -->
   <section class="testimonials">
     <div class="section-label">What people say</div>
     <h2>Real people.<br>Real shifts.</h2>
@@ -1323,8 +1323,8 @@ a { text-decoration: none; color: inherit; }
       <h2>The life you want<br>already exists.</h2>
       <p>You just need to find the way back to yourself. Start with the free quiz, it takes two minutes and it might change everything.</p>
       <div class="final-cta-btns">
-        <button class="btn-cta-primary" onclick="startQuiz()">Take the Free Quiz</button>
-        <button class="btn-cta-secondary" onclick="openCalendly()">Book a Free Call</button>
+        <button type="button" class="btn-cta-primary" onclick="startQuiz(event)">Take the Free Quiz</button>
+        <button type="button" class="btn-cta-secondary" onclick="openCalendly()">Book a Free Call</button>
       </div>
     </div>
   </section>
@@ -1350,7 +1350,7 @@ a { text-decoration: none; color: inherit; }
 ══════════════════════════════════════ -->
 <div class="vid-overlay" id="vidOverlay" onclick="handleVidOverlay(event)">
   <div class="vid-modal" id="vidModal">
-    <button class="vid-close" onclick="closeVideoModal()">✕ Close</button>
+    <button type="button" class="vid-close" onclick="closeVideoModal()">✕ Close</button>
     <!-- src set by JS on open so video doesn't preload -->
     <iframe id="vidIframe" src="about:blank" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Kat Anselmo, Latest video"></iframe>
   </div>
@@ -1366,13 +1366,13 @@ a { text-decoration: none; color: inherit; }
     <nav class="q-topnav">
       <a href="#" class="qnav-logo" onclick="closeQuiz(); return false;">Kat Anselmo</a>
       <div class="prog-outer"><div class="prog-inner" style="width:0%"></div></div>
-      <button class="qnav-close" onclick="closeQuiz()">✕ Close</button>
+      <button class="qnav-close" type="button" onclick="closeQuiz()">✕ Close</button>
     </nav>
     <div class="q-body">
       <div class="q-left" style="justify-content:center;">
         <h2 style="font-size:clamp(28px,3.8vw,54px);font-weight:900;color:#fff;letter-spacing:-1px;line-height:1.08;margin-bottom:14px;">Ready to take<br>control of<br>your life?</h2>
         <p style="font-size:17px;color:rgba(255,255,255,.55);margin-bottom:36px;line-height:1.55;">Let's find out what's been holding you back.</p>
-        <button class="btn-next" style="align-self:flex-start;" onclick="resetQuiz(); showQP('qp-q0')">Take the quiz</button>
+        <button class="btn-next" type="button" style="align-self:flex-start;" onclick="resetQuiz(); showQP('qp-q0')">Take the quiz</button>
       </div>
       <div class="q-right" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:5px;padding:5px;background:#000;">
         <div style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&q=75&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
@@ -1395,7 +1395,7 @@ a { text-decoration: none; color: inherit; }
     <nav class="q-topnav">
       <a href="#" class="qnav-logo" onclick="closeQuiz(); return false;">Kat Anselmo</a>
       <div class="prog-outer"><div class="prog-inner" style="width:100%"></div></div>
-      <button class="qnav-close" onclick="closeQuiz()">✕ Close</button>
+      <button class="qnav-close" type="button" onclick="closeQuiz()">✕ Close</button>
     </nav>
     <div class="contact-form-wrap">
       <div class="contact-left">
@@ -1420,8 +1420,8 @@ a { text-decoration: none; color: inherit; }
         </div>
         <p class="form-privacy">🔒 Your details are private. Never shared or sold. You can unsubscribe at any time.</p>
         <div class="q-nav-row" style="margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,.07);">
-          <button class="btn-back" onclick="showQP('qp-q6')">← Back</button>
-          <button class="btn-next" onclick="submitContact()">Reveal My Results</button>
+          <button class="btn-back" type="button" onclick="showQP('qp-q6')">← Back</button>
+          <button class="btn-next" type="button" onclick="submitContact(event)">Reveal My Results</button>
         </div>
       </div>
       <div class="contact-right">
@@ -1435,7 +1435,7 @@ a { text-decoration: none; color: inherit; }
     <nav class="q-topnav">
       <a href="#" class="qnav-logo" onclick="closeQuiz(); return false;">Kat Anselmo</a>
       <div class="prog-outer"><div class="prog-inner" style="width:100%"></div></div>
-      <button class="qnav-close" onclick="closeQuiz()">✕ Close</button>
+      <button class="qnav-close" type="button" onclick="closeQuiz()">✕ Close</button>
     </nav>
     <div class="results-wrap">
       <div class="res-left">
@@ -1458,7 +1458,7 @@ a { text-decoration: none; color: inherit; }
           <div class="book-feat"><span class="book-dot"></span>Personalised to your result</div>
           <div class="book-feat"><span class="book-dot"></span>Walk away with clarity</div>
         </div>
-        <button class="btn-book" onclick="openCalendly()">Book my free call with Kat</button>
+        <button class="btn-book" type="button" onclick="openCalendly()">Book my free call with Kat</button>
         <a href="https://payhip.com/b/zwPqE" target="_blank" rel="noopener" class="btn-book-sec">Or explore The 30-Day Clarity Experience</a>
       </div>
     </div>
@@ -1490,7 +1490,7 @@ const QUESTIONS = [
     opts:[{text:"Seek others' approval before trusting yourself",type:"pleaser"},{text:"Prioritise others so much you lose yourself",type:"pleaser"},{text:"Avoid conflict at almost any cost",type:"avoider"},{text:"Feel like you don't quite belong anywhere",type:"navigator"}]}
 ];
 
-cconst ARCHETYPES = {
+const ARCHETYPES = {
   overthinker: {
     badge: "The Overthinker",
     name: "The Overthinker",
@@ -1595,8 +1595,11 @@ function resetQuiz() {
 })();
 
 /* ── Quiz navigation ── */
-function startQuiz() {
-  document.getElementById('quizOverlay').classList.add('active');
+function startQuiz(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  resetQuiz();
+  const overlay = document.getElementById('quizOverlay');
+  if (overlay) overlay.classList.add('active');
   document.body.style.overflow='hidden';
   showQP('qp-intro');
 }
@@ -1635,17 +1638,42 @@ function renderResults(){
 }
 
 /* ── Contact submit ── */
-function submitContact(){
+function submitContact(e){
+  if (e && e.preventDefault) e.preventDefault();
   if(_submitting)return;
-  const name=document.getElementById('fName').value.trim();
-  const email=document.getElementById('fEmail').value.trim();
+  const nameEl = document.getElementById('fName');
+  const emailEl = document.getElementById('fEmail');
+  const name = nameEl ? nameEl.value.trim() : '';
+  const email = emailEl ? emailEl.value.trim() : '';
+  
   if(!name){alert('Please enter your first name.');return;}
   if(!email||!/\S+@\S+\.\S+/.test(email)){alert('Please enter a valid email address.');return;}
+  
   _submitting=true;
-  saveToSheet({type:'lead',firstName:name,lastName:document.getElementById('lName').value.trim(),email,intent:document.getElementById('fIntent').value,scores:JSON.stringify(scores),result:winner(),timestamp:new Date().toISOString(),source:location.href});
+  const lastNameEl = document.getElementById('lName');
+  const intentEl = document.getElementById('fIntent');
+  
+  saveToSheet({
+    type:'lead',
+    firstName:name,
+    lastName: lastNameEl ? lastNameEl.value.trim() : '',
+    email: email,
+    intent: intentEl ? intentEl.value : '',
+    scores:JSON.stringify(scores),
+    result:winner(),
+    timestamp:new Date().toISOString(),
+    source:location.href
+  });
+  
   const loader=document.getElementById('loader');
-  loader.classList.add('on');
-  setTimeout(()=>{ renderResults(); loader.classList.remove('on'); showQP('qp-results'); _submitting=false; },2000);
+  if (loader) loader.classList.add('on');
+  
+  setTimeout(()=>{ 
+    renderResults(); 
+    if (loader) loader.classList.remove('on'); 
+    showQP('qp-results'); 
+    _submitting=false; 
+  }, 1000);
 }
 
 /* ── Mobile drawer ── */
