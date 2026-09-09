@@ -1,1786 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#000000">
-<meta name="description" content="Kat Anselmo, Personal transformation coach helping you reconnect with yourself, find clarity, and live fully.">
-<meta property="og:title" content="Kat Anselmo, Life is extraordinary. Learn to live yours fully.">
-<meta property="og:description" content="Discover your pattern, find your direction, and take the next step with Kat Anselmo, personal coach and creator of the Inner Success Method™.">
-<meta property="og:image" content="https://yt3.googleusercontent.com/EnrWO-MyVOdoss2sHWWYDowAPRiAeF9di5noGTQTJ4oD16N6YJidL72GyLL6UGkLJp0vILEt=w1200">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<title>Kat Anselmo, Life is extraordinary. Learn to live yours fully.</title>
-<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/joedcosta/katanselmo.com/main/images/Logo_KatsYoga.png">
-<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/joedcosta/katanselmo.com/main/images/Logo_KatsYoga.png">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-
-/* ══════════════════════════════════════════
-   RESET & BASE
-══════════════════════════════════════════ */
-*, *::before, *::after {
-  margin: 0; padding: 0; box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-}
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
-body {
-  font-family: 'Inter', sans-serif;
-  background: #000;
-  color: #fff;
-  overflow-x: hidden;
-}
-img { display: block; max-width: 100%; }
-a { text-decoration: none; color: inherit; }
-
-/* ══════════════════════════════════════════
-   FIXED NAV, black, stays on top
-══════════════════════════════════════════ */
-.site-nav {
-  position: fixed; top: 0; left: 0; right: 0;
-  height: 64px; background: #000; z-index: 500;
-  display: flex; align-items: center;
-  justify-content: space-between; padding: 0 40px;
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-.site-nav .logo {
-  font-size: 17px; font-weight: 900; letter-spacing: 1.5px;
-  color: #fff; text-transform: uppercase; white-space: nowrap;
-}
-.site-nav .nav-links {
-  display: flex; align-items: center; gap: 4px;
-  list-style: none; flex: 1; justify-content: center;
-}
-.site-nav .nav-links a {
-  font-size: 13px; font-weight: 500; color: rgba(255,255,255,.8);
-  padding: 6px 12px; border-radius: 6px;
-  display: flex; align-items: center; gap: 4px;
-  transition: background .15s, color .15s;
-}
-.site-nav .nav-links a:hover { background: rgba(255,255,255,.08); color: #fff; }
-.site-nav .nav-links svg { width: 11px; height: 11px; }
-.nav-right { display: flex; align-items: center; gap: 14px; }
-.nav-btn {
-  font-size: 13px; font-weight: 700; color: #000;
-  background: #fff; border: none; cursor: pointer;
-  padding: 9px 20px; border-radius: 40px;
-  transition: background .2s; white-space: nowrap;
-  touch-action: manipulation;
-}
-.nav-btn:hover { background: #e0e0e0; }
-.nav-hamburger {
-  display: none; background: none; border: none;
-  cursor: pointer; flex-direction: column; gap: 5px; padding: 8px 4px;
-}
-.nav-hamburger span {
-  display: block; width: 22px; height: 2px;
-  background: #fff; border-radius: 2px;
-  transition: transform .2s, opacity .2s; transform-origin: center;
-}
-.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav-hamburger.open span:nth-child(2) { opacity: 0; }
-.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* Mobile drawer */
-.mobile-drawer {
-  display: none; position: fixed;
-  top: 64px; left: 0; right: 0; z-index: 499;
-  background: #000; border-top: 1px solid rgba(255,255,255,.08);
-  flex-direction: column; padding: 8px 0 20px;
-  box-shadow: 0 16px 40px rgba(0,0,0,.9);
-  animation: drawerIn .2s ease;
-}
-.mobile-drawer.open { display: flex; }
-@keyframes drawerIn {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.mobile-drawer a {
-  padding: 14px 24px; font-size: 15px; font-weight: 600;
-  color: rgba(255,255,255,.85); border-bottom: 1px solid rgba(255,255,255,.06);
-}
-.mobile-drawer a:last-of-type { border: none; }
-.drawer-cta {
-  margin: 14px 24px 0; display: block; text-align: center;
-  background: #fff; color: #000; font-size: 14px; font-weight: 700;
-  padding: 13px 24px; border-radius: 40px; border: none;
-  cursor: pointer; font-family: 'Inter', sans-serif;
-}
-
-@media (max-width: 768px) {
-  .site-nav { padding: 0 18px; }
-  .site-nav .nav-links { display: none; }
-  .nav-btn { display: none; }
-  .nav-hamburger { display: flex; }
-}
-
-/* ══════════════════════════════════════════
-   HOMEPAGE, scrollable sections
-   All sections sit below the fixed nav (pt:64px)
-══════════════════════════════════════════ */
-.homepage { padding-top: 64px; }
-
-/* ── HERO ── */
-.hero {
-  /* Black background shows around rounded image, Tony Robbins look */
-  background: #000;
-  padding: 20px 20px 0;
-}
-.hero-inner {
-  /* The actual rounded image container */
-  position: relative;
-  width: 100%;
-  height: calc(100vh - 64px - 20px);
-  height: calc(100dvh - 64px - 20px);
-  min-height: 500px;
-  overflow: hidden;
-  border-radius: 24px;
-}
-.hero-bg {
-  position: absolute; inset: 0;
-  background-image: url('https://yt3.googleusercontent.com/EnrWO-MyVOdoss2sHWWYDowAPRiAeF9di5noGTQTJ4oD16N6YJidL72GyLL6UGkLJp0vILEt=w2276-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj');
-  background-size: cover; background-position: center 20%;
-}
-.hero-bg::after {
-  content: ''; position: absolute; inset: 0;
-  background:
-    linear-gradient(to top, rgba(0,0,0,.8) 0%, rgba(0,0,0,.2) 45%, transparent 70%),
-    linear-gradient(to right, rgba(0,0,0,.55) 0%, transparent 55%);
-}
-.hero-content {
-  position: absolute; bottom: 52px; left: 52px;
-  z-index: 2; max-width: 640px;
-}
-.hero-content h1 {
-  font-size: clamp(38px, 5vw, 72px); font-weight: 900;
-  line-height: 1.04; letter-spacing: -1.5px; color: #fff;
-  margin-bottom: 52px;
-}
-.hero-sub {
-  display: block; font-size: clamp(22px, 3vw, 44px);
-  font-weight: 800; line-height: 1.1;
-  color: rgba(255,255,255,.9);
-}
-.hero-cta {
-  display: inline-block; font-size: 15px; font-weight: 700;
-  color: #000; background: #fff; border: none; cursor: pointer;
-  padding: 16px 38px; border-radius: 40px;
-  transition: background .2s; touch-action: manipulation;
-}
-.hero-cta:hover { background: #e0e0e0; }
-
-/* Video card, Tony Robbins style: poster + play button → lightbox */
-.hero-video-card {
-  position: absolute; bottom: 36px; right: 40px; z-index: 3;
-  width: 300px; border-radius: 20px; overflow: hidden;
-  box-shadow: 0 12px 48px rgba(0,0,0,.7);
-  cursor: pointer; transition: transform .25s, box-shadow .25s;
-}
-.hero-video-card:hover { transform: translateY(-4px); box-shadow: 0 20px 64px rgba(0,0,0,.8); }
-.hero-video-label {
-  position: absolute; top: 14px; left: 16px; z-index: 2;
-  font-size: 9px; font-weight: 700; letter-spacing: 2.5px;
-  text-transform: uppercase; color: rgba(255,255,255,.8);
-  background: rgba(0,0,0,.45); backdrop-filter: blur(6px);
-  padding: 5px 10px; border-radius: 40px;
-}
-.hero-video-poster {
-  width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block;
-  filter: brightness(.75);
-}
-.hero-video-play {
-  position: absolute; inset: 0; display: flex;
-  flex-direction: column; align-items: center; justify-content: center; gap: 10px;
-}
-.hero-video-play-btn {
-  width: 60px; height: 60px; border-radius: 50%;
-  background: rgba(255,255,255,.92);
-  display: flex; align-items: center; justify-content: center;
-  transition: transform .2s, background .2s;
-}
-.hero-video-card:hover .hero-video-play-btn { transform: scale(1.1); background: #fff; }
-.hero-video-play-btn svg { width: 22px; height: 22px; margin-left: 3px; }
-.hero-video-play-text {
-  font-size: 11px; font-weight: 700; color: rgba(255,255,255,.9);
-  letter-spacing: 1.5px; text-transform: uppercase;
-}
-
-/* Video lightbox modal */
-.vid-overlay {
-  display: none; position: fixed; inset: 0; z-index: 8500;
-  background: rgba(0,0,0,.92); backdrop-filter: blur(12px);
-  align-items: center; justify-content: center; padding: 20px;
-}
-.vid-overlay.open { display: flex; animation: vidFade .2s ease; }
-@keyframes vidFade { from{opacity:0;} to{opacity:1;} }
-.vid-modal {
-  position: relative; width: 100%; max-width: 900px;
-  aspect-ratio: 16/9; border-radius: 20px; overflow: hidden;
-  box-shadow: 0 32px 100px rgba(0,0,0,.8);
-  animation: vidScale .3s cubic-bezier(.34,1,.64,1);
-}
-@keyframes vidScale { from{transform:scale(.92);opacity:0;} to{transform:scale(1);opacity:1;} }
-.vid-modal iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
-.vid-close {
-  position: absolute; top: -48px; right: 0;
-  background: none; border: none; cursor: pointer;
-  color: rgba(255,255,255,.7); font-size: 14px; font-weight: 600;
-  font-family: 'Inter', sans-serif; display: flex; align-items: center; gap: 6px;
-  transition: color .15s;
-}
-.vid-close:hover { color: #fff; }
-
-@media (max-width: 768px) {
-  .hero { height: 75svh; min-height: 440px; }
-  .hero-content { bottom: 28px; left: 20px; right: 20px; }
-  .hero-content h1 { font-size: clamp(28px, 9vw, 42px); margin-bottom: 32px; }
-  .hero-sub { font-size: clamp(16px, 5.5vw, 24px); }
-  .hero-cta { padding: 14px 30px; font-size: 14px; }
-  .hero-video-card { display: none !important; }
-  .hero { padding: 12px 12px 0; }
-  .hero-inner { height: 75svh; min-height: 400px; border-radius: 18px; }
-  .hero-content { bottom: 24px; left: 20px; right: 20px; }
-}
-
-/* Mobile video strip, only visible below 768px */
-.mobile-video {
-  display: none; background: #111;
-  border-top: 1px solid rgba(255,255,255,.06);
-}
-@media (max-width: 768px) { .mobile-video { display: block; } }
-.mobile-video-header {
-  padding: 12px 18px 8px; display: flex;
-  align-items: center; justify-content: space-between;
-}
-.mobile-video-label {
-  font-size: 9px; font-weight: 700; letter-spacing: 2.5px;
-  text-transform: uppercase; color: rgba(255,255,255,.4);
-}
-.mobile-video-cta {
-  font-size: 11px; font-weight: 700; color: #000;
-  background: #fff; border: none; cursor: pointer;
-  padding: 7px 16px; border-radius: 40px;
-}
-/* Mobile video: poster + play → same lightbox */
-.mobile-video-poster-wrap {
-  position: relative; cursor: pointer;
-}
-.mobile-video-poster-wrap img {
-  width: 100%; max-height: 220px; object-fit: cover; display: block; opacity: .85;
-}
-.mobile-video-poster-overlay {
-  position: absolute; inset: 0; display: flex;
-  align-items: center; justify-content: center; gap: 10px; flex-direction: column;
-}
-.mvp-btn {
-  width: 56px; height: 56px; border-radius: 50%;
-  background: rgba(255,255,255,.92);
-  display: flex; align-items: center; justify-content: center;
-}
-.mvp-btn svg { width: 22px; height: 22px; margin-left: 3px; }
-.mvp-label {
-  font-size: 11px; font-weight: 700;
-  color: rgba(255,255,255,.9); letter-spacing: 1px; text-transform: uppercase;
-}
-.mobile-video-hint {
-  padding: 10px 18px 16px; font-size: 12px;
-  color: rgba(255,255,255,.3); text-align: center;
-}
-
-/* ── QUIZ STRIP, call to action between hero and pillars ── */
-.quiz-strip {
-  background: #fff; color: #000;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 48px 80px; gap: 40px;
-}
-.quiz-strip-left h2 {
-  font-size: clamp(28px, 3.5vw, 48px); font-weight: 900;
-  letter-spacing: -1px; line-height: 1.08; margin-bottom: 12px;
-}
-.quiz-strip-left p { font-size: 17px; color: #555; line-height: 1.6; max-width: 480px; }
-.quiz-strip-right { flex-shrink: 0; }
-.btn-quiz-strip {
-  display: inline-block; font-size: 15px; font-weight: 700;
-  color: #fff; background: #000; border: none; cursor: pointer;
-  padding: 18px 44px; border-radius: 40px; white-space: nowrap;
-  transition: background .2s; touch-action: manipulation;
-}
-.btn-quiz-strip:hover { background: #222; }
-
-@media (max-width: 768px) {
-  .quiz-strip { flex-direction: column; padding: 40px 20px; gap: 24px; }
-  .quiz-strip-left h2 { font-size: clamp(24px, 7vw, 36px); }
-  .quiz-strip-right { width: 100%; }
-  .btn-quiz-strip { width: 100%; text-align: center; }
-}
-
-/* ── PILLARS ── */
-.pillars { background: #000; padding: 96px 80px; }
-.section-label {
-  font-size: 10px; font-weight: 700; letter-spacing: 4px;
-  text-transform: uppercase; color: rgba(255,255,255,.4);
-  margin-bottom: 20px;
-}
-.pillars h2 {
-  font-size: clamp(28px, 3.5vw, 48px); font-weight: 900;
-  letter-spacing: -1px; color: #fff; margin-bottom: 56px; max-width: 520px;
-}
-.pillars-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
-}
-.pillar-card {
-  position: relative; overflow: hidden;
-  aspect-ratio: 3/4; cursor: pointer;
-  background: #111;
-  border-radius: 20px;
-}
-.pillar-card img {
-  width: 100%; height: 100%; object-fit: cover;
-  filter: brightness(.6) saturate(.8);
-  transition: transform .5s ease, filter .5s ease;
-}
-.pillar-card:hover img { transform: scale(1.06); filter: brightness(.4) saturate(.6); }
-.pillar-card-content {
-  position: absolute; inset: 0; padding: 28px 24px;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  background: linear-gradient(to top, rgba(0,0,0,.8) 0%, transparent 60%);
-}
-.pillar-card h3 {
-  font-size: 20px; font-weight: 800; color: #fff;
-  letter-spacing: -.3px; margin-bottom: 6px;
-}
-.pillar-card p {
-  font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.5;
-  max-height: 0; overflow: hidden;
-  transition: max-height .4s ease, opacity .4s ease;
-  opacity: 0;
-}
-.pillar-card:hover p { max-height: 80px; opacity: 1; }
-.pillar-number {
-  position: absolute; top: 20px; left: 24px;
-  font-size: 11px; font-weight: 700; letter-spacing: 2px;
-  color: rgba(255,255,255,.4);
-}
-
-@media (max-width: 1024px) { .pillars-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 768px) {
-  .pillars { padding: 64px 20px; }
-  .pillars-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
-  .pillar-card { aspect-ratio: 1; }
-  .pillar-card h3 { font-size: 16px; }
-}
-
-/* ── PROGRAM ── */
-.program { background: #fff; color: #000; padding-top: 20px; }
-.program-hero {
-  position: relative; height: 70vh; min-height: 480px; overflow: hidden;
-  border-radius: 24px;
-  margin: 48px 48px 0;
-}
-.program-hero img {
-  width: 100%; height: 100%; object-fit: cover;
-  filter: brightness(.55);
-}
-.program-hero-content {
-  position: absolute; inset: 0; display: flex;
-  flex-direction: column; justify-content: flex-end;
-  padding: 56px 80px;
-  background: linear-gradient(to top, rgba(0,0,0,.7) 0%, transparent 60%);
-}
-.program-hero-content .section-label { color: rgba(255,255,255,.5); }
-.program-hero-content h2 {
-  font-size: clamp(32px, 4.5vw, 64px); font-weight: 900;
-  color: #fff; letter-spacing: -1.5px; line-height: 1.05;
-  max-width: 700px; margin-bottom: 16px;
-}
-.program-hero-content p {
-  font-size: 18px; color: rgba(255,255,255,.75);
-  max-width: 520px; line-height: 1.65; margin-bottom: 32px;
-}
-.btn-program-hero {
-  display: inline-block; font-size: 14px; font-weight: 700;
-  color: #000; background: #fff; border: none; cursor: pointer;
-  padding: 16px 36px; border-radius: 40px;
-  transition: background .2s; touch-action: manipulation;
-}
-.btn-program-hero:hover { background: #e0e0e0; }
-
-.program-body { display: flex; align-items: stretch; }
-.program-left {
-  width: 50%; padding: 72px 80px; background: #fff;
-}
-.program-left h3 {
-  font-size: clamp(24px, 2.8vw, 38px); font-weight: 900;
-  color: #000; letter-spacing: -.8px; line-height: 1.1; margin-bottom: 24px;
-}
-.program-left p { font-size: 16px; color: #444; line-height: 1.8; margin-bottom: 20px; }
-.program-includes { margin: 28px 0; }
-.program-includes h4 {
-  font-size: 11px; font-weight: 700; letter-spacing: 3px;
-  text-transform: uppercase; color: #999; margin-bottom: 16px;
-}
-.program-item {
-  display: flex; align-items: flex-start; gap: 14px;
-  padding: 14px 0; border-bottom: 1px solid #eee;
-  font-size: 15px; color: #333; line-height: 1.55;
-}
-.program-item:last-child { border: none; }
-.program-item-icon {
-  width: 28px; height: 28px; background: #000; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  color: #fff; font-size: 12px; flex-shrink: 0; margin-top: 1px;
-}
-.program-price-box {
-  background: #000; color: #fff; border-radius: 16px;
-  padding: 28px 32px; margin-top: 32px;
-  display: flex; align-items: center; justify-content: space-between; gap: 24px;
-}
-.program-price-box .price {
-  font-size: 36px; font-weight: 900; letter-spacing: -1px;
-}
-.program-price-box .price-sub {
-  font-size: 13px; color: rgba(255,255,255,.5); margin-top: 2px;
-}
-.btn-enroll {
-  display: inline-block; font-size: 14px; font-weight: 700;
-  color: #000; background: #fff; border: none; cursor: pointer;
-  padding: 14px 28px; border-radius: 40px; white-space: nowrap;
-  transition: background .2s; touch-action: manipulation;
-}
-.btn-enroll:hover { background: #ddd; }
-
-.program-right {
-  width: 50%; position: relative; overflow: hidden; background: #f5f5f5;
-  border-radius: 20px;
-  margin: 24px;
-}
-.program-right img { width: 100%; height: 100%; object-fit: cover; }
-
-@media (max-width: 1024px) { .program-body { flex-direction: column; } .program-left, .program-right { width: 100%; } .program-right { height: 50vw; } }
-@media (max-width: 768px) {
-  .program-hero { margin: 24px 16px 0; border-radius: 16px; }
-  .program-hero-content { padding: 24px 20px; }
-  .program-left { padding: 32px 20px; }
-  .program-price-box { flex-direction: column; align-items: flex-start; }
-}
-@media (max-width: 768px) {
-  .program-hero-content { padding: 32px 20px; }
-  .program-left { padding: 40px 20px; }
-  .program-price-box { flex-direction: column; align-items: flex-start; }
-}
-
-/* ── JOURNEY & COACHING ── */
-.journey-coaching { background: #000; padding: 96px 80px; }
-.journey-coaching > .section-label { margin-bottom: 20px; }
-.journey-coaching > h2 {
-  font-size: clamp(28px, 3.5vw, 52px); font-weight: 900;
-  color: #fff; letter-spacing: -1px; margin-bottom: 56px; max-width: 560px;
-}
-.jc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-.jc-card {
-  position: relative; overflow: hidden;
-  background: #111; min-height: 480px;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 48px 44px;
-  border-radius: 20px;
-}
-.jc-card img {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; filter: brightness(.45) saturate(.7);
-  transition: transform .6s ease;
-}
-.jc-card:hover img { transform: scale(1.04); }
-.jc-card-content { position: relative; z-index: 1; }
-.jc-card-tag {
-  font-size: 10px; font-weight: 700; letter-spacing: 3px;
-  text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 12px;
-}
-.jc-card h3 {
-  font-size: clamp(22px, 2.5vw, 36px); font-weight: 900;
-  color: #fff; letter-spacing: -.5px; line-height: 1.1; margin-bottom: 14px;
-}
-.jc-card p { font-size: 15px; color: rgba(255,255,255,.65); line-height: 1.7; margin-bottom: 28px; max-width: 380px; }
-.jc-price {
-  font-size: 14px; font-weight: 700; color: rgba(255,255,255,.5);
-  margin-bottom: 20px; letter-spacing: .5px;
-}
-.jc-price strong { color: #fff; font-size: 22px; }
-.btn-jc {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 13px; font-weight: 700; color: #000;
-  background: #fff; border: none; cursor: pointer;
-  padding: 13px 26px; border-radius: 40px;
-  transition: background .2s; touch-action: manipulation;
-}
-.btn-jc:hover { background: #e0e0e0; }
-
-@media (max-width: 768px) {
-  .journey-coaching { padding: 64px 20px; }
-  .jc-grid { grid-template-columns: 1fr; }
-  .jc-card { min-height: 400px; padding: 32px 24px; }
-}
-
-/* ── ABOUT ── */
-/* ── Program product sections ── */
-.prog-problem { background: #fff; color: #000; padding: 72px 80px; }
-.prog-problem-inner { max-width: 900px; margin: 0 auto; }
-.prog-problem-title { font-size: clamp(24px,3vw,42px); font-weight:900; color:#000; letter-spacing:-1px; line-height:1.1; margin-bottom:40px; }
-.prog-problem-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px 36px; margin-bottom:32px; }
-.prog-prob-item { display:flex; align-items:flex-start; gap:12px; font-size:15px; color:#333; line-height:1.55; }
-.prob-icon { font-size:16px; font-weight:900; color:#000; flex-shrink:0; }
-.prog-problem-note { font-size:15px; color:#888; font-style:italic; }
-.prog-for-box { background:#f5f5f5; border-radius:16px; padding:24px 28px; margin:24px 0; }
-.prog-for-label { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#999; margin-bottom:12px; }
-.prog-for-list { list-style:none; display:flex; flex-direction:column; gap:9px; }
-.prog-for-list li { font-size:14px; color:#333; padding-left:20px; position:relative; line-height:1.55; }
-.prog-for-list li::before { content:'✓'; position:absolute; left:0; font-weight:700; color:#000; }
-.prog-transform { display:flex; align-items:stretch; gap:0; margin:28px 0; border:1.5px solid #eee; border-radius:16px; overflow:hidden; }
-.prog-transform-col { flex:1; padding:22px 24px; }
-.prog-before { background:#fafafa; }
-.prog-after { background:#000; color:#fff; }
-.prog-transform-arrow { display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:900; color:#ccc; padding:0 8px; background:#f0f0f0; flex-shrink:0; }
-.prog-t-label { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#999; margin-bottom:12px; }
-.prog-after .prog-t-label { color:rgba(255,255,255,.4); }
-.prog-transform-col ul { list-style:none; display:flex; flex-direction:column; gap:9px; }
-.prog-transform-col li { font-size:13px; color:#555; line-height:1.5; }
-.prog-after li { color:rgba(255,255,255,.75); }
-.prog-cta-stack { display:flex; flex-direction:column; gap:10px; align-items:flex-start; }
-.btn-enroll-soft { font-size:12px; font-weight:600; color:rgba(255,255,255,.45); background:none; border:none; cursor:pointer; font-family:'Inter',sans-serif; text-decoration:underline; transition:color .15s; padding:0; }
-.btn-enroll-soft:hover { color:#fff; }
-@media (max-width:768px) {
-  .prog-problem { padding:48px 20px; }
-  .prog-problem-grid { grid-template-columns:1fr; gap:12px; }
-  .prog-transform { flex-direction:column; }
-  .prog-transform-arrow { padding:6px 0; }
-  .prog-cta-stack { width:100%; }
-  .btn-enroll { width:100%; text-align:center; }
-}
-
-.about { background: #fff; color: #000; }
-.about-inner {
-  display: grid; grid-template-columns: 1fr 1fr;
-  min-height: 80vh;
-}
-.about-image { position: relative; overflow: hidden; background: #eee; border-radius: 20px; margin: 32px; }
-.about-image img {
-  width: 100%; height: 100%; object-fit: cover; object-position: center 20%;
-}
-.about-content {
-  padding: 96px 80px; display: flex;
-  flex-direction: column; justify-content: center;
-}
-.about-content .section-label { color: #999; margin-bottom: 20px; }
-.about-content h2 {
-  font-size: clamp(32px, 3.5vw, 52px); font-weight: 900;
-  color: #000; letter-spacing: -1px; line-height: 1.06; margin-bottom: 32px;
-}
-.about-content h2 em { font-style: italic; font-weight: 300; }
-.about-body p {
-  font-size: 16px; color: #333; line-height: 1.85; margin-bottom: 20px;
-}
-.about-body p:last-child { margin-bottom: 0; }
-.about-body strong { font-weight: 700; color: #000; }
-.about-cta { margin-top: 40px; }
-.btn-about {
-  display: inline-block; font-size: 14px; font-weight: 700;
-  color: #fff; background: #000; border: none; cursor: pointer;
-  padding: 15px 34px; border-radius: 40px;
-  transition: background .2s; touch-action: manipulation;
-}
-.btn-about:hover { background: #222; }
-
-@media (max-width: 1024px) {
-  .about-inner { grid-template-columns: 1fr; }
-  .about-image { height: 60vw; min-height: 300px; }
-  .about-content { padding: 56px 20px; }
-}
-@media (max-width: 768px) {
-  .about-content { padding: 40px 20px; }
-  .about-content h2 { font-size: clamp(26px, 7vw, 38px); }
-}
-
-/* ── TESTIMONIALS ── */
-.testimonials { background: #000; padding: 96px 80px; overflow: hidden; }
-.testimonials h2 {
-  font-size: clamp(26px, 3vw, 44px); font-weight: 900;
-  color: #fff; letter-spacing: -1px; margin-bottom: 48px; max-width: 480px;
-}
-.testimonials-track {
-  display: flex; gap: 24px; overflow-x: auto;
-  scroll-snap-type: x mandatory; scrollbar-width: none;
-  padding-bottom: 8px;
-}
-.testimonials-track::-webkit-scrollbar { display: none; }
-.testimonial-card {
-  flex: 0 0 360px; scroll-snap-align: start;
-  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
-  border-radius: 20px; padding: 32px; position: relative;
-}
-.testimonial-quote {
-  font-size: 32px; line-height: 1; color: rgba(255,255,255,.2);
-  margin-bottom: 16px; font-family: Georgia, serif;
-}
-.testimonial-card p {
-  font-size: 15px; color: rgba(255,255,255,.75);
-  line-height: 1.75; margin-bottom: 24px; font-style: italic;
-}
-.testimonial-author { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.5); }
-.testimonial-role { font-size: 12px; color: rgba(255,255,255,.3); margin-top: 2px; }
-
-@media (max-width: 768px) {
-  .testimonials { padding: 64px 20px; }
-  .testimonial-card { flex: 0 0 300px; }
-}
-
-/* ── FINAL CTA ── */
-.final-cta {
-  position: relative; overflow: hidden;
-  min-height: 60vh; display: flex;
-  align-items: center; justify-content: center;
-  background: #000; text-align: center; padding: 96px 40px;
-}
-.final-cta-bg {
-  position: absolute; inset: 0;
-  background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80&auto=format&fit=crop') center/cover;
-  filter: brightness(.25) saturate(.5);
-}
-.final-cta-content {
-  position: relative; z-index: 1; max-width: 640px;
-}
-.final-cta-content h2 {
-  font-size: clamp(32px, 4.5vw, 64px); font-weight: 900;
-  color: #fff; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 20px;
-}
-.final-cta-content p {
-  font-size: 18px; color: rgba(255,255,255,.65);
-  line-height: 1.7; margin-bottom: 40px;
-}
-.final-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-.btn-cta-primary {
-  font-size: 14px; font-weight: 700; color: #000;
-  background: #fff; border: none; cursor: pointer;
-  padding: 16px 36px; border-radius: 40px;
-  transition: background .2s; touch-action: manipulation;
-}
-.btn-cta-primary:hover { background: #ddd; }
-.btn-cta-secondary {
-  font-size: 14px; font-weight: 700; color: #fff;
-  background: transparent; border: 1.5px solid rgba(255,255,255,.4);
-  cursor: pointer; padding: 16px 36px; border-radius: 40px;
-  transition: border-color .2s; touch-action: manipulation;
-}
-.btn-cta-secondary:hover { border-color: #fff; }
-
-@media (max-width: 768px) {
-  .final-cta { padding: 64px 20px; }
-  .btn-cta-primary, .btn-cta-secondary { width: 100%; justify-content: center; }
-}
-
-/* ── FOOTER ── */
-.site-footer {
-  background: #000; border-top: 1px solid rgba(255,255,255,.08);
-  padding: 48px 80px;
-  display: flex; align-items: center; justify-content: space-between; gap: 32px;
-}
-.footer-logo {
-  font-size: 15px; font-weight: 900; letter-spacing: 1.5px;
-  color: #fff; text-transform: uppercase;
-}
-.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
-.footer-links a { font-size: 13px; color: rgba(255,255,255,.4); transition: color .15s; }
-.footer-links a:hover { color: #fff; }
-.footer-copy { font-size: 12px; color: rgba(255,255,255,.25); }
-
-@media (max-width: 768px) {
-  .site-footer { flex-direction: column; align-items: flex-start; padding: 40px 20px; }
-}
-
-/* ══════════════════════════════════════════
-   QUIZ OVERLAY SYSTEM
-   Quiz runs as a full-screen overlay on top of
-   the homepage. .quiz-overlay.active = visible.
-══════════════════════════════════════════ */
-.quiz-overlay {
-  display: none; position: fixed; inset: 0; z-index: 800;
-  background: #000; flex-direction: column;
-  overflow: hidden;
-}
-.quiz-overlay.active { display: flex; }
-
-/* Quiz page panels inside overlay */
-.qp { display: none; flex-direction: column; flex: 1; overflow: hidden; }
-.qp.active { display: flex; }
-
-/* Quiz top-nav */
-.q-topnav {
-  height: 64px; background: #000; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 40px; border-bottom: 1px solid rgba(255,255,255,.06);
-}
-.q-topnav .qnav-logo {
-  font-size: 17px; font-weight: 900; letter-spacing: 1.5px;
-  color: #fff; text-transform: uppercase; text-decoration: none;
-}
-.q-topnav .qnav-close {
-  background: none; border: none; cursor: pointer;
-  color: rgba(255,255,255,.5); font-size: 13px; font-weight: 600;
-  font-family: 'Inter', sans-serif; display: flex; align-items: center; gap: 6px;
-  transition: color .15s;
-}
-.q-topnav .qnav-close:hover { color: #fff; }
-.prog-outer {
-  flex: 1; max-width: 200px; height: 3px;
-  background: rgba(255,255,255,.15); border-radius: 3px; margin: 0 24px; overflow: hidden;
-}
-.prog-inner { height: 100%; background: #fff; border-radius: 3px; transition: width .5s cubic-bezier(.4,0,.2,1); }
-
-/* Quiz split layout */
-.q-body { flex: 1; display: flex; min-height: 0; }
-.q-left {
-  width: 50%; background: #000;
-  display: flex; flex-direction: column;
-  padding: 48px 56px 40px; overflow-y: auto;
-}
-.q-right { width: 50%; flex-shrink: 0; overflow: hidden; }
-.q-right img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
-.step-label {
-  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
-  color: rgba(255,255,255,.4); font-weight: 700; margin-bottom: 20px;
-}
-.q-question {
-  font-size: clamp(20px, 2.4vw, 34px); font-weight: 800;
-  color: #fff; line-height: 1.15; letter-spacing: -.4px; margin-bottom: 28px;
-}
-.q-options { display: flex; flex-direction: column; gap: 9px; flex: 1; }
-.q-opt {
-  display: flex; align-items: center; gap: 14px; padding: 15px 18px;
-  border: 1.5px solid rgba(255,255,255,.12);
-  background: transparent; cursor: pointer;
-  color: rgba(255,255,255,.75); font-size: 14px; font-weight: 500;
-  font-family: 'Inter', sans-serif; text-align: left; border-radius: 10px;
-  transition: all .18s; line-height: 1.45; touch-action: manipulation; min-height: 52px;
-}
-.q-opt:hover { border-color: rgba(255,255,255,.45); background: rgba(255,255,255,.06); color: #fff; }
-.q-opt.sel  { border-color: #fff; background: rgba(255,255,255,.09); color: #fff; }
-.q-letter {
-  min-width: 30px; height: 30px; border-radius: 50%;
-  border: 1.5px solid rgba(255,255,255,.22);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 800; color: rgba(255,255,255,.35);
-  transition: all .18s; flex-shrink: 0;
-}
-.q-opt.sel .q-letter, .q-opt:hover .q-letter { border-color: #fff; background: #fff; color: #000; }
-.q-nav-row {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.07);
-}
-.btn-back {
-  background: none; border: none; cursor: pointer;
-  color: rgba(255,255,255,.3); font-size: 13px; font-weight: 600;
-  font-family: 'Inter', sans-serif; display: flex; align-items: center; gap: 6px;
-  transition: color .15s; padding: 8px 0; touch-action: manipulation;
-}
-.btn-back:hover { color: rgba(255,255,255,.65); }
-.btn-next {
-  font-size: 13px; font-weight: 700; color: #000; background: #fff;
-  border: none; cursor: pointer; padding: 13px 30px; border-radius: 40px;
-  font-family: 'Inter', sans-serif; transition: background .15s;
-  touch-action: manipulation; min-height: 46px;
-}
-.btn-next:hover:not(:disabled) { background: #ddd; }
-.btn-next:disabled { opacity: .25; cursor: not-allowed; }
-
-/* Contact form inside quiz */
-.contact-form-wrap { flex: 1; display: flex; min-height: 0; }
-.contact-left {
-  width: 50%; background: #000; display: flex; flex-direction: column;
-  justify-content: center; padding: 48px 56px; overflow-y: auto;
-}
-.contact-right { width: 50%; overflow: hidden; }
-.contact-right img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; filter: brightness(.75); }
-.step-q {
-  font-size: clamp(22px, 2.6vw, 36px); font-weight: 800;
-  color: #fff; line-height: 1.1; letter-spacing: -.5px; margin-bottom: 28px;
-}
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
-.fg { display: flex; flex-direction: column; gap: 5px; }
-.fg.full { grid-column: 1 / -1; }
-.fg label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.38); font-weight: 700; }
-.fg input, .fg select {
-  padding: 13px 15px; background: rgba(255,255,255,.06);
-  border: 1.5px solid rgba(255,255,255,.12); color: #fff;
-  font-size: 16px; font-family: 'Inter', sans-serif; border-radius: 9px;
-  outline: none; transition: border-color .2s; -webkit-appearance: none; appearance: none;
-}
-.fg input::placeholder { color: rgba(255,255,255,.2); }
-.fg input:focus, .fg select:focus { border-color: rgba(255,255,255,.5); }
-.fg select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='rgba(255,255,255,0.4)' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
-  color: rgba(255,255,255,.75);
-}
-.fg select option { background: #111; color: #fff; }
-.form-privacy { font-size: 11px; color: rgba(255,255,255,.22); line-height: 1.6; margin-top: 10px; }
-
-/* Results inside quiz */
-.results-wrap { flex: 1; display: flex; min-height: 0; overflow: hidden; }
-.res-left {
-  width: 50%; background: #fff; padding: 48px 52px; overflow-y: auto;
-  display: flex; flex-direction: column;
-}
-.res-right {
-  width: 50%; background: #000; display: flex; flex-direction: column;
-  justify-content: center; padding: 56px 48px; overflow-y: auto; position: relative;
-}
-.res-right::before {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(ellipse 70% 50% at 50% 60%, rgba(255,255,255,.03) 0%, transparent 70%);
-}
-.res-eyebrow { font-size: 9px; letter-spacing: 3.5px; text-transform: uppercase; color: #999; font-weight: 700; margin-bottom: 10px; }
-.res-badge { display: inline-block; background: #000; color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 40px; margin-bottom: 14px; }
-.res-name { font-size: clamp(26px, 3vw, 44px); font-weight: 900; color: #000; letter-spacing: -1px; line-height: 1.05; margin-bottom: 8px; }
-.res-tagline { font-size: 16px; color: #666; font-style: italic; margin-bottom: 22px; }
-.res-divider { height: 1px; background: #eee; margin-bottom: 20px; }
-.res-body { font-size: 14px; color: #333; line-height: 1.82; margin-bottom: 20px; }
-.res-body p + p { margin-top: 12px; }
-.res-traits { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
-.res-trait { font-size: 11px; font-weight: 600; color: #333; border: 1.5px solid #ccc; padding: 5px 13px; border-radius: 40px; }
-.res-insights { background: #f5f5f5; border-radius: 10px; padding: 18px 20px; }
-.res-insights h4 { font-size: 13px; font-weight: 800; color: #000; margin-bottom: 10px; }
-.res-insights li { font-size: 13px; color: #555; padding: 5px 0 5px 18px; list-style: none; position: relative; border-bottom: 1px solid #eaeaea; line-height: 1.6; }
-.res-insights li:last-child { border: none; }
-.res-insights li::before { content: '→'; position: absolute; left: 0; color: #000; font-weight: 800; }
-.book-eyebrow { font-size: 9px; letter-spacing: 3.5px; text-transform: uppercase; color: rgba(255,255,255,.35); font-weight: 700; margin-bottom: 10px; position: relative; z-index: 1; }
-.book-who { font-size: 14px; color: rgba(255,255,255,.3); font-style: italic; margin-bottom: 16px; position: relative; z-index: 1; }
-.book-title { font-size: clamp(26px, 2.8vw, 42px); font-weight: 900; color: #fff; line-height: 1.06; letter-spacing: -1px; margin-bottom: 12px; position: relative; z-index: 1; }
-.book-desc { font-size: 14px; color: rgba(255,255,255,.45); line-height: 1.75; margin-bottom: 26px; max-width: 320px; position: relative; z-index: 1; }
-.book-feats { margin-bottom: 26px; position: relative; z-index: 1; }
-.book-feat { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.06); font-size: 13px; color: rgba(255,255,255,.5); }
-.book-feat:last-child { border: none; }
-.book-dot { width: 5px; height: 5px; border-radius: 50%; background: #fff; opacity: .35; flex-shrink: 0; }
-.btn-book { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 800; color: #000; background: #fff; border: none; cursor: pointer; padding: 15px 32px; border-radius: 40px; font-family: 'Inter', sans-serif; transition: background .15s; position: relative; z-index: 1; touch-action: manipulation; }
-.btn-book:hover { background: #ddd; }
-.btn-book-sec { display: block; margin-top: 12px; font-size: 12px; color: rgba(255,255,255,.25); text-decoration: none; font-weight: 500; transition: color .15s; position: relative; z-index: 1; }
-.btn-book-sec:hover { color: rgba(255,255,255,.6); }
-
-/* Mobile quiz */
-@media (max-width: 768px) {
-  .q-topnav { padding: 0 18px; }
-  .prog-outer { max-width: 100px; margin: 0 12px; }
-  .q-body { flex-direction: column; overflow-y: auto; }
-  .q-right { width: 100%; height: 45vw; min-height: 180px; flex-shrink: 0; order: -1; }
-  .q-left { width: 100%; padding: 22px 18px 32px; overflow: visible; }
-  .q-question { font-size: clamp(17px, 5vw, 24px); margin-bottom: 18px; }
-  .q-opt { font-size: 13px; padding: 12px 14px; }
-  .q-letter { min-width: 27px; height: 27px; }
-  .contact-form-wrap { flex-direction: column; }
-  .contact-right { width: 100%; height: 45vw; flex-shrink: 0; }
-  .contact-left { width: 100%; padding: 24px 18px; justify-content: flex-start; }
-  .form-grid { grid-template-columns: 1fr; }
-  .results-wrap { flex-direction: column; overflow-y: auto; }
-  .res-left { width: 100%; padding: 28px 18px; overflow: visible; }
-  .res-right { width: 100%; padding: 32px 18px 48px; }
-  .book-desc { max-width: 100%; }
-  .btn-book { width: 100%; justify-content: center; }
-}
-
-/* ══════════════════════════════════════════
-   LOADER
-══════════════════════════════════════════ */
-#loader {
-  position: fixed; inset: 0; background: #000;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  z-index: 9999; opacity: 0; pointer-events: none; transition: opacity .35s;
-}
-#loader.on { opacity: 1; pointer-events: all; }
-.loader-ring {
-  width: 44px; height: 44px; border: 2px solid rgba(255,255,255,.1);
-  border-top-color: #fff; border-radius: 50%;
-  animation: spin .7s linear infinite; margin-bottom: 20px;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-.loader-txt { font-size: 15px; font-weight: 600; color: rgba(255,255,255,.4); }
-
-/* ══════════════════════════════════════════
-   CALENDLY MODAL
-══════════════════════════════════════════ */
-.cal-overlay {
-  display: none; position: fixed; inset: 0; z-index: 8000;
-  background: rgba(0,0,0,.8); backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 16px;
-}
-.cal-overlay.open { display: flex; animation: calFadeIn .22s ease; }
-@keyframes calFadeIn { from { opacity: 0; } to { opacity: 1; } }
-.cal-modal {
-  background: #fff; border-radius: 20px; width: 100%; max-width: 800px;
-  height: calc(100vh - 40px); height: calc(100dvh - 40px);
-  display: flex; flex-direction: column; overflow: hidden;
-  box-shadow: 0 32px 100px rgba(0,0,0,.6);
-  animation: calSlideIn .28s cubic-bezier(.34,1,.64,1);
-}
-@keyframes calSlideIn { from { transform: translateY(24px) scale(.97); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
-.cal-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid #eee; flex-shrink: 0; background: #fff; }
-.cal-modal-title { font-size: 15px; font-weight: 800; color: #000; }
-.cal-modal-sub { font-size: 11px; color: #999; margin-top: 2px; }
-.cal-close { width: 36px; height: 36px; min-width: 36px; border-radius: 50%; border: none; background: #f0f0f0; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #444; transition: background .15s; flex-shrink: 0; margin-left: 12px; }
-.cal-close:hover { background: #e0e0e0; }
-.cal-iframe-wrap { flex: 1; position: relative; overflow: hidden; min-height: 0; }
-.cal-iframe-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; display: block; }
-.cal-loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fff; z-index: 2; transition: opacity .3s; }
-.cal-loading.hidden { opacity: 0; pointer-events: none; }
-.cal-spinner { width: 38px; height: 38px; border: 2px solid #eee; border-top-color: #000; border-radius: 50%; animation: spin .7s linear infinite; margin-bottom: 14px; }
-.cal-loading p { font-size: 13px; color: #bbb; font-weight: 500; }
-.cal-success { display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 48px 32px; background: #fff; position: absolute; inset: 0; z-index: 3; }
-.cal-success.show { display: flex; }
-.cal-success-icon { width: 72px; height: 72px; border-radius: 50%; background: #000; color: #fff; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 30px; animation: popIn .4s cubic-bezier(.34,1.56,.64,1); }
-@keyframes popIn { from { transform: scale(0); } to { transform: scale(1); } }
-.cal-success h3 { font-size: 24px; font-weight: 900; color: #000; letter-spacing: -.5px; margin-bottom: 10px; }
-.cal-success p { font-size: 15px; color: #666; line-height: 1.65; max-width: 340px; margin-bottom: 28px; }
-.cal-success-close { background: #000; color: #fff; border: none; cursor: pointer; font-size: 13px; font-weight: 700; padding: 14px 30px; border-radius: 40px; font-family: 'Inter', sans-serif; min-width: 200px; }
-.cal-success-close:hover { background: #222; }
-@media (max-width: 768px) {
-  .cal-overlay { padding: 0; align-items: flex-end; }
-  .cal-modal { border-radius: 24px 24px 0 0; height: 92vh; height: 92dvh; max-width: 100%; animation: calSlideUp .3s cubic-bezier(.34,1,.64,1); }
-  @keyframes calSlideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-}
-
-/* ── Safe areas ── */
-@supports (padding: env(safe-area-inset-bottom)) {
-  @media (max-width: 768px) {
-    .q-left, .contact-left, .res-right { padding-bottom: max(32px, env(safe-area-inset-bottom)); }
-    .site-footer { padding-bottom: max(40px, env(safe-area-inset-bottom)); }
-  }
-}
-/* Landscape phones */
-@media (max-height: 500px) and (max-width: 900px) {
-  .hero { height: 100svh; }
-  .q-right { height: 35vw; min-height: 130px; }
-  .cal-modal { height: 96dvh; border-radius: 0; }
-}
-/* Very small */
-@media (max-width: 360px) {
-  .hero-content h1 { font-size: 26px; }
-  .hero-sub { font-size: 15px; }
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kat Anselmo - Life is extraordinary. Learn to live yours fully.</title>
+    <style>
+        :root {
+            --primary: #111111;
+            --accent: #E6C280;
+            --bg: #FDFDFD;
+            --text: #333333;
+            --text-muted: #666666;
+            --border: #EAEAEA;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid var(--border);
+        }
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: var(--primary);
+        }
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--text-muted);
+        }
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            display: inline-block;
+        }
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .video-section {
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .pillar-card {
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+        .pillar-num {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .bullets {
+            list-style: none;
+            padding: 0;
+        }
+        .bullets li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .bullets li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+        .features {
+            margin: 30px 0;
+        }
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .feature-check {
+            color: green;
+            margin-right: 10px;
+        }
+        .pricing-box {
+            border: 1px solid var(--primary);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            margin: 40px auto;
+        }
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        .testimonials {
+            background: #F9F9F9;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .testimonial-card {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-style: italic;
+        }
+        .author {
+            font-style: normal;
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
-     FIXED SITE NAV
-══════════════════════════════════════ -->
-<nav class="site-nav">
-  <a href="#" class="logo" onclick="closeQuiz(); window.scrollTo({top:0,behavior:'smooth'}); return false;">Kat Anselmo</a>
-  <ul class="nav-links">
-    <li><a href="#about">About<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a></li>
-    <li><a href="#program">The Program<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a></li>
-    <li><a href="#journey">The Journey<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a></li>
-    <li><a href="#coaching">Coaching<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a></li>
-  </ul>
-  <div class="nav-right">
-    <button type="button" class="nav-btn" onclick="startQuiz(event)">Take the Quiz</button>
-    <button type="button" class="nav-hamburger" id="mainHam" aria-label="Menu" onclick="toggleDrawer(this)">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
+    <header>
+        <a href="#" class="logo">Kat Anselmo</a>
+        <nav>
+            <a href="#">About</a>
+            <a href="#">The Program</a>
+            <a href="#">The Journey</a>
+            <a href="#">Coaching</a>
+            <a href="#" class="btn" style="padding: 8px 16px; margin-left: 15px;">Take the Quiz</a>
+        </nav>
+    </header>
 
-<!-- Mobile drawer -->
-<div class="mobile-drawer" id="mobileDrawer">
-  <a href="#about"    onclick="closeDrawer()">About</a>
-  <a href="#program"  onclick="closeDrawer()">The Program</a>
-  <a href="#journey"  onclick="closeDrawer()">The Journey</a>
-  <a href="#coaching" onclick="closeDrawer()">Coaching</a>
-  <button type="button" class="drawer-cta" onclick="closeDrawer(); startQuiz(event)">Take the Free Quiz</button>
-</div>
+    <div class="container hero">
+        <h1>Life is extraordinary. Learn to live yours fully</h1>
+        <a href="#" class="btn">Start Now</a>
 
-<!-- Loader -->
-<div id="loader"><div class="loader-ring"></div><div class="loader-txt">Analysing your answers…</div></div>
-
-<!-- Calendly modal -->
-<div class="cal-overlay" id="calOverlay" onclick="handleOverlayClick(event)">
-  <div class="cal-modal">
-    <div class="cal-modal-header">
-      <div><div class="cal-modal-title">Book your call with Kat</div><div class="cal-modal-sub">No pressure · No pitch · Just clarity</div></div>
-      <button type="button" class="cal-close" onclick="closeCalendly()" aria-label="Close">✕</button>
-    </div>
-    <div class="cal-iframe-wrap" id="calIframeWrap">
-      <div class="cal-loading" id="calLoading"><div class="cal-spinner"></div><p>Loading Kat's calendar…</p></div>
-      <iframe id="calIframe" src="about:blank" title="Book a call with Kat Anselmo"></iframe>
-      <div class="cal-success" id="calSuccess">
-        <div class="cal-success-icon">✓</div>
-        <h3>You're booked!</h3>
-        <p>Your call with Kat is confirmed.<br>Check your email for the details, we we look forward to speaking with you.</p>
-        <button type="button" class="cal-success-close" onclick="closeCalendly()">Close &amp; return to your results</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════
-     HOMEPAGE (scrollable)
-══════════════════════════════════════ -->
-<div class="homepage" id="homepage">
-
-  <!-- HERO: black background + rounded image = Tony Robbins look -->
-  <section class="hero" id="hero">
-    <div class="hero-inner">
-      <div class="hero-bg"></div>
-      <div class="hero-content">
-        <h1>Life is<br>extraordinary.<br><span class="hero-sub">Learn to live yours fully</span></h1>
-        <button class="hero-cta" type="button" onclick="startQuiz(event)">Start Now</button>
-      </div>
-      <!-- Video card: visible on desktop only, hidden on mobile via CSS -->
-      <div class="hero-video-card" onclick="openVideoModal()">
-        <div class="hero-video-label">Latest from Kat</div>
-        <img class="hero-video-poster" src="https://drive.google.com/file/d/1FaZAuc5faYZ5pMK3OeLAK0h2KLYCyguw/view?usp=drive_link" alt="Watch Kat's latest video" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/zFO2ka9Cxts/hqdefault.jpg'">
-        <div class="hero-video-play">
-          <div class="hero-video-play-btn">
-            <svg viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-          <span class="hero-video-play-text">Watch</span>
+        <div class="video-section">
+            <!-- Video Section Start -->
+            <div class="video-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 8px; background: #000; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                <iframe 
+                    src="https://youtube.com" 
+                    title="Kat Anselmo - Transform your life" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen
+                    poster="https://googleusercontent.com"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;">
+                </iframe>
+            </div>
+            <!-- Video Section End -->
         </div>
-      </div>
+        
+        <p style="color: var(--text-muted);">Scroll down to explore ↓</p>
     </div>
-  </section>
 
-  <!-- Mobile video section: poster + play → same lightbox -->
-  <div class="mobile-video">
-    <div class="mobile-video-header">
-      <span class="mobile-video-label">Latest from Kat</span>
-      <button class="mobile-video-cta" type="button" onclick="startQuiz(event)">Take the quiz</button>
+    <div class="container" style="text-align: center;">
+        <h2>Ready to take control of your life?</h2>
+        <p>Let's find out what's been holding you back. Take the free 2-minute quiz and discover your pattern.</p>
+        <a href="#" class="btn">Take the free quiz</a>
     </div>
-    <div class="mobile-video-poster-wrap" onclick="openVideoModal()">
-      <img src="https://drive.google.com/file/d/1FaZAuc5faYZ5pMK3OeLAK0h2KLYCyguw/view?usp=drive_link" alt="Watch Kat's latest video" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/zFO2ka9Cxts/hqdefault.jpg'">
-      <div class="mobile-video-poster-overlay">
-        <div class="mvp-btn"><svg viewBox="0 0 24 24" fill="#000" width="22" height="22"><path d="M8 5v14l11-7z"/></svg></div>
-        <span class="mvp-label">Watch on YouTube</span>
-      </div>
-    </div>
-    <div class="mobile-video-hint">Scroll down to explore ↓</div>
-  </div>
 
-  <!-- QUIZ STRIP -->
-  <section class="quiz-strip">
-    <div class="quiz-strip-left">
-      <h2>Ready to take<br>control of your life?</h2>
-      <p>Let's find out what's been holding you back. Take the free 2-minute quiz and discover your pattern.</p>
-    </div>
-    <div class="quiz-strip-right">
-      <button class="btn-quiz-strip" type="button" onclick="startQuiz(event)">Take the free quiz</button>
-    </div>
-  </section>
-
-  <!-- PILLARS -->
-  <section class="pillars" id="pillars">
-    <div class="section-label">The foundations</div>
-    <h2>Pillars for an<br>Extraordinary Life</h2>
-    <div class="pillars-grid">
-      <div class="pillar-card">
-        <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1200&q=90&fit=crop&auto=format&fit=crop" alt="Mindset" loading="lazy">
-        <div class="pillar-card-content">
-          <span class="pillar-number">01</span>
-          <h3>Mindset</h3>
-          <p>Break the mental loops keeping you stuck and build a foundation of self-trust.</p>
+    <div class="container">
+        <p class="pillar-num" style="text-align:center; font-weight:bold; text-transform:uppercase; letter-spacing:1px;">The foundations</p>
+        <h2 style="text-align: center; margin-top:0;">Pillars for an Extraordinary Life</h2>
+        <div class="pillars">
+            <div class="pillar-card">
+                <span class="pillar-num">01</span>
+                <h3>Mindset</h3>
+                <p>Break the mental loops keeping you stuck and build a foundation of self-trust.</p>
+            </div>
+            <div class="pillar-card">
+                <span class="pillar-num">02</span>
+                <h3>Relationships</h3>
+                <p>Learn to connect deeply, starting with the relationship you have with yourself.</p>
+            </div>
+            <div class="pillar-card">
+                <span class="pillar-num">03</span>
+                <h3>Purpose</h3>
+                <p>Reconnect with what truly drives you and build a life aligned with your values.</p>
+            </div>
+            <div class="pillar-card">
+                <span class="pillar-num">04</span>
+                <h3>Clarity</h3>
+                <p>Cut through the noise, silence the doubt, and finally know what you actually want.</p>
+            </div>
         </div>
-      </div>
-      <div class="pillar-card">
-        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1200&q=90&fit=crop&auto=format&fit=crop" alt="Relationships" loading="lazy">
-        <div class="pillar-card-content">
-          <span class="pillar-number">02</span>
-          <h3>Relationships</h3>
-          <p>Learn to connect deeply, starting with the relationship you have with yourself.</p>
-        </div>
-      </div>
-      <div class="pillar-card">
-        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1200&q=90&fit=crop&auto=format&fit=crop" alt="Purpose" loading="lazy">
-        <div class="pillar-card-content">
-          <span class="pillar-number">03</span>
-          <h3>Purpose</h3>
-          <p>Reconnect with what truly drives you and build a life aligned with your values.</p>
-        </div>
-      </div>
-      <div class="pillar-card">
-        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1200&q=90&fit=crop&auto=format&fit=crop" alt="Clarity" loading="lazy">
-        <div class="pillar-card-content">
-          <span class="pillar-number">04</span>
-          <h3>Clarity</h3>
-          <p>Cut through the noise, silence the doubt, and finally know what you actually want.</p>
-        </div>
-      </div>
     </div>
-  </section>
-
-  <!-- PROGRAM, Self-contained product page (Tony Robbins strategy) -->
-  <section class="program" id="program">
-
-    <!-- Hero: full-bleed emotion-first image with headline -->
-    <div class="program-hero">
-      <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1600&q=85&auto=format&fit=crop" alt="The Secret to Inner Success" loading="lazy">
-      <div class="program-hero-content">
-        <div class="section-label">30-Day Flagship Programme</div>
-        <h2>The Secret to<br>Inner Success</h2>
+    <div class="container" style="background: #FDFDFD; border: 1px solid var(--border); border-radius: 8px; padding: 40px; margin-top: 40px;">
+        <p class="pillar-num" style="font-weight:bold; text-transform:uppercase;">The Secret to Inner Success</p>
+        <p style="font-size: 1.1rem; color: var(--text-muted);">30-Day Flagship Programme</p>
+        <h2>The Secret to Inner Success</h2>
         <p>Nobody ever taught you how to handle your emotions, trust yourself, or know what you truly want. This changes that, in 30 days.</p>
-        <button class="btn-program-hero" type="button" onclick="document.getElementById('program-enrol').scrollIntoView({behavior:'smooth'})">Discover the Programme</button>
-      </div>
+        <a href="#" class="btn">Discover the Programme</a>
     </div>
 
-    <!-- Problem: what brings people here -->
-    <div class="prog-problem">
-      <div class="prog-problem-inner">
-        <div class="section-label">Does this sound familiar?</div>
-        <h3 class="prog-problem-title">You already know something<br>needs to change.</h3>
-        <div class="prog-problem-grid">
-          <div class="prog-prob-item"><span class="prob-icon">→</span>You feel stuck, but you don't know why</div>
-          <div class="prog-prob-item"><span class="prob-icon">→</span>You keep repeating the same patterns</div>
-          <div class="prog-prob-item"><span class="prob-icon">→</span>You put everyone else first and lose yourself</div>
-          <div class="prog-prob-item"><span class="prob-icon">→</span>You make decisions from fear, not from clarity</div>
-          <div class="prog-prob-item"><span class="prob-icon">→</span>You know what you don't want, but not what you do</div>
-          <div class="prog-prob-item"><span class="prob-icon">→</span>You've tried to change before, but nothing stuck</div>
-        </div>
-        <p class="prog-problem-note">If any of these feel true, this programme was built for you.</p>
-      </div>
+    <div class="container">
+        <h3>Does this sound familiar?</h3>
+        <p style="font-size: 1.2rem; font-weight: 500;">You already know something needs to change.</p>
+        <ul class="bullets">
+            <li>You feel stuck, but you don't know why</li>
+            <li>You keep repeating the same patterns</li>
+            <li>You put everyone else first and lose yourself</li>
+            <li>You make decisions from fear, not from clarity</li>
+            <li>You know what you don't want, but not what you do</li>
+            <li>You've tried to change before, but nothing stuck</li>
+        </ul>
+        <p style="margin-top: 20px; font-style: italic;">If any of these feel true, this programme was built for you.</p>
     </div>
 
-<!-- Product body: description left, image right -->
-    <div class="program-body">
-      <div class="program-left">
-        <h3>The 30-Day Life<br>Clarity Experience</h3>
+    <div class="container">
+        <h3>The 30-Day Life Clarity Experience</h3>
         <p>Most personal development works on the surface. This goes underneath. Using the <strong>Inner Success Method™</strong>, you'll spend 30 days reconnecting with yourself through structured daily reflection, personalised insight, and a private session with Kat designed to reveal the hidden patterns quietly running your life.</p>
         <p>By the end, you won't just have new information, you'll have your own written <strong>Personal Inner Success Book</strong>: a guide built entirely from your own self-knowledge that you can return to whenever you feel lost.</p>
-
-        <!-- Who it's for -->
-        <div class="prog-for-box">
-          <div class="prog-for-label">This is for you if:</div>
-          <ul class="prog-for-list">
+        
+        <h4 style="margin-top: 30px;">This is for you if:</h4>
+        <ul style="padding-left: 20px; color: var(--text-muted);">
             <li>You're going through a life transition and don't know where to go next</li>
             <li>You've experienced burnout, overwhelm, or emotional exhaustion</li>
             <li>You struggle with self-doubt and keep second-guessing yourself</li>
             <li>You want clarity about what you actually want, not what others expect</li>
-          </ul>
+        </ul>
+
+        <h4>Everything included</h4>
+        <div class="features">
+            <div class="feature-item">
+                <span class="feature-check">✓</span>
+                <div><strong>30 days of guided daily reflection</strong>, structured journalling prompts that build self-knowledge progressively</div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-check">✓</span>
+                <div><strong>Private 1:1 Inner Alignment Reading with Kat</strong>, a personalised session to identify your hidden emotional blocks and subconscious patterns</div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-check">✓</span>
+                <div><strong>Your Personal Inner Success Book</strong>, a written guide built from your own journey, to return to whenever you need it</div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-check">✓</span>
+                <div><strong>Inner Success Library access</strong>, ebooks, reflection workbooks, and mindset trainings for ongoing growth</div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-check">✓</span>
+                <div><strong>Optional private Telegram community</strong>, share reflections, ask questions, and feel supported by others on the same journey</div>
+            </div>
+        </div>
+        <div style="display: flex; gap: 40px; margin-top: 30px; border-top: 1px solid var(--border); padding-top: 20px;">
+            <div style="flex: 1;">
+                <h5>Before</h5>
+                <ul style="color: var(--text-muted); padding-left: 20px;">
+                    <li>Overwhelmed and stuck</li>
+                    <li>Disconnected from yourself</li>
+                    <li>Repeating the same patterns</li>
+                    <li>Unsure of your next step</li>
+                </ul>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--text-muted);">→</div>
+            <div style="flex: 1;">
+                <h5>After 30 Days</h5>
+                <ul style="color: var(--text-muted); padding-left: 20px;">
+                    <li>Grounded and emotionally aware</li>
+                    <li>Reconnected with your inner voice</li>
+                    <li>Understanding your patterns, and how to shift them</li>
+                    <li>Confident in your choices and direction</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="program-includes">
-          <h4>Everything included</h4>
-          <div class="program-item">
-            <div class="program-item-icon">✓</div>
-            <div><strong>30 days of guided daily reflection</strong>, structured journalling prompts that build self-knowledge progressively</div>
-          </div>
-          <div class="program-item">
-            <div class="program-item-icon">✓</div>
-            <div><strong>Private 1:1 Inner Alignment Reading with Kat</strong>, a personalised session to identify your hidden emotional blocks and subconscious patterns</div>
-          </div>
-          <div class="program-item">
-            <div class="program-item-icon">✓</div>
-            <div><strong>Your Personal Inner Success Book</strong>, a written guide built from your own journey, to return to whenever you need it</div>
-          </div>
-          <div class="program-item">
-            <div class="program-item-icon">✓</div>
-            <div><strong>Inner Success Library access</strong>, ebooks, reflection workbooks, and mindset trainings for ongoing growth</div>
-          </div>
-          <div class="program-item">
-            <div class="program-item-icon">✓</div>
-            <div><strong>Optional private Telegram community</strong>, share reflections, ask questions, and feel supported by others on the same journey</div>
-          </div>
-        </div>
-
-        <!-- Transformation: before → after -->
-        <div class="prog-transform">
-          <div class="prog-transform-col prog-before">
-            <div class="prog-t-label">Before</div>
-            <ul>
-              <li>Overwhelmed and stuck</li>
-              <li>Disconnected from yourself</li>
-              <li>Repeating the same patterns</li>
-              <li>Unsure of your next step</li>
-            </ul>
-          </div>
-          <div class="prog-transform-arrow">→</div>
-          <div class="prog-transform-col prog-after">
-            <div class="prog-t-label">After 30 Days</div>
-            <ul>
-              <li>Grounded and emotionally aware</li>
-              <li>Reconnected with your inner voice</li>
-              <li>Understanding your patterns, and how to shift them</li>
-              <li>Confident in your choices and direction</li>
-            </ul>
-          </div>
-        </div>
-
-<!-- Price + CTA -->
-        <div class="program-price-box" id="program-enrol">
-          <div>
+        <div class="pricing-box">
             <div class="price">€697</div>
-            <div class="price-sub">One-time investment · Lifetime access · Starts when you're ready</div>
-          </div>
-          <div class="prog-cta-stack">
-            <a href="https://payhip.com/b/zwPqE" target="_blank" rel="noopener" class="btn-enroll">Enrol Now</a>
-            <button type="button" class="btn-enroll-soft" onclick="openCalendly()">Not sure? Book a free 10-min call first</button>
-          </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">One-time investment · Lifetime access · Starts when you're ready</p>
+            <a href="#" class="btn" style="width: 80%;">Enrol Now</a>
+            <p style="margin-top: 15px; font-size: 0.9rem;"><a href="#" style="color: var(--text-muted);">Not sure? Book a free 10-min call first</a></p>
         </div>
-      </div>
-
-      <div class="program-right">
-        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&q=85&auto=format&fit=crop" alt="30-day clarity experience" loading="lazy">
-      </div>
     </div>
-  </section>
 
-  <!-- JOURNEY & COACHING -->
-  <section class="journey-coaching" id="journey">
-    <div class="section-label">Work with Kat</div>
-    <h2>Go deeper.<br>Move further.</h2>
-    <div class="jc-grid">
-      <div class="jc-card" id="coaching">
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=900&q=80&auto=format&fit=crop" alt="Inner Clarity Session" loading="lazy">
-        <div class="jc-card-content">
-          <div class="jc-card-tag">The Journey · 1:1 Coaching</div>
-          <h3>Inner Clarity<br>Session</h3>
-          <p>Stop guessing. Start knowing yourself. You bring what you're stuck on, a decision, a pattern, a relationship, a direction. Kat connects with your energy field and reflects back exactly what she finds: the hidden blocks, the blind spots, the patterns quietly running your life. Most people feel immediate clarity just from having it named.</p>
-          <div class="jc-price">From <strong>€90</strong> · 30-minute 1:1 session</div>
-          <button type="button" class="btn-jc" onclick="openCalendly(CAL_SESSION)">Book a Session</button>
+    <div class="container">
+        <p class="pillar-num" style="text-align: center; font-weight: bold; text-transform: uppercase;">30-day clarity experience</p>
+        <h2 style="text-align: center; margin-top: 0;">Work with Kat</h2>
+        <p style="text-align: center; font-size: 1.2rem; color: var(--text-muted);">Go deeper. Move further.</p>
+
+        <div style="display: flex; gap: 30px; margin-top: 40px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 280px; border: 1px solid var(--border); padding: 30px; border-radius: 6px;">
+                <p class="pillar-num" style="text-transform: uppercase;">Inner Clarity Session</p>
+                <p style="color: var(--text-muted); font-size: 0.85rem;">The Journey · 1:1 Coaching</p>
+                <h3>Inner Clarity Session</h3>
+                <p>Stop guessing. Start knowing yourself. You bring what you're stuck on, a decision, a pattern, a relationship, a direction. Kat connects with your energy field and reflects back exactly what she finds: the hidden blocks, the blind spots, the patterns quietly running your life. Most people feel immediate clarity just from having it named.</p>
+                <p>From <strong>€90</strong> · 30-minute 1:1 session</p>
+                <a href="#" class="btn btn-secondary">Book a Session</a>
+            </div>
+
+            <div style="flex: 1; min-width: 280px; border: 1px solid var(--border); padding: 30px; border-radius: 6px;">
+                <p class="pillar-num" style="text-transform: uppercase;">Free Consultation</p>
+                <p style="color: var(--text-muted); font-size: 0.85rem;">Coaching · Free Call</p>
+                <h3>Free 10-Min Consultation</h3>
+                <p>Not sure where to start? Book a free 10-minute call with Kat. She'll listen, ask the right questions, and help you understand which path is right for you, no pressure, no pitch.</p>
+                <p><strong>Free</strong></p>
+                <a href="#" class="btn btn-secondary">Book a Free Call</a>
+            </div>
         </div>
-      </div>
-      <div class="jc-card">
-        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80&auto=format&fit=crop" alt="Free Consultation" loading="lazy">
-        <div class="jc-card-content">
-          <div class="jc-card-tag">Coaching · Free Call</div>
-          <h3>Free 10-Min<br>Consultation</h3>
-          <p>Not sure where to start? Book a free 10-minute call with Kat. She'll listen, ask the right questions, and help you understand which path is right for you, no pressure, no pitch.</p>
-          <div class="jc-price"><strong>Free</strong></div>
-          <button type="button" class="btn-jc" onclick="openCalendly(CAL_FREE)">Book a Free Call</button>
+    </div>
+
+    <div class="container" style="display: flex; gap: 40px; align-items: center; margin-top: 60px; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 300px;">
+            <p class="pillar-num" style="text-transform: uppercase; font-weight: bold;">Kat Anselmo</p>
+            <p style="font-size: 1.1rem; color: var(--text-muted);">About Kat</p>
+            <h2>I'm Kat. And I've been <em>where you are.</em></h2>
+            <p>Life was good, until it wasn't. One day everything changed. And in that moment I realised: life is short, and I wasn't truly living mine.</p>
+            <p>So I made a decision. I quit my job, signed a one-year contract with myself, and showed up every single day, no matter what. <strong>I didn't have a plan. I had a promise.</strong> And that promise changed everything.</p>
+            <p>I found my purpose. I found myself. And I realised that without knowing it, I had created a formula, a way back to yourself that actually works.</p>
+            <p>Now it's my mission to share it. Because I believe this deeply: <strong>you can only guide someone through what you've already walked through yourself.</strong> I've done the work. I know the way. And I'm here to walk you through it too.</p>
+            <a href="#" class="btn">Discover Your Pattern</a>
         </div>
-      </div>
     </div>
-  </section>
 
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="about-inner">
-      <div class="about-image">
-        <img src="https://raw.githubusercontent.com/joedcosta/katanselmo.com/main/images/about_kat.jpeg" alt="Kat Anselmo" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=900&q=80&auto=format&fit=crop'">
-      </div>
-      <div class="about-content">
-        <div class="section-label">About Kat</div>
-        <h2>I'm Kat. And I've been<br><em>where you are.</em></h2>
-        <div class="about-body">
-          <p>Life was good, until it wasn't. One day everything changed. And in that moment I realised: life is short, and I wasn't truly living mine.</p>
-          <p>So I made a decision. I quit my job, signed a one-year contract with myself, and showed up every single day, no matter what. <strong>I didn't have a plan. I had a promise.</strong> And that promise changed everything.</p>
-          <p>I found my purpose. I found myself. And I realised that without knowing it, I had created a formula, a way back to yourself that actually works.</p>
-          <p>Now it's my mission to share it. Because I believe this deeply: <strong>you can only guide someone through what you've already walked through yourself.</strong> I've done the work. I know the way. And I'm here to walk you through it too.</p>
+    <div class="testimonials">
+        <div class="container">
+            <p class="pillar-num" style="text-transform: uppercase; font-weight: bold;">What people say</p>
+            <h2>Real people. Real shifts.</h2>
+            
+            <div class="testimonial-card">
+                <p>"A thousand thanks for the self-love programme. I didn't expect to feel this kind of shift so quickly. Kat has a rare gift for making you feel deeply seen and understood."</p>
+                <span class="author">Maria S. — Programme participant</span>
+            </div>
+
+            <div class="testimonial-card">
+                <p>"I came in feeling completely lost. After just one session with Kat I had more clarity than I'd had in years. She cuts straight to what matters without any judgement."</p>
+                <span class="author">James T. — Inner Clarity Session client</span>
+            </div>
+
+            <div class="testimonial-card">
+                <p>"The 30-day experience was a turning point for me. I finally understand the patterns I've been repeating my whole life, and I have real tools to change them."</p>
+                <span class="author">Sofia R. — 30-Day Clarity Experience</span>
+            </div>
+
+            <div class="testimonial-card">
+                <p>"I was sceptical at first. But the Inner Alignment Reading was unlike anything I've experienced. Kat described things about me I had never told anyone. Genuinely transformative."</p>
+                <span class="author">Ana P. — Inner Alignment Reading</span>
+            </div>
         </div>
-        <div class="about-cta">
-          <button type="button" class="btn-about" onclick="startQuiz(event)">Discover Your Pattern</button>
+    </div>
+
+    <div class="container" style="text-align: center; padding: 60px 20px;">
+        <h2>The life you want already exists.</h2>
+        <p>You just need to find the way back to yourself. Start with the free quiz, it takes two minutes and it might change everything.</p>
+        <div style="margin-top: 35px; display: flex; justify-content: center; gap: 20px;">
+            <a href="#" class="btn">Take the Free Quiz</a>
+            <a href="#" class="btn btn-secondary">Book a Free Call</a>
         </div>
-      </div>
     </div>
-  </section>
 
-<!-- TESTIMONIALS -->
-  <section class="testimonials">
-    <div class="section-label">What people say</div>
-    <h2>Real people.<br>Real shifts.</h2>
-    <div class="testimonials-track">
-      <div class="testimonial-card">
-        <div class="testimonial-quote">"</div>
-        <p>A thousand thanks for the self-love programme. I didn't expect to feel this kind of shift so quickly. Kat has a rare gift for making you feel deeply seen and understood.</p>
-        <div class="testimonial-author">Maria S.</div>
-        <div class="testimonial-role">Programme participant</div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-quote">"</div>
-        <p>I came in feeling completely lost. After just one session with Kat I had more clarity than I'd had in years. She cuts straight to what matters without any judgement.</p>
-        <div class="testimonial-author">James T.</div>
-        <div class="testimonial-role">Inner Clarity Session client</div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-quote">"</div>
-        <p>The 30-day experience was a turning point for me. I finally understand the patterns I've been repeating my whole life, and I have real tools to change them.</p>
-        <div class="testimonial-author">Sofia R.</div>
-        <div class="testimonial-role">30-Day Clarity Experience</div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-quote">"</div>
-        <p>I was sceptical at first. But the Inner Alignment Reading was unlike anything I've experienced. Kat described things about me I had never told anyone. Genuinely transformative.</p>
-        <div class="testimonial-author">Ana P.</div>
-        <div class="testimonial-role">Inner Alignment Reading</div>
-      </div>
-    </div>
-  </section>
+    <footer>
+        <p style="font-weight: bold; margin-bottom: 20px; color: var(--primary);">Kat Anselmo</p>
+        <p>
+            <a href="#" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">About</a>
+            <a href="#" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">The Programme</a>
+            <a href="#" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">The Journey</a>
+            <a href="#" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">Coaching</a>
+            <a href="#" style="color: var(--text-muted); margin: 0 10px; text-decoration: none;">Shop</a>
+        </p>
+        <p style="margin-top: 30px;">© 2026 Kat Anselmo. All rights reserved.</p>
+    </footer>
 
-  <!-- FINAL CTA -->
-  <section class="final-cta">
-    <div class="final-cta-bg"></div>
-    <div class="final-cta-content">
-      <h2>The life you want<br>already exists.</h2>
-      <p>You just need to find the way back to yourself. Start with the free quiz, it takes two minutes and it might change everything.</p>
-      <div class="final-cta-btns">
-        <button type="button" class="btn-cta-primary" onclick="startQuiz(event)">Take the Free Quiz</button>
-        <button type="button" class="btn-cta-secondary" onclick="openCalendly()">Book a Free Call</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="footer-logo">Kat Anselmo</div>
-    <div class="footer-links">
-      <a href="#about">About</a>
-      <a href="#program">The Programme</a>
-      <a href="#journey">The Journey</a>
-      <a href="#coaching">Coaching</a>
-      <a href="https://payhip.com/KatsInspirationShop" target="_blank" rel="noopener">Shop</a>
-    </div>
-    <div class="footer-copy">© 2025 Kat Anselmo. All rights reserved.</div>
-  </footer>
-
-</div><!-- /homepage -->
-
-
-<!-- ══════════════════════════════════════
-     VIDEO LIGHTBOX MODAL
-══════════════════════════════════════ -->
-<div class="vid-overlay" id="vidOverlay" onclick="handleVidOverlay(event)">
-  <div class="vid-modal" id="vidModal">
-    <button type="button" class="vid-close" onclick="closeVideoModal()">✕ Close</button>
-    <!-- src set by JS on open so video doesn't preload -->
-    <iframe id="vidIframe" src="about:blank" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Kat Anselmo, Latest video"></iframe>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════
-     QUIZ OVERLAY
-══════════════════════════════════════ -->
-<div class="quiz-overlay" id="quizOverlay">
-
-  <!-- QP: intro / mosaic -->
-  <div class="qp active" id="qp-intro">
-    <nav class="q-topnav">
-      <a href="#" class="qnav-logo" onclick="closeQuiz(); return false;">Kat Anselmo</a>
-      <div class="prog-outer"><div class="prog-inner" style="width:0%"></div></div>
-      <button class="qnav-close" type="button" onclick="closeQuiz()">✕ Close</button>
-    </nav>
-    <div class="q-body">
-      <div class="q-left" style="justify-content:center;">
-        <h2 style="font-size:clamp(28px,3.8vw,54px);font-weight:900;color:#fff;letter-spacing:-1px;line-height:1.08;margin-bottom:14px;">Ready to take<br>control of<br>your life?</h2>
-        <p style="font-size:17px;color:rgba(255,255,255,.55);margin-bottom:36px;line-height:1.55;">Let's find out what's been holding you back.</p>
-        <button class="btn-next" type="button" style="align-self:flex-start;" onclick="resetQuiz(); showQP('qp-q0')">Take the quiz</button>
-      </div>
-      <div class="q-right" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:5px;padding:5px;background:#000;">
-        <div style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&q=75&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400&q=75&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&q=75&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=75&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=75&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&q=75&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&q=75&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&q=75&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div style="border-radius:8px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=75&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- QP: questions (built by JS) -->
-
-  <!-- QP: contact -->
-  <div class="qp" id="qp-contact">
-    <nav class="q-topnav">
-      <a href="#" class="qnav-logo" onclick="closeQuiz(); return false;">Kat Anselmo</a>
-      <div class="prog-outer"><div class="prog-inner" style="width:100%"></div></div>
-      <button class="qnav-close" type="button" onclick="closeQuiz()">✕ Close</button>
-    </nav>
-    <div class="contact-form-wrap">
-      <div class="contact-left">
-        <div class="step-label">Almost there, just one last step</div>
-        <div class="step-q">Where shall we<br>send your results?</div>
-        <div class="form-grid">
-          <div class="fg"><label>First Name *</label><input type="text" id="fName" placeholder="Your first name" autocomplete="given-name"></div>
-          <div class="fg"><label>Last Name</label><input type="text" id="lName" placeholder="Your last name" autocomplete="family-name"></div>
-          <div class="fg full"><label>Email Address *</label><input type="email" id="fEmail" placeholder="your@email.com" autocomplete="email" inputmode="email"></div>
-          <div class="fg full">
-            <label>What brought you here?</label>
-            <select id="fIntent">
-              <option value="">— Choose one —</option>
-              <option value="stuck">I feel stuck and can't move forward</option>
-              <option value="overwhelm">I'm overwhelmed and exhausted</option>
-              <option value="direction">I've lost my direction</option>
-              <option value="relationships">My relationships feel difficult</option>
-              <option value="purpose">I'm searching for my purpose</option>
-              <option value="curious">Just curious</option>
-            </select>
-          </div>
-        </div>
-        <p class="form-privacy">🔒 Your details are private. Never shared or sold. You can unsubscribe at any time.</p>
-        <div class="q-nav-row" style="margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,.07);">
-          <button class="btn-back" type="button" onclick="showQP('qp-q6')">← Back</button>
-          <button class="btn-next" type="button" onclick="submitContact(event)">Reveal My Results</button>
-        </div>
-      </div>
-      <div class="contact-right">
-        <img src="https://raw.githubusercontent.com/joedcosta/katanselmo.com/main/images/about_kat.jpeg" alt="Kat Anselmo" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=900&q=80&auto=format&fit=crop'">
-      </div>
-    </div>
-  </div>
-
-  <!-- QP: results -->
-  <div class="qp" id="qp-results">
-    <nav class="q-topnav">
-      <a href="#" class="qnav-logo" onclick="closeQuiz(); return false;">Kat Anselmo</a>
-      <div class="prog-outer"><div class="prog-inner" style="width:100%"></div></div>
-      <button class="qnav-close" type="button" onclick="closeQuiz()">✕ Close</button>
-    </nav>
-    <div class="results-wrap">
-      <div class="res-left">
-        <div class="res-eyebrow">Your Result</div>
-        <div class="res-badge"   id="rBadge"></div>
-        <div class="res-name"    id="rName"></div>
-        <div class="res-tagline" id="rTagline"></div>
-        <div class="res-divider"></div>
-        <div class="res-body"    id="rBody"></div>
-        <div class="res-traits"  id="rTraits"></div>
-        <div class="res-insights" id="rInsights"></div>
-      </div>
-      <div class="res-right">
-        <div class="book-eyebrow">Your Next Step</div>
-        <div class="book-who"  id="bookWho"></div>
-        <div class="book-title">Ready to go<br>deeper with Kat?</div>
-        <p class="book-desc">Book a free 10-minute call with Kat. She will walk through your results, answer your questions, and show you exactly what your pattern means, no pressure, no pitch.</p>
-        <div class="book-feats">
-          <div class="book-feat"><span class="book-dot"></span>10 minutes, completely free</div>
-          <div class="book-feat"><span class="book-dot"></span>Personalised to your result</div>
-          <div class="book-feat"><span class="book-dot"></span>Walk away with clarity</div>
-        </div>
-        <button class="btn-book" type="button" onclick="openCalendly()">Book my free call with Kat</button>
-        <a href="https://payhip.com/b/zwPqE" target="_blank" rel="noopener" class="btn-book-sec">Or explore The 30-Day Clarity Experience</a>
-      </div>
-    </div>
-  </div>
-
-</div><!-- /quiz-overlay -->
-
-
-<!-- ══════════════════════════════════════
-     JAVASCRIPT
-══════════════════════════════════════ -->
-<script>
-
-/* ── Quiz data ── */
-const QUESTIONS = [
-  { q:"When something doesn't go as planned, you tend to:", photo:"https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=900&q=80&auto=format&fit=crop",
-    opts:[{text:"Blame yourself",type:"overthinker"},{text:"Worry about what others think",type:"overthinker"},{text:"Find silver linings and move on",type:"navigator"},{text:"Make a plan around possible outcomes",type:"navigator"}]},
-  { q:"When thinking about the future, you feel:", photo:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=900&q=80&auto=format&fit=crop",
-    opts:[{text:"Anxious, it feels out of my control",type:"overthinker"},{text:"Responsible for everyone else's outcome",type:"pleaser"},{text:"Disconnected, like it doesn't really concern me",type:"avoider"},{text:"Confused, I genuinely don't know what I want",type:"navigator"}]},
-  { q:"When something emotionally difficult happens, you:", photo:"https://images.unsplash.com/photo-1552058544-f2b08422138a?w=900&q=80&auto=format&fit=crop",
-    opts:[{text:"Keep busy to avoid feeling it",type:"avoider"},{text:"Replay it in your mind on loop",type:"overthinker"},{text:"Focus on helping others instead",type:"pleaser"},{text:"Feel emotions you struggle to explain",type:"navigator"}]},
-  { q:"When faced with an important decision, you usually:", photo:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900&q=80&auto=format&fit=crop",
-    opts:[{text:"Overthink every option until you're exhausted",type:"overthinker"},{text:"Ask everyone around you what you should do",type:"pleaser"},{text:"Avoid deciding, \"I'll think about it later\"",type:"avoider"},{text:"Act on what looks right from the outside",type:"navigator"}]},
-  { q:"Your biggest challenge right now feels like:", photo:"https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=900&q=80&auto=format&fit=crop",
-    opts:[{text:"Lack of confidence in myself",type:"overthinker"},{text:"Fear of disappointing others",type:"avoider"},{text:"Facing feelings I keep pushing away",type:"avoider"},{text:"Not knowing what my purpose really is",type:"navigator"}]},
-  { q:"When reflecting on your situation, you most often look:", photo:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=900&q=80&auto=format&fit=crop",
-    opts:[{text:"To the past, replaying and analysing",type:"overthinker"},{text:"To others, to find your answer in them",type:"pleaser"},{text:"Away, you'd rather not look at all",type:"avoider"},{text:"Forward, but feeling genuinely lost",type:"navigator"}]},
-  { q:"In relationships or work, you often:", photo:"https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80&auto=format&fit=crop",
-    opts:[{text:"Seek others' approval before trusting yourself",type:"pleaser"},{text:"Prioritise others so much you lose yourself",type:"pleaser"},{text:"Avoid conflict at almost any cost",type:"avoider"},{text:"Feel like you don't quite belong anywhere",type:"navigator"}]}
-];
-
-const ARCHETYPES = {
-  overthinker: {
-    badge: "The Overthinker",
-    name: "The Overthinker",
-    tagline: "Your mind works hard to protect you.",
-    body: `<p>You likely spend a lot of time thinking through possibilities, analysing outcomes, and trying to make the "right" decision. This ability to reflect deeply can be a strength — it shows that you care about making thoughtful choices.</p><p>However, when the mind becomes too active, it can begin to create doubt instead of clarity. You may notice yourself replaying conversations, worrying about mistakes, or second-guessing choices after you've already made them. Over time, this pattern can make it harder to trust your own instincts.</p><p>The clarity you're looking for doesn't come from thinking more — it comes from giving your instincts space to speak.</p>`,
-    traits: ["Replaying conversations", "Second-guessing decisions", "Difficulty letting go", "Analysis paralysis"],
-    insights: ["Replaying conversations long after they've passed", "Difficulty trusting your instincts even when you know the answer", "Finding constant analysis physically and emotionally exhausting"],
-    plan: [
-      { day: "Day 1 — Name it", text: "Notice one decision today where you catch yourself overthinking. Write down the moment. Then pick an option and go with it, even if it's not the \"perfect\" one." },
-      { day: "Day 2 — Interrupt the loop", text: "Set a 2-minute timer whenever you feel yourself spiraling on something. When it rings, stop and ask: what does my gut already know?" },
-      { day: "Day 3 — Trust one instinct", text: "Pick one small decision today and make it without re-checking it. Notice what it feels like to trust yourself, just once." }
-    ]
-  },
-  pleaser: {
-    badge: "The People Pleaser",
-    name: "The People Pleaser",
-    tagline: "So focused on others, you've lost yourself.",
-    body: `<p>You care deeply about others. You may naturally be someone who wants the people around you to feel comfortable, supported, and happy. This empathy is a beautiful quality and often makes you a thoughtful friend, partner, or colleague.</p><p>At the same time, constantly considering everyone else's needs can make it difficult to stay connected to your own. You might notice yourself saying yes when you'd rather say no, or feeling responsible for how others feel. Over time, this pattern can create a quiet sense of exhaustion or disconnection from what you truly want.</p><p>Reconnecting with yourself doesn't mean becoming selfish — it means learning to care for yourself with the same kindness you offer others.</p>`,
-    traits: ["Difficulty saying no", "Feeling responsible for others", "Losing your voice", "Seeking validation"],
-    insights: ["Avoiding conflict even when it costs you something important", "Feeling responsible for other people's emotions", "Losing your own perspective whenever others push back"],
-    plan: [
-      { day: "Day 1 — Notice the yes", text: "Track every moment today you say yes when part of you wanted to say no. No need to change anything yet — just notice." },
-      { day: "Day 2 — Practice one no", text: "Choose one low-stakes moment and say no, or ask for something you need." },
-      { day: "Day 3 — Check in with you", text: "Before answering a request today, pause and ask: what do I actually want here? — then respond from that." }
-    ]
-  },
-  avoider: {
-    badge: "The Avoider",
-    name: "The Avoider",
-    tagline: "You keep the hard feelings at arm's length.",
-    body: `<p>When situations feel emotionally difficult or uncertain, it can feel easier to postpone decisions or avoid facing them directly. This response is actually very human — avoidance is often a way our system tries to protect us from overwhelm.</p><p>You might notice yourself delaying important conversations, postponing decisions, or feeling stuck even when you want change. Avoidance often isn't about laziness — it can simply be a sign that something feels emotionally heavy or unclear.</p><p>Often, the decisions you've been avoiding start to feel clearer the moment you create a little space to face them.</p>`,
-    traits: ["Staying busy to avoid feeling", "Delaying hard conversations", "Emotional withdrawal", "Difficulty with vulnerability"],
-    insights: ["Keeping yourself busy to avoid sitting with your feelings", "Postponing conversations that actually matter to you", "Feeling relief followed by guilt when you avoid something"],
-    plan: [
-      { day: "Day 1 — Name the postponed thing", text: "Write down one decision or conversation you've been putting off." },
-      { day: "Day 2 — Take the smallest step", text: "Break it into the tiniest possible first move. Do only that piece." },
-      { day: "Day 3 — Face it fully", text: "Take the next real step toward that thing, even if it still feels uncomfortable." }
-    ]
-  },
-  navigator: {
-    badge: "The Uncertain Navigator",
-    name: "The Uncertain Navigator",
-    tagline: "Searching for a direction that feels truly yours.",
-    body: `<p>You may be in a period of transition or reflection. Feeling unsure about your direction can feel frustrating, but it can also be a sign that you're beginning to question things more deeply.</p><p>You might notice yourself wondering what you actually want, or whether you're on the right path. When clarity is missing, it can feel difficult to commit to decisions or long-term plans — creating a sense of being stuck or disconnected from your own direction.</p><p>Often, the answers you're searching for become clearer once you slow down and reconnect with yourself.</p>`,
-    traits: ["Questioning your direction", "Feeling disconnected", "Searching for meaning", "Uncertainty about what you want"],
-    insights: ["Feeling 'stuck' without being able to name exactly why", "Questioning whether your goals are truly yours", "Sensing a shift is coming but not knowing which way to go"],
-    plan: [
-      { day: "Day 1 — Get curious", text: "Write down three moments today that felt like \"you,\" even small ones." },
-      { day: "Day 2 — Ask the question", text: "Spend 5 minutes journaling on: what do I actually want right now? — no editing yourself." },
-      { day: "Day 3 — Choose a direction", text: "Pick one small step this week toward what you wrote. No need for certainty, just direction." }
-    ]
-  }
-};
-
-/* ── State ── */
-let scores  = {overthinker:0,pleaser:0,avoider:0,navigator:0};
-let answers = {};
-let _submitting = false;
-
-function resetQuiz() {
-  scores  = {overthinker:0,pleaser:0,avoider:0,navigator:0};
-  answers = {};
-  document.querySelectorAll('.q-opt.sel').forEach(o=>o.classList.remove('sel'));
-  document.querySelectorAll('[id^="nx-"]').forEach(b=>b.disabled=true);
-}
-
-/* ── Build question panels ── */
-(function buildQuiz(){
-  const letters=['A','B','C','D'];
-  QUESTIONS.forEach((qData,idx)=>{
-    const id=`qp-q${idx}`;
-    const prevQP = idx===0 ? 'qp-intro' : `qp-q${idx-1}`;
-    const isLast = idx===QUESTIONS.length-1;
-    const pct    = Math.round(((idx+1)/QUESTIONS.length)*100);
-    const nextCall = isLast ? `goNextQ(${idx},'qp-contact')` : `goNextQ(${idx},'qp-q${idx+1}')`;
-    const nextLabel = isLast ? 'Get My Results →' : 'Next →';
-    const opts = qData.opts.map((o,oi)=>
-      `<button class="q-opt" id="opt-${idx}-${oi}" onclick="pick(${idx},${oi},'${o.type}')"><span class="q-letter">${letters[oi]}</span>${o.text}</button>`
-    ).join('');
-    const div=document.createElement('div');
-    div.className='qp'; div.id=id;
-    div.innerHTML=`
-      <nav class="q-topnav">
-        <a href="#" class="qnav-logo" onclick="closeQuiz();return false;">Kat Anselmo</a>
-        <div class="prog-outer"><div class="prog-inner" style="width:${pct}%"></div></div>
-        <button class="qnav-close" onclick="closeQuiz()">✕ Close</button>
-      </nav>
-      <div class="q-body">
-        <div class="q-left">
-          <div class="step-label">Question ${idx+1} of ${QUESTIONS.length}</div>
-          <div class="q-question">${qData.q}</div>
-          <div class="q-options">${opts}</div>
-          <div class="q-nav-row">
-            <button class="btn-back" onclick="showQP('${prevQP}')">← Back</button>
-            <button class="btn-next" id="nx-${idx}" onclick="${nextCall}" disabled>${nextLabel}</button>
-          </div>
-        </div>
-        <div class="q-right"><img src="${qData.photo}" alt="" loading="lazy"></div>
-      </div>`;
-    document.getElementById('qp-contact').before(div);
-  });
-})();
-
-/* ── Quiz navigation ── */
-function startQuiz(e) {
-  if (e && e.preventDefault) e.preventDefault();
-  resetQuiz();
-  const overlay = document.getElementById('quizOverlay');
-  if (overlay) overlay.classList.add('active');
-  document.body.style.overflow='hidden';
-  showQP('qp-intro');
-}
-function closeQuiz() {
-  document.getElementById('quizOverlay').classList.remove('active');
-  document.body.style.overflow='';
-}
-function showQP(id) {
-  document.querySelectorAll('.qp').forEach(p=>p.classList.remove('active'));
-  const el=document.getElementById(id);
-  if(el){ el.classList.add('active'); el.scrollTop=0; }
-}
-function pick(qIdx,optIdx,type){
-  if(answers[qIdx]) scores[answers[qIdx].type]--;
-  document.querySelectorAll(`#qp-q${qIdx} .q-opt`).forEach(o=>o.classList.remove('sel'));
-  document.getElementById(`opt-${qIdx}-${optIdx}`).classList.add('sel');
-  answers[qIdx]={optIdx,type}; scores[type]++;
-  document.getElementById(`nx-${qIdx}`).disabled=false;
-}
-function goNextQ(qIdx,nextId){ if(!answers[qIdx])return; showQP(nextId); }
-
-function winner(){
-  const priority=['overthinker','pleaser','avoider','navigator'];
-  return Object.entries(scores).sort((a,b)=>b[1]-a[1]||priority.indexOf(a[0])-priority.indexOf(b[0]))[0][0];
-}
-function renderResults(){
-  const w=winner(); const R=ARCHETYPES[w];
-  const fn=document.getElementById('fName').value.trim().split(' ')[0];
-  document.getElementById('rBadge').textContent=R.badge;
-  document.getElementById('rName').textContent=fn?`${fn}, meet ${R.name}.`:R.name;
-  document.getElementById('rTagline').textContent=`"${R.tagline}"`;
-  document.getElementById('rBody').innerHTML=R.body;
-  document.getElementById('rTraits').innerHTML=R.traits.map(t=>`<span class="res-trait">${t}</span>`).join('');
-  document.getElementById('rInsights').innerHTML=`<h4>You may recognise yourself in these:</h4><ul>${R.insights.map(i=>`<li>${i}</li>`).join('')}</ul>`;
-  document.getElementById('bookWho').textContent=fn?`Based on your answers, ${fn}, you are ${R.name}.`:`You are ${R.name}.`;
-}
-
-/* ── Contact submit ── */
-function submitContact(e){
-  if (e && e.preventDefault) e.preventDefault();
-  if(_submitting)return;
-  const nameEl = document.getElementById('fName');
-  const emailEl = document.getElementById('fEmail');
-  const name = nameEl ? nameEl.value.trim() : '';
-  const email = emailEl ? emailEl.value.trim() : '';
-  
-  if(!name){alert('Please enter your first name.');return;}
-  if(!email||!/\S+@\S+\.\S+/.test(email)){alert('Please enter a valid email address.');return;}
-  
-  _submitting=true;
-  const lastNameEl = document.getElementById('lName');
-  const intentEl = document.getElementById('fIntent');
-  
-  saveToSheet({
-    type:'lead',
-    firstName:name,
-    lastName: lastNameEl ? lastNameEl.value.trim() : '',
-    email: email,
-    intent: intentEl ? intentEl.value : '',
-    scores:JSON.stringify(scores),
-    result:winner(),
-    timestamp:new Date().toISOString(),
-    source:location.href
-  });
-  
-  const loader=document.getElementById('loader');
-  if (loader) loader.classList.add('on');
-  
-  setTimeout(()=>{ 
-    renderResults(); 
-    if (loader) loader.classList.remove('on'); 
-    showQP('qp-results'); 
-    _submitting=false; 
-  }, 1000);
-}
-
-/* ── Mobile drawer ── */
-let _activeHam=null;
-function toggleDrawer(btn){
-  const d=document.getElementById('mobileDrawer');
-  if(d.classList.contains('open')){closeDrawer();}
-  else{d.classList.add('open');if(_activeHam)_activeHam.classList.remove('open');btn.classList.add('open');_activeHam=btn;}
-}
-function closeDrawer(){
-  document.getElementById('mobileDrawer').classList.remove('open');
-  if(_activeHam){_activeHam.classList.remove('open');_activeHam=null;}
-}
-document.addEventListener('click',function(e){
-  const d=document.getElementById('mobileDrawer');
-  if(!d.classList.contains('open'))return;
-  if(!d.contains(e.target)&&!e.target.closest('.nav-hamburger'))closeDrawer();
-});
-
-/* ── Calendly ── */
-/* ── Calendly URLs
-   FREE CALL  (10-min free consultation, used by all general "book a call" buttons)
-   CLARITY SESSION (30-min paid Inner Clarity Session)
-   To update either link, change only the URL string below. ── */
-const CAL_FREE    = 'https://calendly.com/katagendas/new-meeting';
-const CAL_SESSION = 'https://calendly.com/katagendas/ics-30min';
-let _calSrcSet=false,_calReady=false,_calPoll=null;
-function openCalendly(url){
-  const targetUrl = url || CAL_FREE;
-  const loading=document.getElementById('calLoading');
-  const success=document.getElementById('calSuccess');
-  const iframe=document.getElementById('calIframe');
-  success.classList.remove('show');
-  loading.classList.remove('hidden');
-  /* Always reload iframe so the correct agenda opens */
-  iframe.src = targetUrl;
-  _calSrcSet = true;
-  _calReady  = false;
-  document.getElementById('calOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeCalendly(){
-  clearInterval(_calPoll);
-  document.getElementById('calOverlay').classList.remove('open');
-  document.body.style.overflow='';
-  /* Reset so the next openCalendly() can load a fresh URL */
-  _calSrcSet = false;
-  _calReady  = false;
-  document.getElementById('calIframe').src = 'about:blank';
-}
-function handleOverlayClick(e){if(e.target===document.getElementById('calOverlay'))closeCalendly();}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCalendly();});
-document.getElementById('calIframe').addEventListener('load',function(){
-  /* Skip the initial about:blank fire */
-  const src = document.getElementById('calIframe').src;
-  if(!src || src === 'about:blank') return;
-  _calReady=true;
-  document.getElementById('calLoading').classList.add('hidden');
-  startCalPoll();
-});
-window.addEventListener('message',function(e){
-  if(!e.data)return;
-  const d=typeof e.data==='string'?e.data:JSON.stringify(e.data);
-  if(d.includes('calendly.event_scheduled')||d.includes('booking_confirmed'))showBookingSuccess();
-});
-function startCalPoll(){
-  clearInterval(_calPoll);
-  _calPoll=setInterval(()=>{try{const href=document.getElementById('calIframe').contentWindow.location.href;if(href&&href!=='about:blank'&&(href.includes('complete')||href.includes('booked')||href.includes('confirmed')||href.includes('success'))){clearInterval(_calPoll);showBookingSuccess();}}catch(_){}},1200);
-}
-function showBookingSuccess(){clearInterval(_calPoll);document.getElementById('calSuccess').classList.add('show');}
-
-/* ── Video lightbox ── */
-let _vidLoaded = false;
-const VID_SRC = 'https://www.youtube.com/watch?v=AZVn7DQdIsM?autoplay=1&rel=0&modestbranding=1&playsinline=1';
-
-function openVideoModal() {
-  const overlay = document.getElementById('vidOverlay');
-  const iframe  = document.getElementById('vidIframe');
-  if (!_vidLoaded) { iframe.src = VID_SRC; _vidLoaded = true; }
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeVideoModal() {
-  document.getElementById('vidOverlay').classList.remove('open');
-  // Pause video by resetting src
-  const iframe = document.getElementById('vidIframe');
-  iframe.src = 'about:blank';
-  _vidLoaded = false;
-  document.body.style.overflow = '';
-}
-function handleVidOverlay(e) {
-  if (e.target === document.getElementById('vidOverlay')) closeVideoModal();
-}
-// Escape key closes both modals
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeVideoModal(); closeCalendly(); }
-});
-
-/* ── Google Sheets ── */
-function saveToSheet(data){
-  try{
-    const ENDPOINT='https://script.google.com/macros/s/AKfycbymOy2UNzwG2b97d_-rwOTWzCoXihmn8iUKn67Ku2Ym6P58SewGrzAvoQWEAB6a3B7R/exec';
-    const body=new URLSearchParams();
-    body.append('payload',JSON.stringify(data));
-    fetch(ENDPOINT,{method:'POST',mode:'no-cors',body}).catch(err=>console.warn('saveToSheet:',err));
-  }catch(e){console.warn('saveToSheet error:',e);}
-}
-
-</script>
 </body>
 </html>
